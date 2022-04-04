@@ -2,7 +2,7 @@ require('dotenv').config({path: '../.env'});
 const {Client, Intents} = require('discord.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES"]});
 let connection;
-
+const { registerCommands } = require('./utils/register');
 const guildCommandPrefixes = new Map();
 
 client.on('ready', () => {
@@ -56,4 +56,7 @@ client.on('messageCreate', async (message) => {
 (async () => {
     connection = await require('../database/db');
     await client.login(process.env.BOT_TOKEN);
+    client.commands = new Map();
+    client.events = new Map();
+    await registerCommands(client, '../commands');
 })();
