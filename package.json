@@ -1,0 +1,19 @@
+{
+  "name": "orange.db",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon . /src/bot.js",
+    "start": "node ./src/bot.js"
+  },
+  "author": "Jonas Krödel",
+  "license": "ISC",
+  "dependencies": {
+    "2": "^3.0.0",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "mysql2": "^2.3.3"
+  },
+  "description": "Discord Bot with mySQL"
+}
