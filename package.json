@@ -17,7 +17,17 @@
     "got": "^11.8.3",
     "moment": "^2.29.2",
     "mysql2": "^2.3.3",
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "nodemon": "^2.0.15"
   },
-  "description": "Discord Bot with mySQL"
+  "description": "Discord Bot with mySQL",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonaskroedel/orangedb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonaskroedel/orangedb/issues"
+  },
+  "homepage": "https://github.com/jonaskroedel/orangedb#readme"
 }

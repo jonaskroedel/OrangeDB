@@ -25,6 +25,6 @@ module.exports = class ReadyEvent extends BaseEvent {
             }).catch(err => console.log(err));
         });
         client.user.setActivity('o!help', { type: 'LISTENING' });
-    } //client.user.setActivity('o!help', { type: 'LISTENING' });
+    }
 
 }
