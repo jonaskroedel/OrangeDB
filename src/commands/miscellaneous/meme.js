@@ -38,6 +38,5 @@ module.exports = class prefix extends BaseCommand {
                 console.error(e);
                 message.reply(`r/${sub} does not exist. What the heck is this?`)
             })
-        console.log(cmdName, sub)
     }
 }

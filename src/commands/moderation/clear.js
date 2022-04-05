@@ -3,7 +3,7 @@ const client = new Client({intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES"]});
 const BaseCommand = require("../../utils/structures/BaseCommand");
 const StateManager = require("../../utils/StateManager");
 
-module.exports = class prefix extends BaseCommand {
+module.exports = class clear extends BaseCommand {
     constructor() {
         super('clear', 'moderation', []);
         this.connection = StateManager.connection;
