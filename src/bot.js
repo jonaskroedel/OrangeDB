@@ -10,4 +10,5 @@ const { registerCommands, registerEvents } = require('./utils/register');
     client.commands = new Map();
     await registerCommands(client, '../commands');
     await registerEvents(client, '../events');
+
 })();

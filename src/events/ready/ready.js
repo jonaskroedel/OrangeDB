@@ -1,9 +1,13 @@
 const BaseEvent = require('../../utils/structures/BaseEvent');
 const StateManager = require('../../utils/StateManager');
+const {Client, Intents} = require("discord.js");
+
+
 
 const guildCommandPrefixes = new Map();
 
 module.exports = class ReadyEvent extends BaseEvent {
+
     constructor () {
         super('ready');
         this.connection = StateManager.connection;
@@ -20,5 +24,7 @@ module.exports = class ReadyEvent extends BaseEvent {
                 StateManager.emit('prefixFetched', guildId, prefix);
             }).catch(err => console.log(err));
         });
-    }
+        client.user.setActivity('o!help', { type: 'LISTENING' });
+    } //client.user.setActivity('o!help', { type: 'LISTENING' });
+
 }
