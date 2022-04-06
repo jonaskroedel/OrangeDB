@@ -12,7 +12,7 @@ module.exports = class prefix extends BaseCommand {
         if (message.member.permissions.has("MANAGE_GUILD")) {
             const [ cmdName, newSub ] = message.content.slice(prefix.length).split(/\s+/);
 
-            if (newSub) {
+            if (newSub && newSub.length <= 100) {
                 try {
                     await this.connection.query(
                         `UPDATE GuildConfigurable SET subReddit = '${newSub}' WHERE guildId = '${message.guild.id}'`

@@ -12,7 +12,7 @@ module.exports = class prefix extends BaseCommand {
         if (message.member.permissions.has("MANAGE_GUILD")) {
             const [ cmdName, newPrefix ] = message.content.slice(prefix.length).split(/\s+/);
 
-            if (newPrefix) {
+            if (newPrefix && newPrefix.length <= 10) {
                 try {
                     await this.connection.query(
                         `UPDATE GuildConfigurable SET cmdPrefix = '${newPrefix}' WHERE guildId = '${message.guild.id}'`
