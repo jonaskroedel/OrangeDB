@@ -1,7 +1,7 @@
 const {Client, Intents, MessageEmbed} = require('discord.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES"]});
-const BaseCommand = require("../../utils/structures/BaseCommand");
-const StateManager = require("../../utils/StateManager");
+const BaseCommand = require("../../../utils/structures/BaseCommand");
+const StateManager = require("../../../utils/StateManager");
 const got = require('got');
 
 const guildSubReddits = new Map();
@@ -17,7 +17,6 @@ module.exports = class prefix extends BaseCommand{
     async run(client, message) {
         if (message.author.bot) return;
         const guildReddit = guildSubReddits.get(message.guild.id);
-        console.log(guildReddit);
 
 
         await message.react('📝')
