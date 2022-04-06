@@ -3,25 +3,25 @@ const StateManager = require('../../utils/StateManager');
 
 module.exports = class prefix extends BaseCommand {
     constructor() {
-        super('prefix', 'modify', []);
+        super('subreddit', 'modify', []);
         this.connection = StateManager.connection;
     }
 
     async run (client, message) {
 
         if (message.member.permissions.has("MANAGE_GUILD")) {
-            const [ cmdName, newPrefix ] = message.content.slice(prefix.length).split(/\s+/);
+            const [ cmdName, newSub ] = message.content.slice(prefix.length).split(/\s+/);
 
-            if (newPrefix) {
+            if (newSub) {
                 try {
                     await this.connection.query(
-                        `UPDATE GuildConfigurable SET cmdPrefix = '${newPrefix}' WHERE guildId = '${message.guild.id}'`
+                        `UPDATE GuildConfigurable SET subReddit = '${newSub}' WHERE guildId = '${message.guild.id}'`
                     );
-                    message.channel.send(`Updated guild prefix to **${newPrefix}**`);
-                    StateManager.emit('prefixUpdate', message.guild.id, newPrefix);
+                    message.channel.send(`Updated guild default subreddit to **${newSub}**`);
+                    StateManager.emit('subUpdate', message.guild.id, newSub);
                 } catch(err) {
                     console.log(err);
-                    message.channel.send(`Failed to update guild prefix to **${newPrefix}**`);
+                    message.channel.send(`Failed to update default Subreddit to **${newSub}**`);
                 }
             } else {
                 message.channel.send(`Incorrect amount of arguments`);

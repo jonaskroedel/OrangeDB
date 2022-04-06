@@ -992,22 +992,26 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DataType>varchar(100)|0s</DataType>
       <Position>3</Position>
     </column>
-    <key id="289" parent="284" name="PRIMARY">
+    <column id="289" parent="284" name="subReddit">
+      <DataType>varchar(100)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <key id="290" parent="284" name="PRIMARY">
       <ColNames>guildId</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="290" parent="285" name="guildId">
+    <column id="291" parent="285" name="guildId">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="291" parent="285" name="guildOwnerId">
+    <column id="292" parent="285" name="guildOwnerId">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <key id="292" parent="285" name="PRIMARY">
+    <key id="293" parent="285" name="PRIMARY">
       <ColNames>guildId</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>

@@ -15,7 +15,8 @@ module.exports = class help extends BaseCommand {
             .setDescription(`**help** -- shows this page
                             **ping** -- shows the latency of the bot
                             **clear [amount]** -- deletes [amount] messages in the current channel
-                            **reddit** -- sends post from r/meme or a custom subreddit`)
+                            **reddit** -- sends post from r/meme, a custom-set default or a custom subreddit
+                            **subreddit [subreddit]** -- changes default sub`)
             .setColor('#e45e81')
             .setThumbnail(client.user.displayAvatarURL())
             .setFooter({text: `Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
