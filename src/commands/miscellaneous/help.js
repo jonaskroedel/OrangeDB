@@ -13,7 +13,9 @@ module.exports = class help extends BaseCommand {
         const sEmbed = new MessageEmbed()
             .setTitle(`Help page for ${message.guild.name}`)
             .setDescription(`**help** -- shows this page
+                            **prefix** -- changes default prefix
                             **ping** -- shows the latency of the bot
+                            **userinfo** -- userinfo from you or mentioned user
                             **clear [amount]** -- deletes [amount] messages in the current channel
                             **reddit** -- sends post from r/meme, a custom-set default or a custom subreddit
                             **subreddit [subreddit]** -- changes default sub`)
