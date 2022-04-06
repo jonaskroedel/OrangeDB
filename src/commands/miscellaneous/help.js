@@ -31,6 +31,10 @@ module.exports = class help extends BaseCommand {
     }
 }
 
+StateManager.on('prefixUpdate', (guildId, prefix) => {
+    guildCommandPrefixes.set(guildId, prefix);
+});
+
 StateManager.on('prefixFetched', (guildId, prefix) => {
     guildCommandPrefixes.set(guildId, prefix);
 });
