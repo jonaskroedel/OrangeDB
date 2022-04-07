@@ -28,8 +28,7 @@ module.exports = class ReadyEvent extends BaseEvent {
                 StateManager.emit('redditFetched', guildId, subReddit);
             }).catch(err => console.log(err));
         });
-        client.user.setActivity('alt!help', { type: 'LISTENING' });
+        client.user.setActivity('o!help', { type: 'LISTENING' });
     }
-
 }
 
