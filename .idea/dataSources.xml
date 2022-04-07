@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://orangedb.clu7hsdfw25e.eu-central-1.rds.amazonaws.com:3306/orangedb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="orangedb@localhost" uuid="44c1a258-bcc7-4228-b4ea-d95cbbcc121b">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/orangedb</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

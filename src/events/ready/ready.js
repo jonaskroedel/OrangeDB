@@ -24,13 +24,12 @@ module.exports = class ReadyEvent extends BaseEvent {
                 guildCommandPrefixes.set(guildId, prefix);
                 guildSubReddits.set(guildId, subReddit)
 
-                const sub = guildSubReddits.get(guild.id);
-
                 StateManager.emit('prefixFetched', guildId, prefix);
                 StateManager.emit('redditFetched', guildId, subReddit);
             }).catch(err => console.log(err));
         });
-        client.user.setActivity('o!help', { type: 'LISTENING' });
+        client.user.setActivity('alt!help', { type: 'LISTENING' });
     }
 
 }
+

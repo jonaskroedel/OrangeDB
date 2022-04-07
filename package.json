@@ -21,7 +21,6 @@
     "nodemon": "^2.0.15"
   },
   "description": "Discord Bot with mySQL",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jonaskroedel/orangedb.git"

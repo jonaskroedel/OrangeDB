@@ -1,7 +1,6 @@
 const BaseEvent = require('../../utils/structures/BaseEvent');
 const StateManager = require('../../utils/StateManager');
 const guildCommandPrefixes = new Map();
-const guildSubReddits = new Map();
 
 
 module.exports = class MessageEvent extends BaseEvent {
@@ -13,7 +12,6 @@ module.exports = class MessageEvent extends BaseEvent {
     async run (client, message) {
         if (message.author.bot) return;
         const prefix = guildCommandPrefixes.get(message.guild.id);
-        const sub = guildSubReddits.get(message.guild.id);
 
         const usedPrefix = message.content.slice(0, prefix.length);
 
