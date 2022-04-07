@@ -21,8 +21,8 @@ module.exports = class prefix extends BaseCommand{
 
         await message.react('📝')
         const [cmdName, cmdArgs] = message.content.slice(prefix.length).split(/\s+/);
-        let sub = cmdArgs;
-        if (!cmdArgs) sub = guildReddit;
+        let sub;
+        cmdArgs ? sub = cmdArgs : sub = guildReddit;
 
 
         const sEmbed = new MessageEmbed()
@@ -31,12 +31,12 @@ module.exports = class prefix extends BaseCommand{
             .then(response => {
                 const [list] = JSON.parse(response.body)
                 const [post] = list.data.children
-                sEmbed.setTitle(`${post.data.title}`)
+                sEmbed.setTitle(`r/${sub} • ${post.data.title} ${post.data.over_18 ? '• NSFW' : ''}`)
                 sEmbed.setDescription(post.data.selftext)
                 sEmbed.setURL(`${'https://reddit.com' + post.data.permalink}`)
                 sEmbed.setColor('RANDOM')
-                sEmbed.setImage(post.data.url)
-                sEmbed.setFooter({text: `⬆️${post.data.ups}      🗨️${post.data.num_comments}`})
+                sEmbed.setImage(post.data.over_18 ? '' : post.data.url)
+                sEmbed.setFooter({text: `⬆️${post.data.ups}                🗨️${post.data.num_comments}`})
                 sEmbed.setTimestamp()
 
                 message.channel.send({embeds: [sEmbed]});

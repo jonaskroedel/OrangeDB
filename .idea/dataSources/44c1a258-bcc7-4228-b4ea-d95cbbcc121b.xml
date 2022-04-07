@@ -1,82 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="@awsSimple">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.31">
+<dataSource name="orangedb@localhost">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.32">
     <root id="1">
-      <DefaultCasing>exact</DefaultCasing>
+      <DefaultCasing>lower/lower</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
-      <Grants>|root||admin||ALTER|G
-|root||rdsadmin|localhost|ALTER|G
-|root||admin||ALTER ROUTINE|G
-|root||rdsadmin|localhost|ALTER ROUTINE|G
+      <Grants>|root||jonas|localhost|ALTER|G
+|root||root|localhost|ALTER|G
+|root||jonas|localhost|ALTER ROUTINE|G
+|root||root|localhost|ALTER ROUTINE|G
+|root||jonas|localhost|APPLICATION_PASSWORD_ADMIN|G
+|root||root|localhost|APPLICATION_PASSWORD_ADMIN|G
+|root||jonas|localhost|AUDIT_ABORT_EXEMPT|G
 |root||mysql.infoschema|localhost|AUDIT_ABORT_EXEMPT|G
 |root||mysql.session|localhost|AUDIT_ABORT_EXEMPT|G
 |root||mysql.sys|localhost|AUDIT_ABORT_EXEMPT|G
+|root||root|localhost|AUDIT_ABORT_EXEMPT|G
+|root||jonas|localhost|AUDIT_ADMIN|G
+|root||root|localhost|AUDIT_ADMIN|G
+|root||jonas|localhost|AUTHENTICATION_POLICY_ADMIN|G
+|root||root|localhost|AUTHENTICATION_POLICY_ADMIN|G
+|root||jonas|localhost|BACKUP_ADMIN|G
 |root||mysql.session|localhost|BACKUP_ADMIN|G
+|root||root|localhost|BACKUP_ADMIN|G
+|root||jonas|localhost|BINLOG_ADMIN|G
+|root||root|localhost|BINLOG_ADMIN|G
+|root||jonas|localhost|BINLOG_ENCRYPTION_ADMIN|G
+|root||root|localhost|BINLOG_ENCRYPTION_ADMIN|G
+|root||jonas|localhost|CLONE_ADMIN|G
 |root||mysql.session|localhost|CLONE_ADMIN|G
+|root||root|localhost|CLONE_ADMIN|G
+|root||jonas|localhost|CONNECTION_ADMIN|G
 |root||mysql.session|localhost|CONNECTION_ADMIN|G
-|root||admin||CREATE|G
-|root||rdsadmin|localhost|CREATE|G
-|root||rdsadmin|localhost|CREATE ROLE|G
-|root||admin||CREATE ROUTINE|G
-|root||rdsadmin|localhost|CREATE ROUTINE|G
-|root||rdsadmin|localhost|CREATE TABLESPACE|G
-|root||admin||CREATE TEMPORARY TABLES|G
-|root||rdsadmin|localhost|CREATE TEMPORARY TABLES|G
-|root||admin||CREATE USER|G
-|root||rdsadmin|localhost|CREATE USER|G
-|root||admin||CREATE VIEW|G
-|root||rdsadmin|localhost|CREATE VIEW|G
-|root||admin||DELETE|G
-|root||rdsadmin|localhost|DELETE|G
-|root||admin||DROP|G
-|root||rdsadmin|localhost|DROP|G
-|root||rdsadmin|localhost|DROP ROLE|G
-|root||admin||EVENT|G
-|root||rdsadmin|localhost|EVENT|G
-|root||admin||EXECUTE|G
-|root||rdsadmin|localhost|EXECUTE|G
-|root||rdsadmin|localhost|FILE|G
-|root||admin||INDEX|G
-|root||rdsadmin|localhost|INDEX|G
-|root||admin||INSERT|G
-|root||rdsadmin|localhost|INSERT|G
-|root||admin||LOCK TABLES|G
-|root||rdsadmin|localhost|LOCK TABLES|G
+|root||root|localhost|CONNECTION_ADMIN|G
+|root||jonas|localhost|CREATE|G
+|root||root|localhost|CREATE|G
+|root||jonas|localhost|CREATE ROLE|G
+|root||root|localhost|CREATE ROLE|G
+|root||jonas|localhost|CREATE ROUTINE|G
+|root||root|localhost|CREATE ROUTINE|G
+|root||jonas|localhost|CREATE TABLESPACE|G
+|root||root|localhost|CREATE TABLESPACE|G
+|root||jonas|localhost|CREATE TEMPORARY TABLES|G
+|root||root|localhost|CREATE TEMPORARY TABLES|G
+|root||jonas|localhost|CREATE USER|G
+|root||root|localhost|CREATE USER|G
+|root||jonas|localhost|CREATE VIEW|G
+|root||root|localhost|CREATE VIEW|G
+|root||jonas|localhost|DELETE|G
+|root||root|localhost|DELETE|G
+|root||jonas|localhost|DROP|G
+|root||root|localhost|DROP|G
+|root||jonas|localhost|DROP ROLE|G
+|root||root|localhost|DROP ROLE|G
+|root||jonas|localhost|ENCRYPTION_KEY_ADMIN|G
+|root||root|localhost|ENCRYPTION_KEY_ADMIN|G
+|root||jonas|localhost|EVENT|G
+|root||root|localhost|EVENT|G
+|root||jonas|localhost|EXECUTE|G
+|root||root|localhost|EXECUTE|G
+|root||jonas|localhost|FILE|G
+|root||root|localhost|FILE|G
+|root||jonas|localhost|FLUSH_OPTIMIZER_COSTS|G
+|root||root|localhost|FLUSH_OPTIMIZER_COSTS|G
+|root||jonas|localhost|FLUSH_STATUS|G
+|root||root|localhost|FLUSH_STATUS|G
+|root||jonas|localhost|FLUSH_TABLES|G
+|root||root|localhost|FLUSH_TABLES|G
+|root||jonas|localhost|FLUSH_USER_RESOURCES|G
+|root||root|localhost|FLUSH_USER_RESOURCES|G
+|root||jonas|localhost|GROUP_REPLICATION_ADMIN|G
+|root||root|localhost|GROUP_REPLICATION_ADMIN|G
+|root||jonas|localhost|GROUP_REPLICATION_STREAM|G
+|root||root|localhost|GROUP_REPLICATION_STREAM|G
+|root||jonas|localhost|INDEX|G
+|root||root|localhost|INDEX|G
+|root||jonas|localhost|INNODB_REDO_LOG_ARCHIVE|G
+|root||root|localhost|INNODB_REDO_LOG_ARCHIVE|G
+|root||jonas|localhost|INNODB_REDO_LOG_ENABLE|G
+|root||root|localhost|INNODB_REDO_LOG_ENABLE|G
+|root||jonas|localhost|INSERT|G
+|root||root|localhost|INSERT|G
+|root||jonas|localhost|LOCK TABLES|G
+|root||root|localhost|LOCK TABLES|G
+|root||jonas|localhost|PASSWORDLESS_USER_ADMIN|G
+|root||root|localhost|PASSWORDLESS_USER_ADMIN|G
+|root||jonas|localhost|PERSIST_RO_VARIABLES_ADMIN|G
 |root||mysql.session|localhost|PERSIST_RO_VARIABLES_ADMIN|G
-|root||admin||PROCESS|G
-|root||rdsadmin|localhost|PROCESS|G
-|root||admin||REFERENCES|G
-|root||rdsadmin|localhost|REFERENCES|G
-|root||admin||RELOAD|G
-|root||rdsadmin|localhost|RELOAD|G
-|root||admin||REPLICATION CLIENT|G
-|root||rdsadmin|localhost|REPLICATION CLIENT|G
-|root||admin||REPLICATION SLAVE|G
-|root||rdsadmin|localhost|REPLICATION SLAVE|G
-|root||admin||SELECT|G
+|root||root|localhost|PERSIST_RO_VARIABLES_ADMIN|G
+|root||jonas|localhost|PROCESS|G
+|root||root|localhost|PROCESS|G
+|root||jonas|localhost|REFERENCES|G
+|root||root|localhost|REFERENCES|G
+|root||jonas|localhost|RELOAD|G
+|root||root|localhost|RELOAD|G
+|root||jonas|localhost|REPLICATION CLIENT|G
+|root||root|localhost|REPLICATION CLIENT|G
+|root||jonas|localhost|REPLICATION SLAVE|G
+|root||root|localhost|REPLICATION SLAVE|G
+|root||jonas|localhost|REPLICATION_APPLIER|G
+|root||root|localhost|REPLICATION_APPLIER|G
+|root||jonas|localhost|REPLICATION_SLAVE_ADMIN|G
+|root||root|localhost|REPLICATION_SLAVE_ADMIN|G
+|root||jonas|localhost|RESOURCE_GROUP_ADMIN|G
+|root||root|localhost|RESOURCE_GROUP_ADMIN|G
+|root||jonas|localhost|RESOURCE_GROUP_USER|G
+|root||root|localhost|RESOURCE_GROUP_USER|G
+|root||jonas|localhost|ROLE_ADMIN|G
+|root||root|localhost|ROLE_ADMIN|G
+|root||jonas|localhost|SELECT|G
 |root||mysql.infoschema|localhost|SELECT|G
-|root||rdsadmin|localhost|SELECT|G
-|root||rdsadmin|localhost|SERVICE_CONNECTION_ADMIN|G
+|root||root|localhost|SELECT|G
+|root||jonas|localhost|SERVICE_CONNECTION_ADMIN|G
+|root||root|localhost|SERVICE_CONNECTION_ADMIN|G
+|root||jonas|localhost|SESSION_VARIABLES_ADMIN|G
 |root||mysql.session|localhost|SESSION_VARIABLES_ADMIN|G
-|root||rdsadmin|localhost|SET_USER_ID|G
-|root||admin||SHOW DATABASES|G
-|root||rdsadmin|localhost|SHOW DATABASES|G
-|root||admin||SHOW VIEW|G
-|root||rdsadmin|localhost|SHOW VIEW|G
-|root||rdsadmin|localhost|SHUTDOWN|G
-|root||rdsadmin|localhost|SUPER|G
+|root||root|localhost|SESSION_VARIABLES_ADMIN|G
+|root||jonas|localhost|SET_USER_ID|G
+|root||root|localhost|SET_USER_ID|G
+|root||jonas|localhost|SHOW DATABASES|G
+|root||root|localhost|SHOW DATABASES|G
+|root||jonas|localhost|SHOW VIEW|G
+|root||root|localhost|SHOW VIEW|G
+|root||jonas|localhost|SHOW_ROUTINE|G
+|root||root|localhost|SHOW_ROUTINE|G
+|root||jonas|localhost|SHUTDOWN|G
+|root||mysql.session|localhost|SHUTDOWN|G
+|root||root|localhost|SHUTDOWN|G
+|root||jonas|localhost|SUPER|G
+|root||mysql.session|localhost|SUPER|G
+|root||root|localhost|SUPER|G
+|root||jonas|localhost|SYSTEM_USER|G
 |root||mysql.infoschema|localhost|SYSTEM_USER|G
 |root||mysql.session|localhost|SYSTEM_USER|G
 |root||mysql.sys|localhost|SYSTEM_USER|G
-|root||rdsadmin|localhost|SYSTEM_USER|G
+|root||root|localhost|SYSTEM_USER|G
+|root||jonas|localhost|SYSTEM_VARIABLES_ADMIN|G
 |root||mysql.session|localhost|SYSTEM_VARIABLES_ADMIN|G
-|root||admin||TRIGGER|G
-|root||rdsadmin|localhost|TRIGGER|G
-|root||admin||UPDATE|G
-|root||rdsadmin|localhost|UPDATE|G
-|root||admin||grant option|G
-|root||rdsadmin|localhost|grant option|G
+|root||root|localhost|SYSTEM_VARIABLES_ADMIN|G
+|root||jonas|localhost|TABLE_ENCRYPTION_ADMIN|G
+|root||root|localhost|TABLE_ENCRYPTION_ADMIN|G
+|root||jonas|localhost|TRIGGER|G
+|root||root|localhost|TRIGGER|G
+|root||jonas|localhost|UPDATE|G
+|root||root|localhost|UPDATE|G
+|root||jonas|localhost|XA_RECOVER_ADMIN|G
+|root||root|localhost|XA_RECOVER_ADMIN|G
+|root||root|localhost|grant option|G
 performance_schema|schema||mysql.session|localhost|SELECT|G
 sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <ServerVersion>8.0.28</ServerVersion>
@@ -939,7 +1009,6 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Charset>utf8mb4</Charset>
     </collation>
     <schema id="274" parent="1" name="orangedb">
-<<<<<<< HEAD
       <Current>1</Current>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
@@ -948,24 +1017,17 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="276" parent="1" name="mysql">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
-=======
-      <Collation>utf8mb4_0900_ai_ci</Collation>
-      <Current>1</Current>
-    </schema>
-    <schema id="275" parent="1" name="information_schema">
-      <Collation>utf8_general_ci</Collation>
-    </schema>
-    <schema id="276" parent="1" name="mysql">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
->>>>>>> af4e9d8a73f06c30912a6514cd550161239e9841
     </schema>
     <schema id="277" parent="1" name="performance_schema">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="278" parent="1" name="sys">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <user id="279" parent="1" name="admin"/>
+    <user id="279" parent="1" name="jonas">
+      <Host>localhost</Host>
+      <Plugin>caching_sha2_password</Plugin>
+    </user>
     <user id="280" parent="1" name="mysql.infoschema">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
@@ -978,22 +1040,18 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="283" parent="1" name="rdsadmin">
+    <user id="283" parent="1" name="root">
       <Host>localhost</Host>
+      <Plugin>caching_sha2_password</Plugin>
     </user>
-<<<<<<< HEAD
-    <table id="284" parent="274" name="GuildConfigurable">
+    <table id="284" parent="274" name="guildconfigurable">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="285" parent="274" name="Guilds">
+    <table id="285" parent="274" name="guilds">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-=======
-    <table id="284" parent="274" name="GuildConfigurable"/>
-    <table id="285" parent="274" name="Guilds"/>
->>>>>>> af4e9d8a73f06c30912a6514cd550161239e9841
     <column id="286" parent="284" name="guildId">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
@@ -1001,7 +1059,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </column>
     <column id="287" parent="284" name="cmdPrefix">
       <DataType>varchar(10)|0s</DataType>
-      <DefaultExpression>&apos;o!&apos;</DefaultExpression>
+      <DefaultExpression>&apos;alt!&apos;</DefaultExpression>
       <Position>2</Position>
     </column>
     <column id="288" parent="284" name="modLogId">
@@ -1010,7 +1068,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </column>
     <column id="289" parent="284" name="subReddit">
       <DataType>varchar(100)|0s</DataType>
-      <DefaultExpression>&apos;meme&apos;</DefaultExpression>
+      <DefaultExpression>&apos;redditdev&apos;</DefaultExpression>
       <Position>4</Position>
     </column>
     <key id="290" parent="284" name="PRIMARY">
