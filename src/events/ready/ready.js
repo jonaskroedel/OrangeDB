@@ -5,12 +5,10 @@ const guildCommandPrefixes = new Map();
 const guildSubReddits = new Map();
 
 module.exports = class ReadyEvent extends BaseEvent {
-
     constructor () {
         super('ready');
         this.connection = StateManager.connection;
     }
-
     async run (client) {
         console.log(client.user.tag + ' has logged in.');
         client.guilds.cache.forEach(guild => {
@@ -24,13 +22,11 @@ module.exports = class ReadyEvent extends BaseEvent {
                 guildCommandPrefixes.set(guildId, prefix);
                 guildSubReddits.set(guildId, subReddit)
 
-                const sub = guildSubReddits.get(guild.id);
-
                 StateManager.emit('prefixFetched', guildId, prefix);
                 StateManager.emit('redditFetched', guildId, subReddit);
             }).catch(err => console.log(err));
+            console.log('Connected to db')
         });
         client.user.setActivity('o!help', { type: 'LISTENING' });
     }
-
 }
