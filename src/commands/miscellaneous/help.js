@@ -22,7 +22,7 @@ module.exports = class help extends BaseCommand {
                             **${prefix}ping** -- shows the latency of the bot
                             **${prefix}userinfo** -- userinfo from you or mentioned user
                             **${prefix}clear [amount]** -- deletes [amount] messages in the current channel
-                            **${prefix}clearchannel -- deletes the channel and creates an empty one with the same properties
+                            **${prefix}clearchannel** -- deletes the channel and creates an empty one with the same properties
                             **${prefix}reddit** -- sends post from r/meme, a custom-set default or a custom subreddit
                             **${prefix}subreddit [subreddit]** -- changes default sub`)
             .setColor('#e45e81')
