@@ -46,24 +46,18 @@ module.exports = class help extends BaseCommand {
             .setFooter({text: `Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
             .setTimestamp();
         message.channel.send({embeds: [sEmbed]});
-
-        console.log(cmds);
-
     }
 }
 
 StateManager.on('namesFetched', (nr, cmdName) => {
     cmdNames.set(nr, cmdName);
 });
-
 StateManager.on('descsFetched', (nr, cmdDesc) => {
     cmdDescs.set(nr, cmdDesc);
 });
-
 StateManager.on('prefixUpdate', (guildId, prefix) => {
     guildCommandPrefixes.set(guildId, prefix);
 });
-
 StateManager.on('prefixFetched', (guildId, prefix) => {
     guildCommandPrefixes.set(guildId, prefix);
 });

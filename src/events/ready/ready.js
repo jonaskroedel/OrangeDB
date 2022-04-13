@@ -7,13 +7,14 @@ const guildSubReddits = new Map();
 const cmdNames = new Map();
 const cmdDescs = new Map();
 
+
 module.exports = class ReadyEvent extends BaseEvent {
     constructor() {
         super('ready');
         this.connection = StateManager.connection;
     }
 
-    async run(client) {
+    run(client) {
         console.log(client.user.tag + ' has logged in.');
         client.guilds.cache.forEach(guild => {
             StateManager.connection.query(
@@ -24,31 +25,36 @@ module.exports = class ReadyEvent extends BaseEvent {
                 const subReddit = result[0][0].subReddit;
 
                 guildCommandPrefixes.set(guildId, prefix);
-                guildSubReddits.set(guildId, subReddit)
+                guildSubReddits.set(guildId, subReddit);
 
                 StateManager.emit('prefixFetched', guildId, prefix);
                 StateManager.emit('redditFetched', guildId, subReddit);
             }).catch(err => console.log(err));
         });
-        for (let i = 1; i <= 8; i++) {
-            client.guilds.cache.forEach(guild => {
-                StateManager.connection.query(
-                    `SELECT * FROM ClientCommands WHERE nr = ${i}`
-                ).then(result => {
-                    const nr = result[0][0].nr;
-                    const cmdName = result[0][0].cmdName;
-                    const cmdDesc = result[0][0].cmdDesc;
 
-                    cmdNames.get(nr, cmdName);
-                    cmdDescs.get(nr, cmdDesc);
+        StateManager.connection.query(
+            `SELECT COUNT(*) AS rowCount FROM ClientCommands`
+        ).then(result => {
+            const row = result[0][0].rowCount;
 
-                    StateManager.emit('namesFetched', nr, cmdName);
-                    StateManager.emit('descsFetched', nr, cmdDesc);
+            for (let i = 1; i <= row; i++) {
+                client.guilds.cache.forEach(guild => {
+                    StateManager.connection.query(
+                        `SELECT * FROM ClientCommands WHERE nr = ${i}`
+                    ).then(result => {
+                        const nr = result[0][0].nr;
+                        const cmdName = result[0][0].cmdName;
+                        const cmdDesc = result[0][0].cmdDesc;
 
+                        cmdNames.get(nr, cmdName);
+                        cmdDescs.get(nr, cmdDesc);
 
-                }).catch(err => console.log(err));
-            });
-        }
+                        StateManager.emit('namesFetched', nr, cmdName);
+                        StateManager.emit('descsFetched', nr, cmdDesc);
+                    }).catch(err => console.log(err));
+                });
+            }
+        }).catch(err => console.log(err));
         client.user.setActivity('o!help', {type: 'LISTENING'});
     }
 }
