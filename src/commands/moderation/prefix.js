@@ -4,7 +4,6 @@ const StateManager = require('../../utils/StateManager');
 module.exports = class prefix extends BaseCommand {
     constructor() {
         super('prefix', 'modify', []);
-        this.connection = StateManager.connection;
     }
 
     async run (client, message) {
@@ -14,7 +13,7 @@ module.exports = class prefix extends BaseCommand {
 
             if (newPrefix && newPrefix.length <= 10) {
                 try {
-                    await this.connection.query(
+                    await StateManager.connection.query(
                         `UPDATE GuildConfigurable SET cmdPrefix = '${newPrefix}' WHERE guildId = '${message.guild.id}'`
                     );
                     message.channel.send(`Updated guild prefix to **${newPrefix}**`);

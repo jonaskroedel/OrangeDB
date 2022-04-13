@@ -14,3 +14,7 @@ CREATE TABLE GuildConfigurable (
     subReddit VARCHAR(100) DEFAULT 'meme'
 );
 
+CREATE TABLE ClientCommands (
+    cmdName VARCHAR(100),
+    cmdDesc VARCHAR(100)
+);
