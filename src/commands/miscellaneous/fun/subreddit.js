@@ -17,7 +17,7 @@ module.exports = class prefix extends BaseCommand {
         if (newSub && newSub.length <= 100) {
             try {
                 if (message.member.permissions.has("MANAGE_GUILD")) {
-                    await this.connection.query(
+                    await StateManager.connection.query(
                         `UPDATE GuildConfigurable
                          SET subReddit = '${newSub}'
                          WHERE guildId = '${message.guild.id}'`

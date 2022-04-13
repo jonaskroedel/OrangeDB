@@ -9,10 +9,10 @@ module.exports = class GuildCreateEvent extends BaseEvent {
 
     async run (client, guild) {
         try {
-            await this.connection.query(
+            await StateManager.connection.query(
                 `INSERT INTO Guilds VALUES('${guild.id}', '${guild.ownerId}')`
             );
-            await this.connection.query(
+            await StateManager.connection.query(
                 `INSERT INTO GuildConfigurable (guildId) VALUES ('${guild.id}')`
             );
             console.log(`Added to db.`)

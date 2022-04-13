@@ -1,5 +1,7 @@
 CREATE DATABASE orangedb;
 
+USE orangedb;
+
 CREATE TABLE Guilds (
     guildId VARCHAR(100) NOT NULL PRIMARY KEY,
     guildOwnerId VARCHAR (100) NOT NULL

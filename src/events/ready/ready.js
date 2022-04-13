@@ -12,7 +12,7 @@ module.exports = class ReadyEvent extends BaseEvent {
     async run (client) {
         console.log(client.user.tag + ' has logged in.');
         client.guilds.cache.forEach(guild => {
-            this.connection.query(
+            StateManager.connection.query(
                 `SELECT cmdPrefix, subReddit FROM GuildConfigurable WHERE guildId = '${guild.id}'`
             ).then(result => {
                 const guildId = guild.id;
@@ -25,7 +25,6 @@ module.exports = class ReadyEvent extends BaseEvent {
                 StateManager.emit('prefixFetched', guildId, prefix);
                 StateManager.emit('redditFetched', guildId, subReddit);
             }).catch(err => console.log(err));
-            console.log('Connected to db')
         });
         client.user.setActivity('o!help', { type: 'LISTENING' });
     }
