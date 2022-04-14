@@ -1,7 +1,7 @@
 const BaseEvent = require('../../utils/structures/BaseEvent');
 const StateManager = require('../../utils/StateManager');
-const guildCommandPrefixes = new Map();
 
+const guildCommandPrefixes = new Map();
 
 module.exports = class MessageEvent extends BaseEvent {
     constructor () {

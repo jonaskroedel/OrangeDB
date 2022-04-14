@@ -30,4 +30,3 @@ module.exports = class prefix extends BaseCommand {
         }
     }
 }
-

@@ -40,4 +40,3 @@ module.exports = class prefix extends BaseCommand {
 StateManager.on('redditFetched', (guildId, subReddit) => {
     guildSubReddits.set(guildId, subReddit);
 });
-
