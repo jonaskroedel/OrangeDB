@@ -38,5 +38,6 @@ module.exports = class help extends BaseCommand {
             .setFooter({ text:`Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
             .setTimestamp()
         message.channel.send({embeds: [sEmbed]});
+        message.delete();
     }
 }

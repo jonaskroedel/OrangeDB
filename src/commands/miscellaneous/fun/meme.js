@@ -43,8 +43,9 @@ module.exports = class prefix extends BaseCommand{
             })
             .catch(e => {
                 console.error(e);
-                message.reply(`r/${sub} does not exist. What the heck is this?`)
+                message.reply(`<@${message.user.id}> r/${sub} does not exist. What the heck is this?`)
             })
+        message.delete();
     }
 }
 

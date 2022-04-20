@@ -18,22 +18,22 @@ module.exports = class prefix extends BaseCommand {
             try {
                 if (message.member.permissions.has("MANAGE_GUILD")) {
                     await StateManager.connection.query(
-                        `UPDATE GuildConfigurable
-                         SET subReddit = '${newSub}'
-                         WHERE guildId = '${message.guild.id}'`
+                        `UPDATE GuildConfigurable SET subReddit = '${newSub}' WHERE guildId = '${message.guild.id}'`
                     );
-                    message.channel.send(`Updated guild default subreddit to **${newSub}**`);
+                    message.channel.send(`Updated guild default subreddit from user <@${message.member.user.id}> to **${newSub}**`);
                     StateManager.emit('subUpdate', message.guild.id, newSub);
                 } else {
-                    message.channel.send('You do not have permission to use that command');
+                    message.channel.send(`You do not have permission to use that command, <@${message.member.user.id}>`);
                 }
             } catch (err) {
                 console.log(err);
-                message.channel.send(`Failed to update default Subreddit to **${newSub}**`);
+                message.channel.send(`Failed to update default Subreddit to **${newSub}**, <@${message.member.user.id}>`);
             }
-        } else {
+        }
+        else {
             message.channel.send(`Current Subreddit: **r/${guildSubReddits.get(message.guild.id)}**`);
         }
+        message.delete();
     }
 }
 
