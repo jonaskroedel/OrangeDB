@@ -61,3 +61,6 @@ StateManager.on('prefixUpdate', (guildId, prefix) => {
 StateManager.on('prefixFetched', (guildId, prefix) => {
     guildCommandPrefixes.set(guildId, prefix);
 });
+StateManager.on('guildAdded', (guildId, prefix) => {
+    guildCommandPrefixes.set(guildId, prefix);
+});

@@ -16,7 +16,7 @@ module.exports = class GuildCreateEvent extends BaseEvent {
                 `INSERT INTO GuildConfigurable (guildId) VALUES ('${guild.id}')`
             );
             console.log(`Added to db.`)
-            StateManager.emit('guildAdded', guild.id, '!');
+            StateManager.emit('guildAdded', guild.id, 'o!');
         } catch(err) {
             console.log(err);
         }

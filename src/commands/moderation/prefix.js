@@ -16,8 +16,8 @@ module.exports = class prefix extends BaseCommand {
                     await StateManager.connection.query(
                         `UPDATE GuildConfigurable SET cmdPrefix = '${newPrefix}' WHERE guildId = '${message.guild.id}'`
                     );
-                    message.channel.send(`Updated guild prefix to **${newPrefix}**`);
                     StateManager.emit('prefixUpdate', message.guild.id, newPrefix);
+                    message.channel.send(`Updated guild prefix to **${newPrefix}**`);
                 } catch(err) {
                     console.log(err);
                     message.channel.send(`Failed to update guild prefix to **${newPrefix}**`);
