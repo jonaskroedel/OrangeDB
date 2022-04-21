@@ -9,8 +9,6 @@ module.exports = class MessageEvent extends BaseEvent {
         this.connection = StateManager.connection;
     }
 
-
-
     async run (client, message) {
 
         if (message.author.bot) return;
