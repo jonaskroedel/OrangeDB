@@ -24,7 +24,6 @@ module.exports = class GuildCreateEvent extends BaseEvent {
                 StateManager.emit('prefixUpdate', guild.id, prefix);
             });
             console.log(`Added to db.`);
-            await guild.welcome_channels
         } catch(err) {
             console.log(err);
         }
