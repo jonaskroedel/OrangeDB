@@ -16,35 +16,40 @@ module.exports = class help extends BaseCommand {
 
     async run(client, message) {
 
-        let result;
-        let cmds = '';
-
-        String.prototype.interpolate = function(params) {
-            const names = Object.keys(params);
-            const vals = Object.values(params);
-            return new Function(...names, `return \`${this}\`;`)(...vals);
-        }
-
-        for (let i = 1; i < cmdNames.size + 1; i++) {
-
-            const template = '**${prfx}${commdName}** -- ${commdDesc} \\n';
-            result = template.interpolate({
-                commdName: cmdNames.get(i),
-                commdDesc: cmdDescs.get(i),
-                prfx: guildCommandPrefixes.get(message.guild.id)
-            });
-
-            cmds += result;
-        }
+        // String.prototype.interpolate = function(params) {
+        //     const names = Object.keys(params);
+        //     const vals = Object.values(params);
+        //     return new Function(...names, `return \`${this}\`;`)(...vals);
+        // }
+        //
+        // for (let i = 1; i < cmdNames.size + 1; i++) {
+        //
+        //     commands[i-1] = cmdNames.get(i);
+        //     descs[i-1] = cmdDescs.get(i);
+        //
+        //     const template = '{ name: ${commdName}, ${commdDesc}, inline: true }, ';
+        //     result = template.interpolate({
+        //         commdName: cmdNames.get(i),
+        //         commdDesc: cmdDescs.get(i),
+        //         prfx: guildCommandPrefixes.get(message.guild.id)
+        //     });
+        //
+        //     cmds += result;
+        // }
 
         const sEmbed = new MessageEmbed()
             .setTitle(`Help page for ${message.guild.name}`)
-            .setDescription(`case sensitive is not important \n
-                                ${cmds}`)
             .setColor('#e45e81')
             .setThumbnail(client.user.displayAvatarURL())
             .setFooter({text: `Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
             .setTimestamp();
+
+        for(let i = 1; i < cmdNames.size + 1; i++) {
+            sEmbed.addFields(
+                { name: guildCommandPrefixes.get(message.guild.id) + cmdNames.get(i), value: cmdDescs.get(i), inline: true },
+            )
+        };
+
         message.channel.send({embeds: [sEmbed]});
         message.delete();
     }
