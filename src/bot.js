@@ -9,7 +9,8 @@ const { registerCommands, registerEvents, registerMusicEvents } = require('./uti
         {
             host: process.env.HOST,
             password : process.env.PASSWORD,
-            port: Number(process.env.PORT)
+            port: Number(process.env.PORT),
+            secure: false
         }
     ];
 

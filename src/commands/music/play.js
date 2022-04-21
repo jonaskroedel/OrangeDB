@@ -7,9 +7,8 @@ module.exports = class JoinCommand extends BaseCommand {
     }
     async run (client, message, args) {
         const query = args.join(' ');
-        console.log(query);
         const { channel } = message.member.voice;
-        if (channel) {
+        if(channel) {
             let i = 0;
             const searchResults = await client.manager.search(query, message.author);
             const tracks = searchResults.tracks.slice(0, 10);
@@ -21,19 +20,21 @@ module.exports = class JoinCommand extends BaseCommand {
 
             message.channel.send({embeds: [sEmbed]});
 
-            const filter = m => (message.author.id === m.author.id) && (m.content >= 1 && m.content <= tracks.length);
+            const filter = m => (message.author.id === m.author.id) && (m.content >= 1 && m.content <= tracks.length)
 
             try {
                 const response = await message.channel
-                    .awaitMessages(filter, { max: 1, time: 10000, errors: ['time']});
+                    .awaitMessages({filter, max: 1, time: 10000, errors: ['time']});
 
                 if (response) {
                     const entry = response.first().content;
-                    const player = client.manager.players.get(message.guild.id);
+                    console.log(entry);
+                    const player = client.musicPlayers.get(message.guild.id);
                     const track = tracks[entry-1];
                     player.queue.add(track);
                     message.channel.send(`Enqueueing track ${track.title}`);
-                    if (!player.playing) player.play();
+                    if(!player.playing) player.play();
+
                 }
             } catch (err) {
                 console.log(err);
