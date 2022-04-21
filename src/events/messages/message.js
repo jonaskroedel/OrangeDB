@@ -18,8 +18,6 @@ module.exports = class MessageEvent extends BaseEvent {
 
         const usedPrefix = message.content.slice(0, prefix.length);
 
-        console.log(prefix);
-
         if (prefix === usedPrefix) {
             const [cmdName, ...cmdArgs] = message.content.slice(prefix.length).split(/\s+/);
             const command = client.commands.get(cmdName.toLowerCase());
