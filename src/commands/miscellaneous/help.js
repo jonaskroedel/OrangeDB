@@ -16,27 +16,6 @@ module.exports = class help extends BaseCommand {
 
     async run(client, message) {
 
-        // String.prototype.interpolate = function(params) {
-        //     const names = Object.keys(params);
-        //     const vals = Object.values(params);
-        //     return new Function(...names, `return \`${this}\`;`)(...vals);
-        // }
-        //
-        // for (let i = 1; i < cmdNames.size + 1; i++) {
-        //
-        //     commands[i-1] = cmdNames.get(i);
-        //     descs[i-1] = cmdDescs.get(i);
-        //
-        //     const template = '{ name: ${commdName}, ${commdDesc}, inline: true }, ';
-        //     result = template.interpolate({
-        //         commdName: cmdNames.get(i),
-        //         commdDesc: cmdDescs.get(i),
-        //         prfx: guildCommandPrefixes.get(message.guild.id)
-        //     });
-        //
-        //     cmds += result;
-        // }
-
         const sEmbed = new MessageEmbed()
             .setTitle(`Help page for ${message.guild.name}`)
             .setColor('#e45e81')
