@@ -33,7 +33,6 @@ module.exports = class help extends BaseCommand {
             .addField(`Admin:`, member.permissions.has("ADMINISTRATOR") ? '✅' : '❌', true)
             .addField(`Bot:`, user.bot ? '✅' : '❌', true)
             .addField(`Server joined:`, moment.utc(member.joinedAt).format('DD.MM.YY'), true)
-            .addField(`Badges`, )
 
 
             .setFooter({ text:`Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
