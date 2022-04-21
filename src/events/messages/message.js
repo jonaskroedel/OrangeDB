@@ -9,11 +9,16 @@ module.exports = class MessageEvent extends BaseEvent {
         this.connection = StateManager.connection;
     }
 
+
+
     async run (client, message) {
+
         if (message.author.bot) return;
         const prefix = guildCommandPrefixes.get(message.guild.id);
 
         const usedPrefix = message.content.slice(0, prefix.length);
+
+        console.log(prefix);
 
         if (prefix === usedPrefix) {
             const [cmdName, ...cmdArgs] = message.content.slice(prefix.length).split(/\s+/);
@@ -33,3 +38,4 @@ StateManager.on('prefixUpdate', (guildId, prefix) => {
     guildCommandPrefixes.set(guildId, prefix);
     console.log('Guild prefix updated');
 });
+

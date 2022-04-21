@@ -1,7 +1,5 @@
-module.exports = class BaseCommand {
-    constructor (name, category, aliases) {
+module.exports = class BaseEvent {
+    constructor (name) {
         this.name = name;
-        this.category = category;
-        this.aliases = aliases;
     }
 }

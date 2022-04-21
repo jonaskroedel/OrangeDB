@@ -8,6 +8,7 @@ module.exports = class GuildCreateEvent extends BaseEvent {
     }
 
     async run (client, guild) {
+
         try {
             await StateManager.connection.query(
                 `INSERT INTO Guilds VALUES('${guild.id}', '${guild.ownerId}')`
@@ -15,8 +16,14 @@ module.exports = class GuildCreateEvent extends BaseEvent {
             await StateManager.connection.query(
                 `INSERT INTO GuildConfigurable (guildId) VALUES ('${guild.id}')`
             );
-            console.log(`Added to db.`)
-            StateManager.emit('guildAdded', guild.id, 'o!');
+            await StateManager.connection.query(
+                `SELECT cmdPrefix FROM GuildConfigurable WHERE guildId = '${guild.id}'`
+            ).then(result => {
+                const prefix = result[0][0].cmdPrefix;
+                StateManager.emit('guildAdded', guild.id, prefix);
+                StateManager.emit('prefixUpdate', guild.id, prefix);
+            });
+            console.log(`Added to db.`);
         } catch(err) {
             console.log(err);
         }
