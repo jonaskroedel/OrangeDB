@@ -1,44 +1,46 @@
 const BaseCommand = require('../../utils/structures/BaseCommand');
 const {MessageEmbed} = require("discord.js");
 
-module.exports = class JoinCommand extends BaseCommand {
+module.exports = class prefix extends BaseCommand {
     constructor() {
         super('play', 'music', []);
     }
-    async run (client, message, args) {
-        const query = args.join(' ');
-        const { channel } = message.member.voice;
-        if(channel) {
-            let i = 0;
-            const searchResults = await client.manager.search(query, message.author);
-            const tracks = searchResults.tracks.slice(0, 10);
-            const tracksInfo = tracks.map(r => `${++i}) ${r.title} - ${r.uri}`).join('\n');
 
-            const sEmbed = new MessageEmbed()
-                .setDescription(tracksInfo)
-                .setFooter({text: `Music Results for ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
+    async run(client, message) {
+        const [command, ...args] = message.content.slice(prefix.length).split(/\s+/);
 
-            message.channel.send({embeds: [sEmbed]});
+        if (!message.member.voice.channel) return message.reply("you need to join a voice channel.");
+        if (!args.length) return message.reply("you need to give me a URL or a search term.");
 
-            const filter = m => (message.author.id === m.author.id) && (m.content >= 1 && m.content <= tracks.length)
+        const search = args.join(" ");
+        let res;
 
-            try {
-                const response = await message.channel
-                    .awaitMessages({filter, max: 1, time: 10000, errors: ['time']});
-
-                if (response) {
-                    const entry = response.first().content;
-                    console.log(entry);
-                    const player = client.musicPlayers.get(message.guild.id);
-                    const track = tracks[entry-1];
-                    player.queue.add(track);
-                    message.channel.send(`Enqueueing track ${track.title}`);
-                    if(!player.playing) player.play();
-
-                }
-            } catch (err) {
-                console.log(err);
-            }
+        try {
+            // Search for tracks using a query or url, using a query searches youtube automatically and the track requester object
+            res = await client.manager.search(search, message.author);
+            // Check the load type as this command is not that advanced for basics
+            if (res.loadType === "LOAD_FAILED") throw res.exception;
+            else if (res.loadType === "PLAYLIST_LOADED") throw {message: "Playlists are not supported with this command."};
+        } catch (err) {
+            return message.reply(`there was an error while searching: ${err.message}`);
         }
+
+        if (res.loadType === "NO_MATCHES") return message.reply("there was no tracks found with that query.");
+
+        // Create the player
+        const player = client.manager.create({
+            guild: message.guild.id,
+            voiceChannel: message.member.voice.channel.id,
+            textChannel: message.channel.id,
+        });
+
+        // Connect to the voice channel and add the track to the queue
+        player.connect();
+        player.queue.add(res.tracks[0]);
+
+        // Checks if the client should play the track if it's the first one added
+        if (!player.playing && !player.paused && !player.queue.size) player.play()
+
+        return message.reply(`enqueuing ${res.tracks[0].title}.`);
     }
 }

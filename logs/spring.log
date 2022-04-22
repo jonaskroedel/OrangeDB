@@ -326,3 +326,466 @@ Identify and stop the process that's listening on port 7000 or configure this ap
 2022-04-22 00:09:53.619  INFO 34800 --- [XNIO-1 I/O-12] lavalink.server.io.SocketServer          : {"sessionId":"c6fcccc27fc0edd96804ff8749ffbea5","op":"voiceUpdate","guildId":"841990439384907807","event":{"token":"201e496221757f7f","guild_id":"841990439384907807","endpoint":"rotterdam13.discord.media:443"}}
 2022-04-22 00:09:55.858  INFO 34800 --- [XNIO-1 I/O-12] lavalink.server.io.SocketServer          : Connection closed from /[0:0:0:0:0:0:0:1]:58632 -- CloseStatus[code=1006, reason=]
 2022-04-22 00:09:55.858  INFO 34800 --- [XNIO-1 I/O-12] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2022-04-22 07:43:49.248  INFO 36920 --- [main] lavalink.server.Launcher                 : 
+
+[32m       .  [31m _                  _ _       _    [32m__ _ _
+[32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
+[32m     ( ( )[31m| |/ _` \ \ / / _` | | | '_ \| |/ /[32m \ \ \ \
+[32m      \\/ [31m| | (_| |\ V / (_| | | | | | |   < [32m  ) ) ) )
+[32m       '  [31m|_|\__,_| \_/ \__,_|_|_|_| |_|_|\_\[32m / / / /
+[0m    =========================================[32m/_/_/_/[0m
+
+	Version:        3.4
+	Build:          1257
+	Build time:     26.10.2021 14:18:37 UTC
+	Branch          master
+	Commit:         a364833
+	Commit time:    26.10.2021 14:15:20 UTC
+	JVM:            18.0.1
+	Lavaplayer      1.3.96-original
+
+2022-04-22 07:43:49.371  WARN 36920 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-04-22 07:43:49.499  INFO 36920 --- [main] lavalink.server.Launcher                 : Starting Launcher on LAPTOP-Jonas with PID 36920 (C:\Users\jonas\orangedb\Lavalink.jar started by jonas in C:\Users\jonas\orangedb)
+2022-04-22 07:43:49.506  INFO 36920 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2022-04-22 07:43:52.924  WARN 36920 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2022-04-22 07:43:52.940  INFO 36920 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2022-04-22 07:43:52.955  INFO 36920 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3355 ms
+2022-04-22 07:43:53.393  WARN 36920 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2022-04-22 07:43:53.758  INFO 36920 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2022-04-22 07:43:53.993  INFO 36920 --- [main] lavalink.server.config.KoeConfiguration  : OS: Windows 11, Arch: amd64
+2022-04-22 07:43:53.993  WARN 36920 --- [main] lavalink.server.config.KoeConfiguration  : This system and architecture appears to not support native audio sending! GC pauses may cause your bot to stutter during playback.
+2022-04-22 07:43:54.352  INFO 36920 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-04-22 07:43:54.852  INFO 36920 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2022-04-22 07:43:54.852  INFO 36920 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2022-04-22 07:43:54.929  INFO 36920 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 3307 (http) with context path ''
+2022-04-22 07:43:54.944  INFO 36920 --- [main] lavalink.server.Launcher                 : Started Launcher in 6.839 seconds (JVM running for 7.929)
+2022-04-22 07:43:54.944  INFO 36920 --- [main] lavalink.server.Launcher                 : You can safely ignore the big red warning about illegal reflection. See https://github.com/freyacodes/Lavalink/issues/295
+2022-04-22 07:43:57.179  INFO 36920 --- [XNIO-1 task-1] io.undertow.servlet                      : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 07:43:57.179  INFO 36920 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 07:43:57.179  INFO 36920 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-04-22 07:43:57.241  INFO 36920 --- [XNIO-1 task-1] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /[0:0:0:0:0:0:0:1]:57339
+2022-04-22 07:43:57.366 ERROR 36920 --- [XNIO-1 task-1] io.undertow.request                      : UT005071: Undertow request failed HttpServerExchange{ GET /}
+
+java.io.IOError: java.io.FileNotFoundException: Invalid file path
+	at org.xnio.channels.Channels$4.run(Channels.java:998) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.channels.Channels$4.run(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318) ~[na:na]
+	at org.xnio.channels.Channels.<clinit>(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.servlet.spec.ServletOutputStreamImpl.close(ServletOutputStreamImpl.java:618) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.closeStreamAndWriter(HttpServletResponseImpl.java:528) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.responseDone(HttpServletResponseImpl.java:617) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:328) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:133) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:130) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:249) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:99) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:376) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:830) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.io.FileNotFoundException: Invalid file path
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:229) ~[na:na]
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123) ~[na:na]
+	at org.xnio.channels.Channels$4.run(Channels.java:993) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	... 20 common frames omitted
+
+2022-04-22 07:43:57.366 ERROR 36920 --- [XNIO-1 task-1] io.undertow.request.io                   : UT005090: Unexpected failure
+
+java.lang.NoClassDefFoundError: Could not initialize class org.xnio.channels.Channels
+	at io.undertow.servlet.spec.ServletInputStreamImpl.readIntoBuffer(ServletInputStreamImpl.java:192) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.ServletInputStreamImpl.close(ServletInputStreamImpl.java:257) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletRequestImpl.closeAndDrainRequest(HttpServletRequestImpl.java:691) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletBlockingHttpExchange.close(ServletBlockingHttpExchange.java:89) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange.endExchange(HttpServerExchange.java:1626) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:416) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:830) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.io.IOError: java.io.FileNotFoundException: Invalid file path [in thread "XNIO-1 task-1"]
+	at org.xnio.channels.Channels$4.run(Channels.java:998) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.channels.Channels$4.run(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318) ~[na:na]
+	at org.xnio.channels.Channels.<clinit>(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.servlet.spec.ServletOutputStreamImpl.close(ServletOutputStreamImpl.java:618) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.closeStreamAndWriter(HttpServletResponseImpl.java:528) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.responseDone(HttpServletResponseImpl.java:617) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:328) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:133) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:130) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:249) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:99) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:376) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	... 4 common frames omitted
+
+2022-04-22 07:43:57.525  INFO 36920 --- [XNIO-1 task-1] lavalink.server.io.SocketServer          : Connection successfully established from erela.js
+2022-04-22 07:44:27.383  INFO 36920 --- [XNIO-1 task-2] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /[0:0:0:0:0:0:0:1]:57351
+2022-04-22 07:44:27.383 ERROR 36920 --- [XNIO-1 task-2] io.undertow.request                      : UT005071: Undertow request failed HttpServerExchange{ GET /}
+
+java.lang.NoClassDefFoundError: Could not initialize class org.xnio.channels.Channels
+	at io.undertow.servlet.spec.ServletOutputStreamImpl.close(ServletOutputStreamImpl.java:618) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.closeStreamAndWriter(HttpServletResponseImpl.java:528) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.responseDone(HttpServletResponseImpl.java:617) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:328) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:133) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:130) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:249) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:99) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:376) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:830) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.io.IOError: java.io.FileNotFoundException: Invalid file path [in thread "XNIO-1 task-1"]
+	at org.xnio.channels.Channels$4.run(Channels.java:998) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.channels.Channels$4.run(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318) ~[na:na]
+	at org.xnio.channels.Channels.<clinit>(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	... 17 common frames omitted
+
+2022-04-22 07:44:27.398 ERROR 36920 --- [XNIO-1 task-2] io.undertow.request.io                   : UT005090: Unexpected failure
+
+java.lang.NoClassDefFoundError: Could not initialize class org.xnio.channels.Channels
+	at io.undertow.servlet.spec.ServletInputStreamImpl.readIntoBuffer(ServletInputStreamImpl.java:192) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.ServletInputStreamImpl.close(ServletInputStreamImpl.java:257) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletRequestImpl.closeAndDrainRequest(HttpServletRequestImpl.java:691) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletBlockingHttpExchange.close(ServletBlockingHttpExchange.java:89) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange.endExchange(HttpServerExchange.java:1626) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:416) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:830) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.io.IOError: java.io.FileNotFoundException: Invalid file path [in thread "XNIO-1 task-1"]
+	at org.xnio.channels.Channels$4.run(Channels.java:998) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.channels.Channels$4.run(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318) ~[na:na]
+	at org.xnio.channels.Channels.<clinit>(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.servlet.spec.ServletOutputStreamImpl.close(ServletOutputStreamImpl.java:618) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.closeStreamAndWriter(HttpServletResponseImpl.java:528) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.responseDone(HttpServletResponseImpl.java:617) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:328) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:133) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:130) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:249) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:99) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:376) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	... 4 common frames omitted
+
+2022-04-22 07:44:27.398  INFO 36920 --- [XNIO-1 task-2] lavalink.server.io.SocketServer          : Connection successfully established from erela.js
+2022-04-22 07:44:56.798  INFO 36920 --- [XNIO-1 task-3] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /[0:0:0:0:0:0:0:1]:57358
+2022-04-22 07:44:56.798 ERROR 36920 --- [XNIO-1 task-3] io.undertow.request                      : UT005071: Undertow request failed HttpServerExchange{ GET /}
+
+java.lang.NoClassDefFoundError: Could not initialize class org.xnio.channels.Channels
+	at io.undertow.servlet.spec.ServletOutputStreamImpl.close(ServletOutputStreamImpl.java:618) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.closeStreamAndWriter(HttpServletResponseImpl.java:528) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.responseDone(HttpServletResponseImpl.java:617) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:328) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:133) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:130) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:249) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:99) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:376) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:830) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.io.IOError: java.io.FileNotFoundException: Invalid file path [in thread "XNIO-1 task-1"]
+	at org.xnio.channels.Channels$4.run(Channels.java:998) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.channels.Channels$4.run(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318) ~[na:na]
+	at org.xnio.channels.Channels.<clinit>(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	... 17 common frames omitted
+
+2022-04-22 07:44:56.798 ERROR 36920 --- [XNIO-1 task-3] io.undertow.request.io                   : UT005090: Unexpected failure
+
+java.lang.NoClassDefFoundError: Could not initialize class org.xnio.channels.Channels
+	at io.undertow.servlet.spec.ServletInputStreamImpl.readIntoBuffer(ServletInputStreamImpl.java:192) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.ServletInputStreamImpl.close(ServletInputStreamImpl.java:257) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletRequestImpl.closeAndDrainRequest(HttpServletRequestImpl.java:691) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletBlockingHttpExchange.close(ServletBlockingHttpExchange.java:89) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange.endExchange(HttpServerExchange.java:1626) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:416) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:830) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.io.IOError: java.io.FileNotFoundException: Invalid file path [in thread "XNIO-1 task-1"]
+	at org.xnio.channels.Channels$4.run(Channels.java:998) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.channels.Channels$4.run(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318) ~[na:na]
+	at org.xnio.channels.Channels.<clinit>(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.servlet.spec.ServletOutputStreamImpl.close(ServletOutputStreamImpl.java:618) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.closeStreamAndWriter(HttpServletResponseImpl.java:528) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.responseDone(HttpServletResponseImpl.java:617) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:328) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:133) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:130) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:249) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:99) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:376) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	... 4 common frames omitted
+
+2022-04-22 07:44:56.813  INFO 36920 --- [XNIO-1 task-3] lavalink.server.io.SocketServer          : Connection successfully established from erela.js
+2022-04-22 07:45:03.744  INFO 36920 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-04-22 07:45:03.744  INFO 36920 --- [Thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring disabled.
+2022-04-22 07:45:03.759  INFO 36920 --- [Thread-1] io.undertow.servlet                      : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-04-22 07:45:28.247  INFO 43520 --- [main] lavalink.server.Launcher                 : 
+
+[32m       .  [31m _                  _ _       _    [32m__ _ _
+[32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
+[32m     ( ( )[31m| |/ _` \ \ / / _` | | | '_ \| |/ /[32m \ \ \ \
+[32m      \\/ [31m| | (_| |\ V / (_| | | | | | |   < [32m  ) ) ) )
+[32m       '  [31m|_|\__,_| \_/ \__,_|_|_|_| |_|_|\_\[32m / / / /
+[0m    =========================================[32m/_/_/_/[0m
+
+	Version:        3.4
+	Build:          1257
+	Build time:     26.10.2021 14:18:37 UTC
+	Branch          master
+	Commit:         a364833
+	Commit time:    26.10.2021 14:15:20 UTC
+	JVM:            18.0.1
+	Lavaplayer      1.3.96-original
+
+2022-04-22 07:45:28.381  INFO 43520 --- [main] lavalink.server.Launcher                 : Starting Launcher on LAPTOP-Jonas with PID 43520 (C:\Users\jonas\orangedb\Lavalink.jar started by jonas in C:\Users\jonas\orangedb)
+2022-04-22 07:45:28.381  INFO 43520 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2022-04-22 07:45:28.556  WARN 43520 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-04-22 07:45:30.048  WARN 43520 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2022-04-22 07:45:30.079  INFO 43520 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2022-04-22 07:45:30.079  INFO 43520 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1593 ms
+2022-04-22 07:45:30.532  WARN 43520 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2022-04-22 07:45:30.876  INFO 43520 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2022-04-22 07:45:31.095  INFO 43520 --- [main] lavalink.server.config.KoeConfiguration  : OS: Windows 11, Arch: amd64
+2022-04-22 07:45:31.095  WARN 43520 --- [main] lavalink.server.config.KoeConfiguration  : This system and architecture appears to not support native audio sending! GC pauses may cause your bot to stutter during playback.
+2022-04-22 07:45:31.394  INFO 43520 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-04-22 07:45:31.784  INFO 43520 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2022-04-22 07:45:31.800  INFO 43520 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2022-04-22 07:45:31.894  INFO 43520 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 3307 (http) with context path ''
+2022-04-22 07:45:31.894  INFO 43520 --- [main] lavalink.server.Launcher                 : Started Launcher in 4.431 seconds (JVM running for 5.12)
+2022-04-22 07:45:31.894  INFO 43520 --- [main] lavalink.server.Launcher                 : You can safely ignore the big red warning about illegal reflection. See https://github.com/freyacodes/Lavalink/issues/295
+2022-04-22 07:45:41.951  INFO 43520 --- [XNIO-1 task-1] io.undertow.servlet                      : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-22 07:45:41.951  INFO 43520 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-22 07:45:41.970  INFO 43520 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 19 ms
+2022-04-22 07:45:41.999  INFO 43520 --- [XNIO-1 task-1] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /[0:0:0:0:0:0:0:1]:57404
+2022-04-22 07:45:42.061 ERROR 43520 --- [XNIO-1 task-1] io.undertow.request                      : UT005071: Undertow request failed HttpServerExchange{ GET /}
+
+java.io.IOError: java.io.FileNotFoundException: Invalid file path
+	at org.xnio.channels.Channels$4.run(Channels.java:998) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.channels.Channels$4.run(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318) ~[na:na]
+	at org.xnio.channels.Channels.<clinit>(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.servlet.spec.ServletOutputStreamImpl.close(ServletOutputStreamImpl.java:618) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.closeStreamAndWriter(HttpServletResponseImpl.java:528) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.responseDone(HttpServletResponseImpl.java:617) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:328) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:133) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:130) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:249) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:99) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:376) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:830) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.io.FileNotFoundException: Invalid file path
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:229) ~[na:na]
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123) ~[na:na]
+	at org.xnio.channels.Channels$4.run(Channels.java:993) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	... 20 common frames omitted
+
+2022-04-22 07:45:42.061 ERROR 43520 --- [XNIO-1 task-1] io.undertow.request.io                   : UT005090: Unexpected failure
+
+java.lang.NoClassDefFoundError: Could not initialize class org.xnio.channels.Channels
+	at io.undertow.servlet.spec.ServletInputStreamImpl.readIntoBuffer(ServletInputStreamImpl.java:192) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.ServletInputStreamImpl.close(ServletInputStreamImpl.java:257) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletRequestImpl.closeAndDrainRequest(HttpServletRequestImpl.java:691) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletBlockingHttpExchange.close(ServletBlockingHttpExchange.java:89) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange.endExchange(HttpServerExchange.java:1626) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:416) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:830) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.io.IOError: java.io.FileNotFoundException: Invalid file path [in thread "XNIO-1 task-1"]
+	at org.xnio.channels.Channels$4.run(Channels.java:998) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.channels.Channels$4.run(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318) ~[na:na]
+	at org.xnio.channels.Channels.<clinit>(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.servlet.spec.ServletOutputStreamImpl.close(ServletOutputStreamImpl.java:618) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.closeStreamAndWriter(HttpServletResponseImpl.java:528) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.responseDone(HttpServletResponseImpl.java:617) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:328) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:133) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:130) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:249) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:99) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:376) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	... 4 common frames omitted
+
+2022-04-22 07:45:42.123  INFO 43520 --- [XNIO-1 task-1] lavalink.server.io.SocketServer          : Connection successfully established from erela.js
+2022-04-22 07:46:12.094  INFO 43520 --- [XNIO-1 task-2] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /[0:0:0:0:0:0:0:1]:57427
+2022-04-22 07:46:12.103 ERROR 43520 --- [XNIO-1 task-2] io.undertow.request                      : UT005071: Undertow request failed HttpServerExchange{ GET /}
+
+java.lang.NoClassDefFoundError: Could not initialize class org.xnio.channels.Channels
+	at io.undertow.servlet.spec.ServletOutputStreamImpl.close(ServletOutputStreamImpl.java:618) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.closeStreamAndWriter(HttpServletResponseImpl.java:528) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.responseDone(HttpServletResponseImpl.java:617) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:328) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:133) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:130) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:249) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:99) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:376) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:830) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.io.IOError: java.io.FileNotFoundException: Invalid file path [in thread "XNIO-1 task-1"]
+	at org.xnio.channels.Channels$4.run(Channels.java:998) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.channels.Channels$4.run(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318) ~[na:na]
+	at org.xnio.channels.Channels.<clinit>(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	... 17 common frames omitted
+
+2022-04-22 07:46:12.112 ERROR 43520 --- [XNIO-1 task-2] io.undertow.request.io                   : UT005090: Unexpected failure
+
+java.lang.NoClassDefFoundError: Could not initialize class org.xnio.channels.Channels
+	at io.undertow.servlet.spec.ServletInputStreamImpl.readIntoBuffer(ServletInputStreamImpl.java:192) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.ServletInputStreamImpl.close(ServletInputStreamImpl.java:257) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletRequestImpl.closeAndDrainRequest(HttpServletRequestImpl.java:691) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletBlockingHttpExchange.close(ServletBlockingHttpExchange.java:89) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange.endExchange(HttpServerExchange.java:1626) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:416) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:830) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.io.IOError: java.io.FileNotFoundException: Invalid file path [in thread "XNIO-1 task-1"]
+	at org.xnio.channels.Channels$4.run(Channels.java:998) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.channels.Channels$4.run(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318) ~[na:na]
+	at org.xnio.channels.Channels.<clinit>(Channels.java:988) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.servlet.spec.ServletOutputStreamImpl.close(ServletOutputStreamImpl.java:618) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.closeStreamAndWriter(HttpServletResponseImpl.java:528) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.spec.HttpServletResponseImpl.responseDone(HttpServletResponseImpl.java:617) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:328) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:133) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:130) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:249) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:78) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:99) ~[undertow-servlet-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:376) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	... 4 common frames omitted
+
+2022-04-22 07:46:12.115  INFO 43520 --- [XNIO-1 task-2] lavalink.server.io.SocketServer          : Connection successfully established from erela.js
+2022-04-22 08:36:07.126  INFO 8368 --- [main] lavalink.server.Launcher                 : 
+
+[32m       .  [31m _                  _ _       _    [32m__ _ _
+[32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
+[32m     ( ( )[31m| |/ _` \ \ / / _` | | | '_ \| |/ /[32m \ \ \ \
+[32m      \\/ [31m| | (_| |\ V / (_| | | | | | |   < [32m  ) ) ) )
+[32m       '  [31m|_|\__,_| \_/ \__,_|_|_|_| |_|_|\_\[32m / / / /
+[0m    =========================================[32m/_/_/_/[0m
+
+	Version:        3.4
+	Build:          1257
+	Build time:     26.10.2021 14:18:37 UTC
+	Branch          master
+	Commit:         a364833
+	Commit time:    26.10.2021 14:15:20 UTC
+	JVM:            18.0.1
+	Lavaplayer      1.3.96-original
+
+2022-04-22 08:36:07.281  INFO 8368 --- [main] lavalink.server.Launcher                 : Starting Launcher on LAPTOP-Jonas with PID 8368 (C:\Users\jonas\orangedb\Lavalink.jar started by jonas in C:\Users\jonas\orangedb)
+2022-04-22 08:36:07.281  INFO 8368 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2022-04-22 08:36:07.432  WARN 8368 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-04-22 08:36:08.791  WARN 8368 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2022-04-22 08:36:08.822  INFO 8368 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2022-04-22 08:36:08.822  INFO 8368 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1445 ms
+2022-04-22 08:36:09.276  WARN 8368 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2022-04-22 08:36:09.682  INFO 8368 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2022-04-22 08:36:09.901  INFO 8368 --- [main] lavalink.server.config.KoeConfiguration  : OS: Windows 11, Arch: amd64
+2022-04-22 08:36:09.901  WARN 8368 --- [main] lavalink.server.config.KoeConfiguration  : This system and architecture appears to not support native audio sending! GC pauses may cause your bot to stutter during playback.
+2022-04-22 08:36:10.187  INFO 8368 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-04-22 08:36:10.558  INFO 8368 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2022-04-22 08:36:10.558  INFO 8368 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2022-04-22 08:36:10.636  INFO 8368 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 3307 (http) with context path ''
+2022-04-22 08:36:10.636  INFO 8368 --- [main] lavalink.server.Launcher                 : Started Launcher in 4.28 seconds (JVM running for 4.988)
+2022-04-22 08:36:10.636  INFO 8368 --- [main] lavalink.server.Launcher                 : You can safely ignore the big red warning about illegal reflection. See https://github.com/freyacodes/Lavalink/issues/295
+2022-04-22 08:37:09.390  INFO 8368 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-04-22 08:37:09.390  INFO 8368 --- [Thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring disabled.
+2022-04-22 08:37:12.129  INFO 4636 --- [main] lavalink.server.Launcher                 : 
+
+[32m       .  [31m _                  _ _       _    [32m__ _ _
+[32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
+[32m     ( ( )[31m| |/ _` \ \ / / _` | | | '_ \| |/ /[32m \ \ \ \
+[32m      \\/ [31m| | (_| |\ V / (_| | | | | | |   < [32m  ) ) ) )
+[32m       '  [31m|_|\__,_| \_/ \__,_|_|_|_| |_|_|\_\[32m / / / /
+[0m    =========================================[32m/_/_/_/[0m
+
+	Version:        3.4
+	Build:          1257
+	Build time:     26.10.2021 14:18:37 UTC
+	Branch          master
+	Commit:         a364833
+	Commit time:    26.10.2021 14:15:20 UTC
+	JVM:            18.0.1
+	Lavaplayer      1.3.96-original
+
+2022-04-22 08:37:12.291  INFO 4636 --- [main] lavalink.server.Launcher                 : Starting Launcher on LAPTOP-Jonas with PID 4636 (C:\Users\jonas\orangedb\Lavalink.jar started by jonas in C:\Users\jonas\orangedb)
+2022-04-22 08:37:12.291  INFO 4636 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2022-04-22 08:37:12.433  WARN 4636 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-04-22 08:37:13.818  WARN 4636 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2022-04-22 08:37:13.850  INFO 4636 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2022-04-22 08:37:13.850  INFO 4636 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1467 ms
+2022-04-22 08:37:14.288  WARN 4636 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2022-04-22 08:37:14.616  INFO 4636 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2022-04-22 08:37:14.835  INFO 4636 --- [main] lavalink.server.config.KoeConfiguration  : OS: Windows 11, Arch: amd64
+2022-04-22 08:37:14.851  WARN 4636 --- [main] lavalink.server.config.KoeConfiguration  : This system and architecture appears to not support native audio sending! GC pauses may cause your bot to stutter during playback.
+2022-04-22 08:37:15.133  INFO 4636 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-04-22 08:37:15.477  INFO 4636 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2022-04-22 08:37:15.493  INFO 4636 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2022-04-22 08:37:15.555  INFO 4636 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 22 (http) with context path ''
+2022-04-22 08:37:15.571  INFO 4636 --- [main] lavalink.server.Launcher                 : Started Launcher in 4.162 seconds (JVM running for 4.921)
+2022-04-22 08:37:15.571  INFO 4636 --- [main] lavalink.server.Launcher                 : You can safely ignore the big red warning about illegal reflection. See https://github.com/freyacodes/Lavalink/issues/295
