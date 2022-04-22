@@ -1,9 +1,9 @@
 server: # REST and WS server
   port: 22
-  address: 0.0.0.0
+  address: 0.0.0.0 //define a adress 0.0.0.0 = localhost
 lavalink:
   server:
-    password: "root"
+    password: "root" //define a password
     sources:
       youtube: true
       bandcamp: true

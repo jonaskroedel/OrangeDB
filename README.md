@@ -51,10 +51,11 @@ If you like this repository, feel free to leave a star ⭐ to help promote Orang
 
 ## Features
 
-``9`` commands across ``2`` different categories!
+``21`` commands across ``2`` different categories!
 
 - ``fun`` commands like `reddit`, `reddit [custom subreddit]` 
 - ``moderation`` commands like `clear`, `clearchannel`, `prefix` and `userinfo`
+- ``music`` commands like `play`, `lyrics`, `24/7`, `autoplay`, `skip` and much more
 
 ## Installation
 
@@ -72,6 +73,7 @@ npm install discord.js
 npm install dotenv --save
 npm install --save mysql2
 npm install got@11.8.3
+npm i lyrics-finder
 ````
 
 to get all the dependencies and packages. You need [Node.js](https://nodejs.org/) and [MySQL](https://www.mysql.com/) installed. I highly recommend to install [nodemon](https://www.npmjs.com/package/nodemon) as it makes testing *much* easier.
@@ -86,6 +88,9 @@ DB_HOST=YOUR_HOST_ADRESS //eg. localhost
 DB_USER=YOUR_DB_USER //eg. root
 DB_PASS=YOUR_DB_PASSWORD //eg. root
 DB_NAME=orangedb  //if you dont know, then do not change that!
+HOST=YOU_LAVALINK_HOST
+PASSWORD=YOUR_LAVALINK_PASSWORD
+PORT=YOUR_LAVALINK_POST
 ````
 
 Visit the Discord [developer portal](https://discordapp.com/developers/applications/) to create an app and use the client token you are given for the `token` option. `ownerId` is your own Discord snowflake.
@@ -96,7 +101,7 @@ After that, you have enable `Privileged Intents` on your Discord [developer port
 
 OrangeDB is a continous state of development. New features/updates can come at any time. Some pending ideas are:
 
-- Music
+- ~~Music~~ 
 - Ticket-System
 - Automod
 - Autoroles
