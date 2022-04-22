@@ -6,7 +6,7 @@ const got = require('got');
 
 const guildSubReddits = new Map();
 
-module.exports = class prefix extends BaseCommand{
+module.exports = class Reddit extends BaseCommand{
     constructor() {
         super('reddit', 'fun', []);
         this.connection = StateManager.connection;
@@ -14,7 +14,7 @@ module.exports = class prefix extends BaseCommand{
 
 
 
-    async run(client, message) {
+    async run(client, message, prefix) {
         if (message.author.bot) return;
         const guildReddit = guildSubReddits.get(message.guild.id);
 

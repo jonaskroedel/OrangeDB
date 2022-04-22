@@ -3,13 +3,13 @@ const StateManager = require('../../../utils/StateManager');
 
 const guildSubReddits = new Map();
 
-module.exports = class prefix extends BaseCommand {
+module.exports = class Subreddit extends BaseCommand {
     constructor() {
         super('subreddit', 'modify', []);
         this.connection = StateManager.connection;
     }
 
-    async run(client, message) {
+    async run(client, message, prefix) {
 
 
         const [cmdName, newSub] = message.content.slice(prefix.length).split(/\s+/);

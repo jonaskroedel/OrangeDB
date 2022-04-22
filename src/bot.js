@@ -4,13 +4,15 @@ const { Manager } = require('erela.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES", "GUILD_VOICE_STATES"]});
 const { registerCommands, registerEvents, registerMusicEvents } = require('./utils/register');
 
+
+
 (async () => {
     const nodes= [
         {
             host: process.env.HOST,
             password : process.env.PASSWORD,
             port: Number(process.env.PORT),
-            secure: true
+            secure: false
         }
     ];
 

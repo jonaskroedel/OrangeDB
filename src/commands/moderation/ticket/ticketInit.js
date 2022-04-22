@@ -5,7 +5,7 @@ const StateManager = require("../../../utils/StateManager");
 
 module.exports = class ticketInit extends BaseCommand {
     constructor() {
-        super('ticketInit', 'moderation', []);
+        super('ticketinit', 'moderation', []);
         this.connection = StateManager.connection;
     }
 
