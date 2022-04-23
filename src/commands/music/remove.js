@@ -1,14 +1,15 @@
 const BaseCommand = require('../../utils/structures/BaseCommand');
 const { MessageEmbed } = require("discord.js");
+const {convertTime} = require("../../utils/convert");
+const {progressbar} = require("../../utils/progressbar");
 
-module.exports = class ResumeCommand extends BaseCommand {
+module.exports = class PauseCommand extends BaseCommand {
     constructor() {
-        super('resume', 'music', []);
+        super('remove', 'music', []);
     }
     async run (client, message, args) {
         const player = message.client.manager.get(message.guild.id);
         if (player && player.state === "CONNECTED") {
-            const song = player.queue.current;
 
             if (!player.queue.current) {
                 let thing = new MessageEmbed()
@@ -17,26 +18,31 @@ module.exports = class ResumeCommand extends BaseCommand {
                 return message.reply({ embeds: [thing] });
             }
 
-            if (!player.paused) {
+            let position = Number(args[0]) - 1;
+            console.log(position);
+
+            if(!Number(args[0])) position = 0;
+
+            if (position + 1 > player.queue.size) {
+                const number = position + 1;
                 let thing = new MessageEmbed()
                     .setColor("RED")
-                    .setDescription(`❌ Music Bot is not paused`)
-                    .setThumbnail(player.queue.current.thumbnail);
+                    .setDescription(`❌ Cant remove that song queue size < ${number}`
+                    );
                 return message.reply({ embeds: [thing] });
             }
 
-            player.pause(false);
+            const song = player.queue[position];
+            player.queue.remove(position);
 
             let thing = new MessageEmbed()
-                .setDescription(
-                    `✅ Music Bot successfully resumed! Playing: 
-                    SongTitle: ${song.title}
-                    SongUrl: ${song.uri}`
-                )
-                .setColor("GREEN")
-                .setThumbnail(player.queue.current.thumbnail);
+                .setColor("RED")
+                .setDescription(`❌ Removed ${song.title} from queue`
+                );
             return message.reply({ embeds: [thing] });
+
+
         }
-        message.reply('There is no active music bot.')
+        else message.reply('There is no active music bot.')
     }
 }

@@ -26,10 +26,10 @@ module.exports = class StopCommand extends BaseCommand {
             if (!player.queue.current) {
                 let thing = new MessageEmbed()
                     .setColor("RED")
-                    .setDescription('❌ Music stoped.');
+                    .setDescription('❌ Music stopped.');
                 return message.reply({ embeds: [thing] });
             }
         }
-        message.reply('There is no active music bot.')
+        else message.reply('There is no active music bot.')
     }
 }

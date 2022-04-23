@@ -8,7 +8,7 @@ module.exports = class now extends BaseCommand {
         super('now', 'music', []);
     }
 
-    async run (client, message, prefix) {
+    async run (client, message) {
         const player = message.client.manager.players.get(message.guild.id);
         if (player && player.state === "CONNECTED") {
             if (!player.queue.current) {
@@ -24,9 +24,10 @@ module.exports = class now extends BaseCommand {
                 .setColor("GREEN")
                 .setDescription(`🎶 Currently playing ${song.title} requested from ${song.requester}
                                     ${convertTime(current)}
-                                    ${progressbar(player)}`);
+                                    ${progressbar(player)}`)
+                .setThumbnail(player.queue.current.thumbnail);
             return message.channel.send({ embeds: [embed] });
         }
-        message.reply('There is no active music bot.')
+        else message.reply('There is no active music bot.')
     }
 }

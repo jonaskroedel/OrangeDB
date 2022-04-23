@@ -1,4 +1,6 @@
 const BaseCommand = require('../../utils/structures/BaseCommand');
+const {MessageEmbed} = require("discord.js");
+const {progressbar} = require("../../utils/progressbar");
 
 module.exports = class play extends BaseCommand {
     constructor() {
@@ -40,6 +42,11 @@ module.exports = class play extends BaseCommand {
         // Checks if the client should play the track if it's the first one added
         if (!player.playing && !player.paused && !player.queue.size) player.play()
 
-        return message.reply(`enqueuing ${res.tracks[0].title}.\n<${res.tracks[0].uri}>`);
+        const embed = new MessageEmbed()
+            .setColor("GREEN")
+            .setDescription(`🎶 Now playing ${res.tracks[0].title} \n requested from ${res.tracks[0].requester}
+            ${res.tracks[0].uri}`)
+            .setThumbnail(res.tracks[0].thumbnail);
+        return message.channel.send({ embeds: [embed] });
     }
 }

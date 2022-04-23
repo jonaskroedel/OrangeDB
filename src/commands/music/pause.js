@@ -22,6 +22,7 @@ module.exports = class PauseCommand extends BaseCommand {
                     .setDescription(`❌ Music Bot is already paused 
                     SongTitle: ${song.title}
                     SongUrl: ${song.uri}`)
+                    .setThumbnail(player.queue.current.thumbnail);
                 return message.reply({ embeds: [thing] });
             }
             await player.pause(true);
@@ -31,9 +32,10 @@ module.exports = class PauseCommand extends BaseCommand {
                     `❌ Music Bot paused 
                     SongTitle: ${song.title}
                     SongUrl: ${song.uri}`
-                );
+                )
+                .setThumbnail(player.queue.current.thumbnail);
             return message.reply({ embeds: [thing] });
         }
-        message.reply('There is no active music bot.')
+        else message.reply('There is no active music bot.')
     }
 }
