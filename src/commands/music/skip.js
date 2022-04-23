@@ -29,7 +29,7 @@ module.exports = class SkipCommand extends BaseCommand {
                     SongUrl: ${song.uri}`
                     )
                     .setColor("GREEN")
-                    .setThumbnail(player.queue.current.thumbnail);
+                    .setThumbnail(song.thumbnail);
                 return message.reply({embeds: [thing]}).then((msg) => {
                     setTimeout(() => {
                         msg.delete();

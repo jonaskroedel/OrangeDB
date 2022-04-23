@@ -146,7 +146,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                                     `)
                                 .setThumbnail(player.queue.current.thumbnail)
                                 .setTitle(`Current queue for ${message.guild.name}`);
-                            ;
+
 
                             await msg.edit({
                                 embeds: [embed4],

@@ -6,7 +6,7 @@ const guildSubReddits = new Map();
 
 const cmdNames = new Map();
 const cmdDescs = new Map();
-
+const cmdCats = new Map();
 
 module.exports = class ReadyEvent extends BaseEvent {
     constructor() {
@@ -40,17 +40,21 @@ module.exports = class ReadyEvent extends BaseEvent {
             for (let i = 1; i <= row; i++) {
                 client.guilds.cache.forEach(guild => {
                     StateManager.connection.query(
-                        `SELECT * FROM ClientCommands WHERE nr = ${i}`
+                        `SELECT * FROM clientcommands WHERE listNr = ${i}`
                     ).then(result => {
-                        const nr = result[0][0].nr;
+
+                        const listNr = result[0][0].listNr;
                         const cmdName = result[0][0].cmdName;
                         const cmdDesc = result[0][0].cmdDesc;
+                        const cmdCat = result[0][0].cats;
 
-                        cmdNames.get(nr, cmdName);
-                        cmdDescs.get(nr, cmdDesc);
+                        cmdNames.set(listNr, cmdName);
+                        cmdDescs.set(listNr, cmdDesc);
+                        cmdCats.set(listNr, cmdCat);
 
-                        StateManager.emit('namesFetched', nr, cmdName);
-                        StateManager.emit('descsFetched', nr, cmdDesc);
+                        StateManager.emit('namesFetched', listNr, cmdName);
+                        StateManager.emit('descsFetched', listNr, cmdDesc);
+                        StateManager.emit('catsFetched', listNr, cmdCats);
                     }).catch(err => console.log(err));
                 });
             }
