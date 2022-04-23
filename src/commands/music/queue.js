@@ -170,6 +170,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                     });
                 }
             }
-        } else message.reply('There is no active music bot.')
+        }
+        else message.channel.send('There is no active music bot.')
     }
 }

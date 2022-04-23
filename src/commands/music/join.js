@@ -16,7 +16,7 @@ module.exports = class JoinCommand extends BaseCommand {
             player.connect();
             client.musicPlayers.set(message.guild.id, player);
         } else {
-            message.channel.send('please join voice.');
+            message.channel.send('You need to join a voicechannel first to play music.');
         }
     }
 }

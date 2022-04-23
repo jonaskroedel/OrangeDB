@@ -33,6 +33,6 @@ module.exports = class LyrisCommand extends BaseCommand {
             return message.channel.send({embeds: [lyricsEmbed]}).catch(console.error);
         }
 
-        message.reply('There is no active music bot.')
+        else message.channel.send('There is no active music bot.')
     }
 }

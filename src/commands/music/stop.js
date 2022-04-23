@@ -12,7 +12,7 @@ module.exports = class StopCommand extends BaseCommand {
                 let thing = new MessageEmbed()
                     .setColor("RED")
                     .setDescription('❌ There is no active Music Bot');
-                return message.reply({ embeds: [thing] });
+                return message.channel.send({ embeds: [thing] });
             }
 
             const autoplay = player.get("autoplay");
@@ -27,9 +27,9 @@ module.exports = class StopCommand extends BaseCommand {
                 let thing = new MessageEmbed()
                     .setColor("RED")
                     .setDescription('❌ Music stopped.');
-                return message.reply({ embeds: [thing] });
+                return message.channel.send({ embeds: [thing] });
             }
         }
-        else message.reply('There is no active music bot.')
+        else message.channel.send('There is no active music bot.')
     }
 }

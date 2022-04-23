@@ -14,7 +14,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                 let thing = new MessageEmbed()
                     .setColor("RED")
                     .setDescription('❌ There is no active Music Bot');
-                return message.reply({ embeds: [thing] });
+                return message.channel.send({ embeds: [thing] });
             }
 
             if (!player.paused) {
@@ -22,7 +22,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                     .setColor("RED")
                     .setDescription(`❌ Music Bot is not paused`)
                     .setThumbnail(player.queue.current.thumbnail);
-                return message.reply({ embeds: [thing] });
+                return message.channel.send({ embeds: [thing] });
             }
 
             player.pause(false);
@@ -35,8 +35,8 @@ module.exports = class ResumeCommand extends BaseCommand {
                 )
                 .setColor("GREEN")
                 .setThumbnail(player.queue.current.thumbnail);
-            return message.reply({ embeds: [thing] });
+            return message.channel.send({ embeds: [thing] });
         }
-        message.reply('There is no active music bot.')
+        else message.channel.send('There is no active music bot.')
     }
 }

@@ -18,7 +18,7 @@ module.exports = class clearQueue extends BaseCommand {
                 const embed = new MessageEmbed()
                     .setColor("GREEN")
                     .setDescription(`No active queue, start one with ${guildCommandPrefixes.get(message.guild.id)}play`);
-                return message.reply({embeds: [embed]});
+                return message.channel.send({embeds: [embed]});
             }
 
             player.queue.clear();
@@ -26,9 +26,9 @@ module.exports = class clearQueue extends BaseCommand {
             const embed = new MessageEmbed()
                 .setColor("RED")
                 .setDescription(`Queue cleared.`);
-            return message.reply({embeds: [embed]});
+            return message.channel.send({embeds: [embed]});
         }
-        message.reply('There is no active music bot.')
+        message.channel.send('There is no active music bot.')
     }
 }
 

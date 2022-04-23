@@ -10,8 +10,8 @@ module.exports = class play extends BaseCommand {
     async run(client, message, prefix) {
         const [command, ...args] = message.content.slice(prefix.length).split(/\s+/);
 
-        if (!message.member.voice.channel) return message.reply("you need to join a voice channel.");
-        if (!args.length) return message.reply("you need to give me an URL or a search term.");
+        if (!message.member.voice.channel) return message.channel.send("you need to join a voice channel.");
+        if (!args.length) return message.channel.send("you need to give me an URL or a search term.");
 
         const search = args.join(" ");
         let res;
@@ -23,7 +23,7 @@ module.exports = class play extends BaseCommand {
             if (res.loadType === "LOAD_FAILED") throw res.exception;
             else if (res.loadType === "PLAYLIST_LOADED") throw {message: "Playlists are not supported with this command."};
         } catch (err) {
-            return message.reply(`there was an error while searching: ${err.message}`);
+            return message.channel.send(`there was an error while searching: ${err.message}`);
         }
 
         if (res.loadType === "NO_MATCHES") return message.reply("there were no tracks found with that query.");

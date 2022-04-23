@@ -12,7 +12,7 @@ module.exports = class PauseCommand extends BaseCommand {
                 let thing = new MessageEmbed()
                     .setColor("RED")
                     .setDescription('❌ There is no active Music Bot');
-                return message.reply({ embeds: [thing] });
+                return message.channel.send({ embeds: [thing] });
             }
             const song = player.queue.current;
 
@@ -23,7 +23,7 @@ module.exports = class PauseCommand extends BaseCommand {
                     SongTitle: ${song.title}
                     SongUrl: ${song.uri}`)
                     .setThumbnail(player.queue.current.thumbnail);
-                return message.reply({ embeds: [thing] });
+                return message.channel.send({ embeds: [thing] });
             }
             await player.pause(true);
             let thing = new MessageEmbed()
@@ -34,8 +34,8 @@ module.exports = class PauseCommand extends BaseCommand {
                     SongUrl: ${song.uri}`
                 )
                 .setThumbnail(player.queue.current.thumbnail);
-            return message.reply({ embeds: [thing] });
+            return message.channel.send({ embeds: [thing] });
         }
-        else message.reply('There is no active music bot.')
+        else message.channel.send('There is no active music bot.')
     }
 }

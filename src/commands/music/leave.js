@@ -15,8 +15,8 @@ module.exports = class JoinCommand extends BaseCommand {
                 .setDescription(
                     `❌ music bot disconnected`
                 );
-            return message.reply({ embeds: [embed] });
+            return message.channel.send({ embeds: [embed] });
         }
-        message.reply('There is no active music bot.')
+        message.channel.send('There is no active music bot.')
     }
 }

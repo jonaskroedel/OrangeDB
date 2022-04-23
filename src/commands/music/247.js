@@ -15,13 +15,13 @@ module.exports = class twentyforseven extends BaseCommand {
                     .setColor()
                     .setColor(`${player.twentyFourSeven === true ? "GREEN" : "RED"}`)
                     .setDescription(`${player.twentyFourSeven === true ? '24/7 is on' : '24/7 is off'}`);
-                return message.reply({embeds: [embed]});
+                return message.channel.send({embeds: [embed]});
             } else if (args === 'off') {
                 player.twentyFourSeven = false;
                 const embed = new MessageEmbed()
                     .setColor("RED")
                     .setDescription('24/7 is off');
-                return message.reply({embeds: [embed]});
+                return message.channel.send({embeds: [embed]});
             } else if (args === 'on') {
                 player.twentyFourSeven = true;
                 const embed = new MessageEmbed()
@@ -33,6 +33,6 @@ module.exports = class twentyforseven extends BaseCommand {
                 message.channel.send('You can only use `on` or `off`');
             }
         }
-        message.reply('There is no active music bot.')
+        else message.channel.send('There is no active music bot.')
     }
 }

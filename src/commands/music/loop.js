@@ -16,7 +16,7 @@ module.exports = class LoopCommand extends BaseCommand {
                 let embed = new MessageEmbed()
                     .setColor("RED")
                     .setDescription('❌ There is no active Music Bot');
-                return message.reply({ embeds: [embed] });
+                return message.channel.send({ embeds: [embed] });
             }
             if (loops === 'track') {
                 player.setTrackRepeat(!player.trackRepeat);
@@ -41,10 +41,10 @@ module.exports = class LoopCommand extends BaseCommand {
                         `${player.queueRepeat === true ? "🔁 queue repeat on" : "🔁 queue repeat off"}
                         ${player.trackRepeat === true ? "🔂 track repeat on" : "🔂 track repeat off"}`
                     );
-                return message.reply({ embeds: [embed] })
+                return message.channel.send({ embeds: [embed] })
             }
 
         }
-        message.reply('There is no active music bot.')
+        else message.channel.send('There is no active music bot.')
     }
 }

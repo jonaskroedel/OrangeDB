@@ -30,13 +30,9 @@ module.exports = class SkipCommand extends BaseCommand {
                     )
                     .setColor("GREEN")
                     .setThumbnail(song.thumbnail);
-                return message.reply({embeds: [thing]}).then((msg) => {
-                    setTimeout(() => {
-                        msg.delete();
-                    }, 3000);
-                });
+                return message.channel.send({embeds: [thing]});
             }
-            message.reply('There is no next song.')
-        } else message.reply('There is no active music bot.')
+            message.channel.send('There is no next song.')
+        } else message.channel.send('There is no active music bot.')
     }
 }

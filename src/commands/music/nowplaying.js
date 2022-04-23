@@ -28,6 +28,6 @@ module.exports = class now extends BaseCommand {
                 .setThumbnail(player.queue.current.thumbnail);
             return message.channel.send({ embeds: [embed] });
         }
-        else message.reply('There is no active music bot.')
+        else message.channel.send('There is no active music bot.')
     }
 }

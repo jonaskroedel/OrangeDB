@@ -15,7 +15,7 @@ module.exports = class PauseCommand extends BaseCommand {
                 let thing = new MessageEmbed()
                     .setColor("RED")
                     .setDescription('❌ There is no active Music Bot');
-                return message.reply({ embeds: [thing] });
+                return message.channel.send({ embeds: [thing] });
             }
 
             let position = Number(args[0]) - 1;
@@ -29,7 +29,7 @@ module.exports = class PauseCommand extends BaseCommand {
                     .setColor("RED")
                     .setDescription(`❌ Cant remove that song queue size < ${number}`
                     );
-                return message.reply({ embeds: [thing] });
+                return message.channel.send({ embeds: [thing] });
             }
 
             const song = player.queue[position];
@@ -39,10 +39,10 @@ module.exports = class PauseCommand extends BaseCommand {
                 .setColor("RED")
                 .setDescription(`❌ Removed ${song.title} from queue`
                 );
-            return message.reply({ embeds: [thing] });
+            return message.channel.send({ embeds: [thing] });
 
 
         }
-        else message.reply('There is no active music bot.')
+        else message.channel.send('There is no active music bot.')
     }
 }

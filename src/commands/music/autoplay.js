@@ -42,6 +42,6 @@ module.exports = class JoinCommand extends BaseCommand {
                 message.channel.send('You can only use `on` or `off`');
             }
         }
-        message.reply('There is no active music bot.')
+        else message.channel.send('There is no active music bot.')
     }
 }

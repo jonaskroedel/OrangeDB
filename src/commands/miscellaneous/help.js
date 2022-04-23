@@ -22,7 +22,7 @@ module.exports = class help extends BaseCommand {
         const prefix = guildCommandPrefixes.get(message.guild.id)
 
         const mainEmbed = new MessageEmbed()
-            .setTitle(`Help page for ${message.guild.name}`)
+            .setTitle(`Main help page for ${message.guild.name}`)
             .setColor('#e45e81')
             .setThumbnail(client.user.displayAvatarURL())
             .setFooter({
@@ -30,7 +30,9 @@ module.exports = class help extends BaseCommand {
                 iconURL: message.author.displayAvatarURL({dynamic: true})
             })
             .setTimestamp()
-            .setDescription(`**${prefix} + help** -- shows this page`);
+            .setDescription(`**${prefix}help** -- shows this page
+                            
+                            Interactive help page, click on the buttons below to access the help page for the respective category `);
 
         const musicBut = new MessageButton()
             .setCustomId('music')
@@ -90,7 +92,7 @@ module.exports = class help extends BaseCommand {
                 });
 
                 const embedMod = new MessageEmbed()
-                    .setTitle(`Help page for ${message.guild.name}`)
+                    .setTitle(`Moderation help page for ${message.guild.name}`)
                     .setColor('#e45e81')
                     .setThumbnail(client.user.displayAvatarURL())
                     .setFooter({
@@ -98,12 +100,12 @@ module.exports = class help extends BaseCommand {
                         iconURL: message.author.displayAvatarURL({dynamic: true})
                     })
                     .setTimestamp()
-                    .setDescription(`**${prefix} + prefix [prefix]** -- changes the current prefix
-                                    **${prefix} + ping** -- shows the bot latency in \`ms\`
-                                    **${prefix} + userinfo** -- userinfo from you or the mentioned player
-                                    **${prefix} + clear [amount]** -- clears [amount] of messages in the current channel
-                                    **${prefix} + clearchannel -- clears the whole channel
-                                    **${prefix} + subreddit [subreddit] -- changes the default subreddit
+                    .setDescription(`**${prefix}prefix [prefix]** -- changes the current prefix
+                                    **${prefix}ping** -- shows the bot latency in \`ms\`
+                                    **${prefix}userinfo** -- userinfo from you or the mentioned player
+                                    **${prefix}clear [amount]** -- clears [amount] of messages in the current channel
+                                    **${prefix}clearchannel** -- clears the whole channel
+                                    **${prefix}subreddit [subreddit]** -- changes the default subreddit
                                     `);
 
                 await msg.edit({
@@ -121,7 +123,7 @@ module.exports = class help extends BaseCommand {
                 });
 
                 const embedMusic = new MessageEmbed()
-                    .setTitle(`Help page for ${message.guild.name}`)
+                    .setTitle(`Music help page for ${message.guild.name}`)
                     .setColor('#e45e81')
                     .setThumbnail(client.user.displayAvatarURL())
                     .setFooter({
@@ -129,20 +131,20 @@ module.exports = class help extends BaseCommand {
                         iconURL: message.author.displayAvatarURL({dynamic: true})
                     })
                     .setTimestamp()
-                    .setDescription(`**${prefix} + join** -- joins your current voice-channel
-                                    **${prefix} + play** -- plays music depending on url/author/title (only youtube.com)
-                                    **${prefix} + pause** -- pauses the current song
-                                    **${prefix} + resume** -- resumes the current song
-                                    **${prefix} + stop** -- stops the song
-                                    **${prefix} + 24/7** -- plays music 24/7 (music must be given)
-                                    **${prefix} + autoplay** -- adds appropriate songs to the queue (still in development)
-                                    **${prefix} + skip** -- skips the queue to the next song
-                                    **${prefix} + queue** -- shows the current queue
-                                    **${prefix} + now** -- shows the current song
-                                    **${prefix} + remove [number]** -- clears the [number] song in the queue
-                                    **${prefix} + lyrics** -- shows the lyrics to the song
-                                    **${prefix} + clearqueue** -- clears the whole queue
-                                    **${prefix} + leave** -- leaves the voicechannel`);
+                    .setDescription(`**${prefix}join** -- joins your current voice-channel
+                                    **${prefix} play** -- plays music depending on url/author/title (only youtube.com)
+                                    **${prefix}pause** -- pauses the current song
+                                    **${prefix}resume** -- resumes the current song
+                                    **${prefix}stop** -- stops the song
+                                    **${prefix}24/7** -- plays music 24/7 (music must be given)
+                                    **${prefix}autoplay** -- adds appropriate songs to the queue (still in development)
+                                    **${prefix}skip** -- skips the queue to the next song
+                                    **${prefix}queue** -- shows the current queue
+                                    **${prefix}now** -- shows the current song
+                                    **${prefix}remove [number]** -- clears the [number] song in the queue
+                                    **${prefix}lyrics** -- shows the lyrics to the song
+                                    **${prefix}clearqueue** -- clears the whole queue
+                                    **${prefix}leave** -- leaves the voicechannel`);
 
                 await msg.edit({
                     embeds: [embedMusic],
