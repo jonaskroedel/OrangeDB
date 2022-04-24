@@ -12,9 +12,6 @@ module.exports = class help extends BaseCommand {
         this.connection = StateManager.connection;
     }
 
-
-
-
     async run(client, message) {
         let member = message.mentions.members.first() || message.member,
             user = member.user;
@@ -28,11 +25,12 @@ module.exports = class help extends BaseCommand {
             .setThumbnail(user.avatarURL())
             .addField(`Username:`, user.username, true)
             .addField(`Discriminator:`, `#${user.discriminator}`, true)
-            .addField(`Account age:`, age, true)
+            .addField(`Server joined:`, moment.utc(member.joinedAt).format('DD.MM.YY'), true)
             .addField(`Highest-role:`, `${member.roles.highest}`, true)
             .addField(`Admin:`, member.permissions.has("ADMINISTRATOR") ? '✅' : '❌', true)
             .addField(`Bot:`, user.bot ? '✅' : '❌', true)
-            .addField(`Server joined:`, moment.utc(member.joinedAt).format('DD.MM.YY'), true)
+            .addField(`Created at:`, moment.utc(user.createdAt).format('DD.MM.YY') , true)
+            .addField(`Account age:`, age, true)
 
 
             .setFooter({ text:`Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
