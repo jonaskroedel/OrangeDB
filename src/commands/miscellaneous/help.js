@@ -166,13 +166,6 @@ module.exports = class help extends BaseCommand {
         });
     }
 }
-
-StateManager.on('namesFetched', (listNr, cmdName) => {
-    cmdNames.set(listNr, cmdName);
-});
-StateManager.on('descsFetched', (listNr, cmdDesc) => {
-    cmdDescs.set(listNr, cmdDesc);
-});
 StateManager.on('prefixUpdate', (guildId, prefix) => {
     guildCommandPrefixes.set(guildId, prefix);
 });
@@ -181,7 +174,4 @@ StateManager.on('prefixFetched', (guildId, prefix) => {
 });
 StateManager.on('guildAdded', (guildId, prefix) => {
     guildCommandPrefixes.set(guildId, prefix);
-});
-StateManager.on('catsFetched', (listNr, cmdName) => {
-    cmdCat.set(listNr, cmdName);
 });
