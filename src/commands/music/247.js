@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = class twentyforseven extends BaseCommand {
     constructor() {
-        super('24/7', 'music', []);
+        super('24/7', 'music', ['twentyfourseven']);
     }
     async run (client, message, prefix) {
         const player = message.client.manager.players.get(message.guild.id);

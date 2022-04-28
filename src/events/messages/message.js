@@ -10,7 +10,6 @@ module.exports = class MessageEvent extends BaseEvent {
     }
 
     async run (client, message) {
-
         if (message.author.bot) return;
         const prefix = guildCommandPrefixes.get(message.guild.id);
 
@@ -18,7 +17,7 @@ module.exports = class MessageEvent extends BaseEvent {
 
         if (prefix === usedPrefix) {
             const [cmdName, ...cmdArgs] = message.content.slice(prefix.length).split(/\s+/);
-            const command = client.commands.get(cmdName.toLowerCase());
+            const command = client.commands.get(cmdName.toLowerCase()) || client.commands.find(command => command.aliases && command.aliases.includes(cmdName));
             if (command) {
                 command.run(client, message, cmdArgs);
             }

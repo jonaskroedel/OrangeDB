@@ -1,5 +1,5 @@
 module.exports = class BaseEvent {
-    constructor (name) {
+    constructor(name) {
         this.name = name;
     }
 }

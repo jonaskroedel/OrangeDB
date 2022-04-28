@@ -11,7 +11,7 @@ const cmdCat = new Map();
 
 module.exports = class help extends BaseCommand {
     constructor() {
-        super('help', 'moderation', []);
+        super('help', 'moderation', ['h', 'botinfo']);
         this.connection = StateManager.connection;
 
 

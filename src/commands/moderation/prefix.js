@@ -3,7 +3,7 @@ const StateManager = require('../../utils/StateManager');
 
 module.exports = class prefix extends BaseCommand {
     constructor() {
-        super('prefix', 'modify', []);
+        super('prefix', 'modify', ['chprefix', 'defaultprefix']);
     }
 
     async run (client, message) {

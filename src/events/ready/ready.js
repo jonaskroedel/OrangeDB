@@ -12,6 +12,7 @@ module.exports = class ReadyEvent extends BaseEvent {
         this.connection = StateManager.connection;
     }
     async run(client) {
+        console.log(client.user.tag + ' has logged in.');
         const ids = client.guilds.cache.map(g => g.id);
         let gids = [];
 
@@ -84,6 +85,6 @@ module.exports = class ReadyEvent extends BaseEvent {
                 StateManager.emit('redditFetched', guildId, subReddit);
             }).catch(err => console.log(err));
         });
-        client.user.setActivity(process.env.PREFIX, {type: 'LISTENING'});
+        client.user.setActivity(`${process.env.PREFIX}help`, {type: 'LISTENING'});
     }
 }

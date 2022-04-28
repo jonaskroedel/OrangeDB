@@ -8,7 +8,7 @@ const guildSubReddits = new Map();
 
 module.exports = class Reddit extends BaseCommand{
     constructor() {
-        super('reddit', 'fun', []);
+        super('reddit', 'fun', ['meme']);
         this.connection = StateManager.connection;
     }
 
