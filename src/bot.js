@@ -4,6 +4,12 @@ const { Manager } = require('erela.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES", "GUILD_VOICE_STATES"]});
 const { registerCommands, registerEvents, registerMusicEvents } = require('./utils/register');
 
+/*
+    © Jonas Krödel 2022
+    You may use and modify this code. You must mention me, the owner,
+    and you may not pass off the code as your own!
+*/
+
 (async () => {
     const nodes= [
         {

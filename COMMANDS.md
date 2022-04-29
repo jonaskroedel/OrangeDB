@@ -31,7 +31,7 @@
 <p align="center">
   <a href="#main">Main</a>
   •
-  <a href="#moderadion">Moderation</a>
+  <a href="#moderation">Moderation</a>
   •
   <a href="#music">Music</a>
 </p>

@@ -95,6 +95,7 @@ DB_NAME=orangedb  //if you dont know, then do not change that!
 HOST=YOU_LAVALINK_HOST
 PASSWORD=YOUR_LAVALINK_PASSWORD
 PORT=YOUR_LAVALINK_PORT
+PREFIX=o! //default prefix for orange
 ````
 
 Visit the Discord [developer portal](https://discordapp.com/developers/applications/) to create an app and use the client token you are given for the `token` option. `ownerId` is your own Discord snowflake.

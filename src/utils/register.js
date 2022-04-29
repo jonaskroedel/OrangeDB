@@ -3,6 +3,12 @@ const fs = require('fs').promises;
 const BaseCommand = require('./structures/BaseCommand');
 const BaseEvent = require('./structures/BaseEvent');
 
+/*
+    © Jonas Krödel 2022
+    You may use and modify this code. You must mention me, the owner,
+    and you may not pass off the code as your own!
+*/
+
 async function registerCommands(client, dir = '') {
     const filePath = path.join(__dirname, dir);
     const files = await fs.readdir(filePath);

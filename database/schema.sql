@@ -1,5 +1,11 @@
 CREATE DATABASE orangedb;
 
+/*
+    © Jonas Krödel 2022
+    You may use and modify this code. You must mention me, the owner,
+    and you may not pass off the code as your own!
+*/
+
 USE orangedb;
 
 CREATE TABLE Guilds (
@@ -12,11 +18,4 @@ CREATE TABLE GuildConfigurable (
     cmdPrefix VARCHAR(10) DEFAULT 'o!',
     modLogId VARCHAR(100),
     subReddit VARCHAR(100) DEFAULT 'meme'
-);
-
-
-CREATE TABLE ClientCommands (
-    nr INT AUTO_INCREMENT PRIMARY KEY,
-    cmdName VARCHAR(100),
-    cmdDesc VARCHAR(100)
 );

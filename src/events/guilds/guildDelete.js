@@ -1,6 +1,12 @@
 const BaseEvent = require('../../utils/structures/BaseEvent');
 const StateManager = require('../../utils/StateManager');
 
+/*
+    © Jonas Krödel 2022
+    You may use and modify this code. You must mention me, the owner,
+    and you may not pass off the code as your own!
+*/
+
 module.exports = class GuildDeleteEvent extends BaseEvent {
     constructor () {
         super('guildDelete');
