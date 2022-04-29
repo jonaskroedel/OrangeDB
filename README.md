@@ -48,6 +48,8 @@
 Orange is an open source, customizable Discord bot that is constantly growing. The Bot comes packaged with a variety of commands. The Bot's codebase also serves as a base framework so everyone can easily create a Discord Bot of all kinds and needs. You can invite Orange to your Discord server using [this](https://discord.com/api/oauth2/authorize?client_id=845681260567068712&permissions=8&scope=bot) link! Also, you can join my Server [Funf](https://discord.gg/EejzQcpMHG) for questions, suggestions, assistance and much more.
 
 If you like this repository, feel free to leave a star ⭐ to help promote Orange!
+<br>
+You can find a detailed information sheet with all commands [here](https://github.com/jonaskroedel/OrangeDB/blob/master/COMMANDS.md#detailed-page-for-all-commands).
 
 ## Features
 
