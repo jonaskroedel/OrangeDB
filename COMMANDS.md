@@ -24,8 +24,12 @@
 
 </div>
 
+<h3 align="center">
+  <a href="https://github.com/jonaskroedel/OrangeDB#readme">Back to Main page</a>
+</h3>
+
 <p align="center">
-  <a href="#moderation">Moderation</a>
+  <a href="#music">Music</a>
   •
   <a href="#moderadion">Moderation</a>
   •

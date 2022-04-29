@@ -36,6 +36,8 @@
   <a href="#license">License</a>
   •
   <a href="#credits">Credits</a>
+  •
+  <a href="[here](https://github.com/jonaskroedel/OrangeDB/blob/master/COMMANDS.md#detailed-page-for-all-commands)">Commands</a>
 </p>
 
 

@@ -29,7 +29,8 @@ module.exports = class help extends BaseCommand {
             .setDescription(`**${prefix}help** -- shows this page
                             
                             Interactive help page, click on the buttons below to access the help page for the respective category
-                            use [this](https://github.com/jonaskroedel/OrangeDB/blob/master/COMMANDS.md#detailed-page-for-all-commands) link to get a detailed information`);
+                            You can find a detailed information sheet with all commands [here](https://github.com/jonaskroedel/OrangeDB/blob/master/COMMANDS.md#detailed-page-for-all-commands).
+            `);
 
         const musicBut = new MessageButton()
             .setCustomId('music')
