@@ -29,7 +29,7 @@
 </h3>
 
 <p align="center">
-  <a href="#music">Music</a>
+  <a href="#main">Main</a>
   •
   <a href="#moderadion">Moderation</a>
   •
