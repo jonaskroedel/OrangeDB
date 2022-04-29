@@ -5,7 +5,6 @@ require('dotenv').config({path: '../.env'});
 const guildCommandPrefixes = new Map();
 const guildSubReddits = new Map();
 
-
 module.exports = class ReadyEvent extends BaseEvent {
     constructor() {
         super('ready');
@@ -50,6 +49,7 @@ module.exports = class ReadyEvent extends BaseEvent {
                 }
             });
         }
+
         for (let i = 0; i < ids.length; i++) {
             await StateManager.connection.query(
                 `SELECT * FROM GuildConfigurable WHERE guildId = '${ids[i]}'`

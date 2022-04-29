@@ -128,7 +128,7 @@ module.exports = class help extends BaseCommand {
                     })
                     .setTimestamp()
                     .setDescription(`**${prefix}join** -- joins your current voice-channel
-                                    **${prefix} play** -- plays music depending on url/author/title (only youtube.com)
+                                    **${prefix}play** -- plays music depending on url/author/title (only youtube.com)
                                     **${prefix}pause** -- pauses the current song
                                     **${prefix}resume** -- resumes the current song
                                     **${prefix}stop** -- stops the song
