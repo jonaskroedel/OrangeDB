@@ -6,7 +6,7 @@
     <br>
 </h1>
 
-<h3 align=center>A multi-Guild usable Discord bot built with <a href=https://github.com/discordjs/discord.js>discord.js</a></h3>
+<h3 align=center>Command page for <a href=https://github.com/jonaskroedel/orangedb#readme>Orange</a></h3>
 
 <div align=center>
 
@@ -27,16 +27,18 @@
 <p align="center">
   <a href="#moderation">Moderation</a>
   •
-  <a href="#features">Features</a>
+  <a href="#moderadion">Moderation</a>
   •
-  <a href="#installation">Installation</a>
-  •
-  <a href="#setting-up">Setting Up</a>
-  •
-  <a href="#license">License</a>
-  •
-  <a href="#credits">Credits</a>
+  <a href="#music">Music</a>
 </p>
+
+# Detailed page for all commands
+
+## Main
+
+There is only one _main_ command
+
+- ``o!help`` With this command you get the interactive help page.
 
 ## Moderation
 
@@ -66,4 +68,5 @@ Orange supports currently ``14`` commands in the Category Music
 - ``o!now`` With this command you get the current song playing.
 - ``o!remove []`` With this command you can remove a song in your queue. Example command: `o!remove 3` _Removed third Song in the current queue_
 - ``o!lyrics`` With this command you get the lyrics to the current song.
-- ``o!clearqueue`` With this command you can clear the 
+- ``o!clearqueue`` With this command you can clear the whole channel. Note: the channel just gets cloned!
+- ``o!leave`` With this command Orange leaves the Voice-Channel.
