@@ -5,13 +5,9 @@ const StateManager = require("../../utils/StateManager");
 
 const guildCommandPrefixes = new Map();
 
-const cmdNames = new Map();
-const cmdDescs = new Map();
-const cmdCat = new Map();
-
 module.exports = class help extends BaseCommand {
     constructor() {
-        super('help', 'moderation', []);
+        super('help', 'moderation', ['h', 'botinfo']);
         this.connection = StateManager.connection;
 
 

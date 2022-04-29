@@ -5,7 +5,7 @@ const StateManager = require("../../utils/StateManager");
 
 module.exports = class clear extends BaseCommand {
     constructor() {
-        super('clear', 'moderation', []);
+        super('clear', 'moderation', ['purge', '']);
         this.connection = StateManager.connection;
     }
 

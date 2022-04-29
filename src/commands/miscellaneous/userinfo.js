@@ -8,7 +8,7 @@ const rtf1 = new Intl.RelativeTimeFormat('en', { style: 'narrow'});
 
 module.exports = class help extends BaseCommand {
     constructor() {
-        super('userinfo', 'moderation', []);
+        super('userinfo', 'moderation', ['info', 'whois']);
         this.connection = StateManager.connection;
     }
 

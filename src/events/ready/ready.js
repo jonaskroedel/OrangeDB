@@ -5,17 +5,34 @@ require('dotenv').config({path: '../.env'});
 const guildCommandPrefixes = new Map();
 const guildSubReddits = new Map();
 
+
 module.exports = class ReadyEvent extends BaseEvent {
     constructor() {
         super('ready');
         this.connection = StateManager.connection;
     }
-    run(client) {
-        let ids = client.guilds.cache.map(g => g.id);
+    async run(client) {
         console.log(client.user.tag + ' has logged in.');
+        const ids = client.guilds.cache.map(g => g.id);
+        let gids = [];
+
+        await StateManager.connection.query(
+            `SELECT COUNT(*) AS rowCount FROM GuildConfigurable`
+        ).then(async result => {
+            const row = result[0][0].rowCount;
+
+            for (let i = 0; i < row; i++)
+                await StateManager.connection.query(
+                    `SELECT guildId
+                     FROM GuildConfigurable LIMIT ${i},1`
+                ).then(result => {
+                    const gid = result[0][0].guildId;
+                    gids.push(gid);
+                });
+        });
 
         for (let i = 0; i < ids.length; i++) {
-            StateManager.connection.query(
+            await StateManager.connection.query(
                 `SELECT * FROM Guilds WHERE guildId = '${ids[i]}'`
             ).then(result => {
                 try {
@@ -34,7 +51,7 @@ module.exports = class ReadyEvent extends BaseEvent {
             });
         }
         for (let i = 0; i < ids.length; i++) {
-            StateManager.connection.query(
+            await StateManager.connection.query(
                 `SELECT * FROM GuildConfigurable WHERE guildId = '${ids[i]}'`
             ).then(result => {
                 try {
@@ -68,6 +85,6 @@ module.exports = class ReadyEvent extends BaseEvent {
                 StateManager.emit('redditFetched', guildId, subReddit);
             }).catch(err => console.log(err));
         });
-        client.user.setActivity(process.env.PREFIX, {type: 'LISTENING'});
+        client.user.setActivity(`${process.env.PREFIX}help`, {type: 'LISTENING'});
     }
 }

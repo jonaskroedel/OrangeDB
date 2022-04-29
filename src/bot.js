@@ -1,10 +1,8 @@
 require('dotenv').config({path: '../.env'});
-const {Client, Intents} = require('discord.js');
+const {Client, Intents, Collection} = require('discord.js');
 const { Manager } = require('erela.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES", "GUILD_VOICE_STATES"]});
 const { registerCommands, registerEvents, registerMusicEvents } = require('./utils/register');
-
-
 
 (async () => {
     const nodes= [
@@ -32,7 +30,7 @@ const { registerCommands, registerEvents, registerMusicEvents } = require('./uti
     client.login(process.env.BOT_TOKEN);
 
     client.musicPlayers = new Map();
-    client.commands = new Map();
+    client.commands = new Collection();
     await registerMusicEvents(client.manager, '../musicevents')
     await registerCommands(client, '../commands');
     await registerEvents(client, '../events');

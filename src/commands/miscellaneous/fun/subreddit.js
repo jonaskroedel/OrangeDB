@@ -5,7 +5,7 @@ const guildSubReddits = new Map();
 
 module.exports = class Subreddit extends BaseCommand {
     constructor() {
-        super('subreddit', 'modify', []);
+        super('subreddit', 'modify', ['sub', 'defaultsub']);
         this.connection = StateManager.connection;
     }
 

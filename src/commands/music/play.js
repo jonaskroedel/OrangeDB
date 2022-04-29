@@ -4,7 +4,7 @@ const {progressbar} = require("../../utils/progressbar");
 
 module.exports = class play extends BaseCommand {
     constructor() {
-        super('play', 'music', []);
+        super('play', 'music', ['p', 'start']);
     }
 
     async run(client, message, prefix) {
