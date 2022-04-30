@@ -5,13 +5,13 @@ const StateManager = require("../../utils/StateManager");
 
 module.exports = class clear extends BaseCommand {
     constructor() {
-        super('clear', 'moderation', ['purge', '']);
+        super('clear', 'moderation', ['purge']);
         this.connection = StateManager.connection;
     }
 
     async run (client, message, args) {
         if (message.member.permissions.has("MANAGE_MESSAGES")) {
-            var amount = parseInt(args[0])
+            let amount = parseInt(args[0])
 
             if (!amount) amount = 1
             if (amount > 100 || amount < 1) return message.channel.send("Please select a number *between* 100 and 1")

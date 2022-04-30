@@ -23,7 +23,7 @@ module.exports = class now extends BaseCommand {
             const embed = new MessageEmbed()
                 .setColor("GREEN")
                 .setDescription(`🎶 Currently playing ${song.title} requested from ${song.requester}
-                                    ${convertTime(current)}
+                                    ${convertTime(current)} / ${convertTime(song.duration)}
                                     ${progressbar(player)}`)
                 .setThumbnail(player.queue.current.thumbnail);
             return message.channel.send({ embeds: [embed] });

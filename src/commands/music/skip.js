@@ -3,7 +3,7 @@ const {MessageEmbed} = require("discord.js");
 
 module.exports = class SkipCommand extends BaseCommand {
     constructor() {
-        super('skip', 'music', []);
+        super('skip', 'music', ['s']);
     }
 
     run(client, message) {

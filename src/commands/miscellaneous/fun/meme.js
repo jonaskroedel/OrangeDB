@@ -12,8 +12,6 @@ module.exports = class Reddit extends BaseCommand{
         this.connection = StateManager.connection;
     }
 
-
-
     async run(client, message, prefix) {
         if (message.author.bot) return;
         const guildReddit = guildSubReddits.get(message.guild.id);

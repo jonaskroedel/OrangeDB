@@ -73,4 +73,5 @@ Orange supports currently ``14`` commands in the Category Music
 - ``o!remove []`` With this command you can remove a song in your queue. Example command: `o!remove 3` _Removed third Song in the current queue_
 - ``o!lyrics`` With this command you get the lyrics to the current song.
 - ``o!clearqueue`` With this command you can clear the whole channel. Note: the channel just gets cloned!
+- ``o!volume`` With this command you can set the Volume of Orange. Example command: `o!volume 50` _Volume set to: **50%**_
 - ``o!leave`` With this command Orange leaves the Voice-Channel.

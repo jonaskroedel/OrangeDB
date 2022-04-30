@@ -68,7 +68,6 @@ module.exports = class ResumeCommand extends BaseCommand {
 
                     const but1 = new MessageButton()
                         .setCustomId("queue_cmd_but_1")
-
                         .setEmoji("⏭")
                         .setStyle("PRIMARY");
 

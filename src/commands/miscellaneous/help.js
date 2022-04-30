@@ -77,13 +77,7 @@ module.exports = class help extends BaseCommand {
 
                 await msg.edit({
                     embeds: [mainEmbed],
-                    components: [
-                        new MessageActionRow().addComponents(
-                            mainBut,
-                            modBut,
-                            musicBut
-                        ),
-                    ],
+                    components: [row1],
                 });
             } else if (button.customId === "moderation") {
                 await button.deferUpdate().catch(() => {
@@ -108,13 +102,7 @@ module.exports = class help extends BaseCommand {
 
                 await msg.edit({
                     embeds: [embedMod],
-                    components: [
-                        new MessageActionRow().addComponents(
-                            mainBut,
-                            modBut,
-                            musicBut
-                        ),
-                    ],
+                    components: [row1],
                 });
             } else if (button.customId === 'music') {
                 await button.deferUpdate().catch(() => {
@@ -146,13 +134,7 @@ module.exports = class help extends BaseCommand {
 
                 await msg.edit({
                     embeds: [embedMusic],
-                    components: [
-                        new MessageActionRow().addComponents(
-                            mainBut,
-                            modBut,
-                            musicBut
-                        ),
-                    ],
+                    components: [row1],
                 });
             } else return;
         });
