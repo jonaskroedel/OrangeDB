@@ -130,6 +130,7 @@ module.exports = class help extends BaseCommand {
                                     **${prefix}remove [number]** -- clears the [number] song in the queue
                                     **${prefix}lyrics** -- shows the lyrics to the song
                                     **${prefix}clearqueue** -- clears the whole queue
+                                    **${prefix}volume** -- sets the volume between 100 and 0 
                                     **${prefix}leave** -- leaves the voicechannel`);
 
                 await msg.edit({
