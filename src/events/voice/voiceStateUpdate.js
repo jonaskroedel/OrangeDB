@@ -63,18 +63,16 @@ module.exports = class MessageEvent extends BaseEvent {
                 time = 0;
                 if (stateChange.members.size === 1 && player.paused) {
                     let emb = new MessageEmbed()
-                        .setAuthor({name: `Resuming paused queue`})
+                        .setTitle(`Resumed ${player.queue.current.title}`)
                         .setColor("GREEN")
-                        .setDescription(
-                            `Resuming playback because all of you left me with music to play all alone`
-                        );
+                        .setDescription(`Resuming playback because a user joined the voice`);
                     let msg = await client.channels.cache.get(player.textChannel).send({embeds: [emb]});
 
                     player.pause(false);
 
                     setTimeout(() => {
                         msg.delete()
-                    }, 2000)
+                    }, 5000)
                 }
                 break;
             case "LEAVE":
@@ -83,14 +81,14 @@ module.exports = class MessageEvent extends BaseEvent {
                     player.pause(true);
 
                     let emb = new MessageEmbed()
-                        .setAuthor({name: `Paused!`})
+                        .setTitle(`Paused ${player.queue.current.title}`)
                         .setColor("RED")
-                        .setDescription(`The player has been paused because everybody left`);
+                        .setDescription(`Player paused to save bandwidth. That stuff does not grow on trees!`);
                     let msg = await client.channels.cache.get(player.textChannel).send({embeds: [emb]});
 
                     setTimeout(() => {
                         msg.delete()
-                    }, 2000)
+                    }, 5000)
                 }
 
                 break;
