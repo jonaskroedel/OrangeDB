@@ -54,7 +54,7 @@ module.exports = class help extends BaseCommand {
             components: [row1],
         });
 
-        const collector = message.channel.createMessageComponentCollector({
+        const collector = msg.createMessageComponentCollector({
             filter: (b) => {
                 if (b.user.id === message.author.id) return true;
                 else {

@@ -19,7 +19,6 @@ module.exports = class PauseCommand extends BaseCommand {
             }
 
             let position = Number(args[0]) - 1;
-            console.log(position);
 
             if(!Number(args[0])) position = 0;
 

@@ -77,20 +77,19 @@ module.exports = class LyrisCommand extends BaseCommand {
                     embeds: [embed2],
                     components: [row1],
                 });
-                const collector = message.channel.createMessageComponentCollector({
+                const collector = msg.createMessageComponentCollector({
                     filter: (b) => {
                         if (b.user.id === message.author.id) return true;
                         else {
                             b.reply({
                                 ephemeral: true,
                                 content: "You're not allowed to use that command!"
-
                             });
                             return false;
                         }
                     },
-                    time: 60000 * 5,
-                    idle: 30e3,
+                    time: player.queue.current.duration,
+                    idle: player.queue.current.duration,
                 });
 
                 collector.on('collect', async (button) => {

@@ -26,7 +26,7 @@ module.exports = class LyrisCommand extends BaseCommand {
             return message.channel.send({embeds: [thing]});
         }
 
-        const volume = Number(args[0]);
+        const volume = parseInt(args[0]);
 
         if (!volume || volume < 0 || volume > 100) {
             let thing = new MessageEmbed()
