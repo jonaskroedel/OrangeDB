@@ -60,7 +60,6 @@ module.exports = class MessageEvent extends BaseEvent {
 
         switch (stateChange.type) {
             case "JOIN":
-                time = 0;
                 if (stateChange.members.size === 1 && player.paused) {
                     let emb = new MessageEmbed()
                         .setTitle(`Resumed ${player.queue.current.title}`)
@@ -73,6 +72,7 @@ module.exports = class MessageEvent extends BaseEvent {
                     setTimeout(() => {
                         msg.delete()
                     }, 5000)
+
                 }
                 break;
             case "LEAVE":

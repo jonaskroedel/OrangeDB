@@ -25,7 +25,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                 const embed = new MessageEmbed()
                     .setColor("GREEN")
                     .setDescription(`🎶 Currently playing ${song.title} requested from ${song.requester}
-                                    ${convertTime(song.duration)}
+                                    ${convertTime(player.position)} / ${convertTime(song.duration)}
                                     ${progressbar(player)}`)
                     .setThumbnail(player.queue.current.thumbnail);
                 await message.channel.send({embeds: [embed]});
@@ -45,7 +45,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                     const embed = new MessageEmbed()
                         .setColor("GREEN")
                         .setDescription(`🎶 Currently playing ${song.title} requested from ${song.requester}
-                                    ${convertTime(song.duration)}
+                                    ${convertTime(player.position)} / ${convertTime(song.duration)}
                                     ${progressbar(player)}
                                     ${pages[page]}
                                     `)
@@ -59,7 +59,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                     const embed2 = new MessageEmbed()
                         .setColor("GREEN")
                         .setDescription(`🎶 Currently playing ${song.title} requested from ${song.requester}
-                                    ${convertTime(song.duration)}
+                                    ${convertTime(player.position)} / ${convertTime(song.duration)}
                                     ${progressbar(player)}
                                     ${pages[page]}
                                     `)
