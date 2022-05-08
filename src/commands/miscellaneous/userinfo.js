@@ -15,12 +15,19 @@ module.exports = class help extends BaseCommand {
     async run(client, message) {
         let member = message.mentions.members.first() || message.member,
             user = member.user;
+        let color;
+
+        try {
+            color = member.roles.color.hexColor;
+        } catch(err) {
+            color = "WHITE";
+        }
 
         const diff = moment.duration(moment.utc().diff(user.createdTimestamp));
         let age = `${diff.years()} years ${diff.months()} months and ${diff.days()} days`;
 
         const sEmbed = new MessageEmbed()
-            .setColor(member.roles.color.hexColor)
+            .setColor(color)
             .setTitle(`Userinfo for ${user.username}`)
             .setThumbnail(user.avatarURL())
             .addField(`Username:`, user.username, true)
@@ -30,11 +37,11 @@ module.exports = class help extends BaseCommand {
             .addField(`Admin:`, member.permissions.has("ADMINISTRATOR") ? '✅' : '❌', true)
             .addField(`Bot:`, user.bot ? '✅' : '❌', true)
             .addField(`Created at:`, moment.utc(user.createdAt).format('DD.MM.YY') , true)
-            .addField(`Account age:`, age, true)
+            .addField(`Account age:`,
 
 
-            .setFooter({ text:`Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
-            .setTimestamp()
+             age, true).setFooter({ text:`Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
+            .setTimestamp();
         message.channel.send({embeds: [sEmbed]});
         message.delete();
     }

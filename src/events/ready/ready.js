@@ -4,6 +4,7 @@ require('dotenv').config({path: '../.env'});
 
 const guildCommandPrefixes = new Map();
 const guildSubReddits = new Map();
+const guildVolumes = new Map();
 
 /*
     © Jonas Krödel 2022
@@ -18,6 +19,8 @@ module.exports = class ReadyEvent extends BaseEvent {
     }
     async run(client) {
         console.log(client.user.tag + ' has logged in.');
+
+        // Start of checking if all Guild-Ids are in the database
         const ids = client.guilds.cache.map(g => g.id);
         let gids = [];
 
@@ -75,22 +78,29 @@ module.exports = class ReadyEvent extends BaseEvent {
                 }
             });
         }
+        // End of section
+        // Start of getting all data out of the database
 
         client.guilds.cache.forEach(guild => {
             StateManager.connection.query(
-                `SELECT cmdPrefix, subReddit FROM GuildConfigurable WHERE guildId = '${guild.id}'`
+                `SELECT cmdPrefix, subReddit, guildVolume FROM GuildConfigurable WHERE guildId = '${guild.id}'`
             ).then(result => {
                 const guildId = guild.id;
                 const prefix = result[0][0].cmdPrefix;
                 const subReddit = result[0][0].subReddit;
+                const guildVolume = result[0][0].guildVolume;
 
                 guildCommandPrefixes.set(guildId, prefix);
                 guildSubReddits.set(guildId, subReddit);
+                guildVolumes.set(guildId, guildVolume)
 
                 StateManager.emit('prefixFetched', guildId, prefix);
                 StateManager.emit('redditFetched', guildId, subReddit);
+                StateManager.emit('volumeFetched', guildId, guildVolume);
             }).catch(err => console.log(err));
         });
+        // End of section
+
         client.user.setActivity(`${process.env.PREFIX}help`, {type: 'LISTENING'});
     }
 }

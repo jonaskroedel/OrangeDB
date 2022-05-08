@@ -39,3 +39,7 @@ module.exports = class Subreddit extends BaseCommand {
 StateManager.on('redditFetched', (guildId, subReddit) => {
     guildSubReddits.set(guildId, subReddit);
 });
+
+StateManager.on('subUpdate', (guildId, subReddit) => {
+    guildSubReddits.set(guildId, subReddit);
+});

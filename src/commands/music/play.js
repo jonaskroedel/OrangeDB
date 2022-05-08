@@ -1,6 +1,9 @@
 const BaseCommand = require('../../utils/structures/BaseCommand');
 const {MessageEmbed} = require("discord.js");
 const {progressbar} = require("../../utils/progressbar");
+const StateManager = require("../../utils/StateManager");
+
+const guildVolumes = new Map();
 
 module.exports = class play extends BaseCommand {
     constructor() {
@@ -35,8 +38,13 @@ module.exports = class play extends BaseCommand {
             textChannel: message.channel.id,
         });
 
+        // console.log(res)
+
         // Connect to the voice channel and add the track to the queue
-        if (player && player.state !== "CONNECTED") player.connect();
+        if (player && player.state !== "CONNECTED") {
+            player.connect();
+            player.setVolume(guildVolumes.get(message.guild.id))
+        }
         player.queue.add(res.tracks[0]);
 
         // Checks if the client should play the track if it's the first one added
@@ -50,3 +58,10 @@ module.exports = class play extends BaseCommand {
         return message.channel.send({ embeds: [embed] });
     }
 }
+
+StateManager.on('volumeFetched', (guildId, subReddit) => {
+    guildVolumes.set(guildId, subReddit);
+});
+StateManager.on('volumeUpdate', (guildId, subReddit) => {
+    guildVolumes.set(guildId, subReddit);
+});

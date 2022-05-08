@@ -43,7 +43,6 @@ module.exports = class Reddit extends BaseCommand{
                 console.error(e);
                 message.reply(`<@${message.user.id}> r/${sub} does not exist. What the heck is this?`)
             })
-        message.delete();
     }
 }
 

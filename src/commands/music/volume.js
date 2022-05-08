@@ -3,6 +3,9 @@ const {MessageEmbed, MessageButton, MessageActionRow} = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
 const {convertTime} = require("../../utils/convert");
 const {progressbar} = require("../../utils/progressbar");
+const StateManager = require("../../utils/StateManager");
+
+const guildVolumes = new Map();
 
 module.exports = class LyrisCommand extends BaseCommand {
     constructor() {
@@ -36,6 +39,10 @@ module.exports = class LyrisCommand extends BaseCommand {
         }
 
         player.setVolume(volume);
+        await StateManager.connection.query(
+            `UPDATE GuildConfigurable SET guildVolume = '${volume}' WHERE guildId = '${message.guild.id}'`
+        );
+        StateManager.emit('volumeUpdate', message.guild.id, volume);
 
         if (volume) {
             let thing = new MessageEmbed()
@@ -51,3 +58,7 @@ module.exports = class LyrisCommand extends BaseCommand {
         }
     }
 }
+
+StateManager.on('volumeUpdate', (guildId, subReddit) => {
+    guildVolumes.set(guildId, subReddit);
+});

@@ -17,5 +17,6 @@ CREATE TABLE GuildConfigurable (
     guildId VARCHAR(100) NOT NULL PRIMARY KEY,
     cmdPrefix VARCHAR(10) DEFAULT 'o!',
     modLogId VARCHAR(100),
-    subReddit VARCHAR(100) DEFAULT 'meme'
+    subReddit VARCHAR(100) DEFAULT 'meme',
+    guildVolume INT(3) DEFAULT 100
 );
