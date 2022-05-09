@@ -9,8 +9,6 @@ module.exports = class help extends BaseCommand {
     constructor() {
         super('help', 'moderation', ['h', 'botinfo']);
         this.connection = StateManager.connection;
-
-
     }
 
     async run(client, message) {

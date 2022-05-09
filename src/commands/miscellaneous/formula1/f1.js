@@ -5,8 +5,7 @@ const StateManager = require("../../../utils/StateManager");
 const path = require('path');
 const {PythonShell} = require('python-shell');
 
-const mainpy = path.join(__dirname, 'main.py');
-let pyshell = new PythonShell(mainpy)
+const myPythonScript = path.join(__dirname, 'main.py');
 
 const guildCommandPrefixes = new Map();
 
@@ -17,18 +16,52 @@ module.exports = class f1 extends BaseCommand {
     }
 
     async run(client, message) {
+        const msgContent = [];
+        let pyshell = new PythonShell(myPythonScript);
 
-
-
-        pyshell.send(JSON.stringify(['VER', 2022, 'Q', 'Sakhir']));
+        pyshell.send(JSON.stringify(['NOR',2022,'Miami','R']));
 
         pyshell.on('message', function (message) {
+            // received a message sent from the Python script (a simple "print" statement)
             console.log(message);
+            msgContent.push(message);
         });
 
-        pyshell.end(function (err,code,signal) {
-            if (err) throw err;
+        // end the input stream and allow the process to exit
+        pyshell.end(async function (err) {
+            if (err) {
+                throw err;
+            }
+            ;
             console.log('finished');
+            let result;
+            let msg = '';
+
+            String.prototype.interpolate = function (params) {
+                const names = Object.keys(params);
+                const vals = Object.values(params);
+                return new Function(...names, `return \`${this}\`;`)(...vals);
+            }
+
+            for (let i = 0; i < msgContent.size; i++) {
+                const template = '${driverId}\\n';
+                result = template.interpolate({
+                    driverId: msgContent[i]
+                });
+
+                msg += result;
+            }
+
+            const sEmbed = new MessageEmbed()
+                .setTitle(`Requested driver id's`)
+                .addField(msg)
+                .setColor("RED")
+                .setFooter({
+                    text: `Requested by ${message.author.username}`,
+                    iconURL: message.author.displayAvatarURL({dynamic: true})
+                })
+                .setTimestamp();
+            await message.channel.send({embeds: [sEmbed]});
         });
     }
 }
