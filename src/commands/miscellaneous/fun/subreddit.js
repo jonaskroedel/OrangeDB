@@ -10,8 +10,6 @@ module.exports = class Subreddit extends BaseCommand {
     }
 
     async run(client, message, prefix) {
-
-
         const [cmdName, newSub] = message.content.slice(prefix.length).split(/\s+/);
 
         if (newSub && newSub.length <= 100) {

@@ -7,8 +7,6 @@ const {PythonShell} = require('python-shell');
 
 const myPythonScript = path.join(__dirname, 'main.py');
 
-const guildCommandPrefixes = new Map();
-
 module.exports = class f1 extends BaseCommand {
     constructor() {
         super('f1', 'formula1', ['formel1']);

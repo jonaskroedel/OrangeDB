@@ -20,3 +20,9 @@ CREATE TABLE GuildConfigurable (
     subReddit VARCHAR(100) DEFAULT 'meme',
     guildVolume INT(3) DEFAULT 100
 );
+
+CREATE TABLE GuildPlaylists (
+    guildId VARCHAR(100) NOT NULL PRIMARY KEY,
+    playlistName VARCHAR(100),
+    playlist BLOB
+);
