@@ -5,6 +5,7 @@ require('dotenv').config({path: '../.env'});
 const guildCommandPrefixes = new Map();
 const guildSubReddits = new Map();
 const guildVolumes = new Map();
+const guildWelcomes = new Map();
 
 /*
     © Jonas Krödel 2022
@@ -83,20 +84,23 @@ module.exports = class ReadyEvent extends BaseEvent {
 
         client.guilds.cache.forEach(guild => {
             StateManager.connection.query(
-                `SELECT cmdPrefix, subReddit, guildVolume FROM GuildConfigurable WHERE guildId = '${guild.id}'`
+                `SELECT cmdPrefix, subReddit, guildWelcome, guildVolume FROM GuildConfigurable WHERE guildId = '${guild.id}'`
             ).then(result => {
                 const guildId = guild.id;
                 const prefix = result[0][0].cmdPrefix;
                 const subReddit = result[0][0].subReddit;
                 const guildVolume = result[0][0].guildVolume;
+                const guildWelcome = result[0][0].guildWelcome;
 
                 guildCommandPrefixes.set(guildId, prefix);
                 guildSubReddits.set(guildId, subReddit);
                 guildVolumes.set(guildId, guildVolume)
+                guildWelcomes.set(guildId, guildWelcome)
 
                 StateManager.emit('prefixFetched', guildId, prefix);
                 StateManager.emit('redditFetched', guildId, subReddit);
                 StateManager.emit('volumeFetched', guildId, guildVolume);
+                StateManager.emit('welcomeFetched', guildId, guildWelcome);
             }).catch(err => console.log(err));
         });
         // End of section

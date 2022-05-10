@@ -1,7 +1,7 @@
 require('dotenv').config({path: '../.env'});
 const {Client, Intents, Collection} = require('discord.js');
 const { Manager } = require('erela.js');
-const client = new Client({intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES", "GUILD_VOICE_STATES"]});
+const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MEMBERS]});
 const { registerCommands, registerEvents, registerMusicEvents } = require('./utils/register');
 
 /*

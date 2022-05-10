@@ -1,4 +1,4 @@
-const {Client, Intents, MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
+const {Client, Intents, MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu} = require('discord.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES"]});
 const BaseCommand = require("../../utils/structures/BaseCommand");
 const StateManager = require("../../utils/StateManager");
@@ -25,6 +25,7 @@ module.exports = class help extends BaseCommand {
             })
             .setTimestamp()
             .setDescription(`**${prefix}help** -- shows this page
+                            **${prefix}reddit** -- sends a meme from the default reddit or custom one
                             
                             Interactive help page, click on the buttons below to access the help page for the respective category
                             You can find a detailed information sheet with all commands [here](https://github.com/jonaskroedel/OrangeDB/blob/master/COMMANDS.md#detailed-page-for-all-commands).
@@ -96,6 +97,7 @@ module.exports = class help extends BaseCommand {
                                     **${prefix}clear [amount]** -- clears [amount] of messages in the current channel
                                     **${prefix}clearchannel** -- clears the whole channel
                                     **${prefix}subreddit [subreddit]** -- changes the default subreddit
+                                    **${prefix}welcome [channel]** -- changes the default welcome channel (there is no standart-set welcome channel)
                                     `);
 
                 await msg.edit({
@@ -125,6 +127,7 @@ module.exports = class help extends BaseCommand {
                                     **${prefix}skip** -- skips the queue to the next song
                                     **${prefix}queue** -- shows the current queue
                                     **${prefix}now** -- shows the current song
+                                    **${prefix}loop [track/queue]** -- loops either track or queue
                                     **${prefix}remove [number]** -- clears the [number] song in the queue
                                     **${prefix}lyrics** -- shows the lyrics to the song
                                     **${prefix}clearqueue** -- clears the whole queue

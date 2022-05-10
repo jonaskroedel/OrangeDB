@@ -40,25 +40,27 @@
 
 ## Main
 
-There is only one _main_ command
+Orange supports currently ``2`` commands in the Category Main
 
 - ``o!help`` With this command you get the interactive help page.
+- ``o!reddit []`` With this command you can send either a meme from the default subreddit or a custom one. Example command: `o!reddit discordapp` _Sends a meme from r/discordapp_ 
 
 ## Moderation
 
-Orange supports currently ``6`` commands in the Category Moderation
+Orange supports currently ``7`` commands in the Category Moderation
 
 - ``o!prefix`` With this command you can change the bots prefix from your current Server. Example command: `o!prefix --` _prefix changed to `--`_
 - ``o!ping`` With this command you can show the latency from this bot.
 - ``o!userinfo`` With this command you get an embed with some userinfos from you, or the mentioned member. Example command: `o!userinfo @mentioned_user` _sends a embed with the userinfos from @mentioned_user_
 - ``o!clear []`` With this command you can clear a certain amount of messages in your current channel. Example command: `o!clear 99` _cleared 99 messages_
 - ``o!clearchannel`` With this command you can delete a whole Channel. (Channel gets cloned an the old one deleted).
-- ``o!subreddit []`` With this command you can change the bots subreddit from your current server. Example command: `o!subreddit reddithelp` _r/reddithelp is now your current subreddit_
+- ``o!subreddit []`` With this command you can change the bots default subreddit from your current server. Example command: `o!subreddit reddithelp` _r/reddithelp is now your current subreddit_
+- ``o!welcome`` With this command you can change the bots default welcome channel from your current server. Example command: `o!welcome #welcome-channel` _Updated guild default welcome channel to #welcome-channel_
 
 
 ## Music
 
-Orange supports currently ``14`` commands in the Category Music
+Orange supports currently ``16`` commands in the Category Music
 
 - ``o!join`` With this command Orange joins your current Voice-Channel.
 - ``o!play []`` With this command Orange plays the Song you provided via Link or Name. Example command:  `o!play Never gonna give you up` _Never gonna give you up - Rick Astley is now playing_
@@ -68,6 +70,7 @@ Orange supports currently ``14`` commands in the Category Music
 - ``o!24/7`` With this command you can enable the 24/7 mode.
 - ``o!autoplay`` With this command you can enable autoplay. (Currently in development. Only adds one song.)
 - ``o!skip`` With this command you can skip the current song.
+- ``o!loop`` With this command you can either loop the track or queue. Example command: `o!loop track` _looping track_ / `o!loop queue` _looping queue_
 - ``o!queue`` With this command you get an embed with the current songs in the queue.
 - ``o!now`` With this command you get the current song playing.
 - ``o!remove []`` With this command you can remove a song in your queue. Example command: `o!remove 3` _Removed third Song in the current queue_

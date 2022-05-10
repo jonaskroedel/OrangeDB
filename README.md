@@ -55,10 +55,10 @@ You can find a detailed information sheet with all commands [here](https://githu
 
 ## Features
 
-``21`` commands across ``3`` different categories!
+``25`` commands across ``3`` different categories!
 
-- ``fun`` commands like `reddit`, `reddit [custom subreddit]` 
-- ``moderation`` commands like `clear`, `clearchannel`, `prefix` and `userinfo`
+- ``main`` commands like `meme`, `help` 
+- ``moderation`` commands like `clear`, `clearchannel`, `prefix`, `userinfo` and much more
 - ``music`` commands like `play`, `lyrics`, `24/7`, `autoplay`, `skip` and much more
 
 ## Installation
