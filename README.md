@@ -78,6 +78,7 @@ npm install dotenv --save
 npm install --save mysql2
 npm install got@11.8.3
 npm install lyrics-finder
+npm install canvas
 ````
 
 to get all the dependencies and packages. You need [Node.js](https://nodejs.org/) and [MySQL](https://www.mysql.com/) installed. I highly recommend to install [nodemon](https://www.npmjs.com/package/nodemon) as it makes testing *much* easier.

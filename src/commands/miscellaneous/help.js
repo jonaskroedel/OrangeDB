@@ -1,5 +1,4 @@
 const {Client, Intents, MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu} = require('discord.js');
-const client = new Client({intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES"]});
 const BaseCommand = require("../../utils/structures/BaseCommand");
 const StateManager = require("../../utils/StateManager");
 

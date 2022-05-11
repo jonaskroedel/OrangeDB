@@ -8,18 +8,11 @@
       <jdbc-url>jdbc:mysql://orangedb.clu7hsdfw25e.eu-central-1.rds.amazonaws.com:3306/orangedb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="altorangedb@localhost" uuid="5cd144f6-0ba0-4f30-9d39-bdf14319eec8">
+    <data-source source="LOCAL" name="orangedb@localhost" uuid="5cd144f6-0ba0-4f30-9d39-bdf14319eec8">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/altorangedb</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="orangedb@192.168.1.101" uuid="c709624a-65e2-44f3-91a9-e54ce2bd492d">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://192.168.1.101:3306/orangedb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
