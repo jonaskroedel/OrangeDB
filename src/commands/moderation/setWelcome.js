@@ -53,7 +53,7 @@ module.exports = class Welcome extends BaseCommand {
                     return message.channel.send(`Failed to update default welcome channel to **${newWel}**!`);
                 }
             } else {
-                return message.channel.send(`Current Welcome Channel: <#${newWel}>`);
+                return message.channel.send(`Current Welcome channel: <#${newWel}>`);
             }
         } else {
             return message.channel.send(`You do not have permission to use that command!`);
@@ -68,3 +68,6 @@ StateManager.on('welcomeFetched', (guildId, guildWelcome) => {
 StateManager.on('welcomeUpdate', (guildId, guildWelcome) => {
     guildWelcomes.set(guildId, guildWelcome);
 });
+
+
+

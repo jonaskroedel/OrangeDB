@@ -6,6 +6,7 @@ const guildCommandPrefixes = new Map();
 const guildSubReddits = new Map();
 const guildVolumes = new Map();
 const guildWelcomes = new Map();
+const guildWelcomeMSG = new Map();
 
 /*
     © Jonas Krödel 2022
@@ -94,8 +95,8 @@ module.exports = class ReadyEvent extends BaseEvent {
 
                 guildCommandPrefixes.set(guildId, prefix);
                 guildSubReddits.set(guildId, subReddit);
-                guildVolumes.set(guildId, guildVolume)
-                guildWelcomes.set(guildId, guildWelcome)
+                guildVolumes.set(guildId, guildVolume);
+                guildWelcomes.set(guildId, guildWelcome);
 
                 StateManager.emit('prefixFetched', guildId, prefix);
                 StateManager.emit('redditFetched', guildId, subReddit);

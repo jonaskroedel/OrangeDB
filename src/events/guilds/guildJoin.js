@@ -24,58 +24,61 @@ module.exports = class GuildMemberAddEvent extends BaseEvent {
     }
 
     async run(client, member) {
-        const applyText = (canvas, text) => {
-            const context = canvas.getContext('2d');
-            // Declare a base size of the font
-            let fontSize = 70;
-            do {
-                // Assign the font to the context and decrement it so it can be measured again
-                context.font = `${fontSize -= 5}px sans-serif`;
-                // Compare pixel width of the text to the canvas minus the approximate avatar size
-            } while (context.measureText(text).width > canvas.width - 300);
-            // Return the result to use in the actual canvas
-            return context.font;
-        };
-        const applyStroke = (canvas, text) => {
-            const context = canvas.getContext('2d');
-            // Declare a base size of the font
-            let strokeSize = 1;
-            do {
-                // Assign the font to the context and decrement it so it can be measured again
-                context.lineWidth = strokeSize -= 0.1;
-                // Compare pixel width of the text to the canvas minus the approximate avatar size
-            } while (context.measureText(text).width > canvas.width - 300);
-            // Return the result to use in the actual canvas
-            return context.lineWidth;
-        };
-
         if (guildWelcomes.get(member.guild.id)) {
-            const canvas = Canvas.createCanvas(700, 250);
-            const context = canvas.getContext('2d');
-            const background = await Canvas.loadImage(img)
-            context.drawImage(background, 0, 0, canvas.width, canvas.height);
+            if (member.guild.channels.cache.get(guildWelcomes.get(member.guild.id)) !== undefined) {
 
-            context.font = applyText(canvas, member.user.username);
-            context.fillStyle = '#ffffff';
-            context.strokeStyle = '#000000';
-            context.lineWidth = applyStroke(canvas, member.user.username)
-            context.fillText(member.user.username, canvas.width / 2.5, canvas.height / 1.8);
-            context.strokeText(member.user.username, canvas.width / 2.5, canvas.height / 1.8);
+                let text = member.user.username;
 
-            context.font = '28px sans-serif';
-            context.fillStyle = '#ffffff';
-            context.fillText('joined the server!', canvas.width / 2.5, canvas.height / 1.3);
+                if (text.length > 16) {
+                    text = text.slice(0, 16) + "...";
+                }
 
-            context.beginPath();
-            context.arc(125, 125, 100, 0, Math.PI * 2, true);
-            context.closePath();
-            context.clip();
-            const avatar = await Canvas.loadImage(member.user.displayAvatarURL({format: 'jpg'}));
-            context.drawImage(avatar, 25, 25, 200, 200);
+                const canvas = Canvas.createCanvas(700, 400);
+                const context = canvas.getContext('2d');
+                const background = await Canvas.loadImage(img)
+                context.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-            const attachment = new MessageAttachment(canvas.toBuffer(), 'profile-image.png');
+                const textWidth = context.measureText(text).width;
 
-            client.channels.cache.get(guildWelcomes.get(member.guild.id)).send( {content: `Welcome 👋 ${member}, have a great stay!`, files: [attachment] });
+                context.font = '60px sans-serif';
+                context.fillStyle = '#ffffff';
+                context.strokeStyle = '#ffffff';
+                // context.lineWidth = applyStroke(canvas, message.member.user.username)
+                context.textAlign = 'center';
+                context.fillText(text, canvas.width / 2, 300);
+                context.strokeText(text, canvas.width / 2, 300);
+
+                context.beginPath();
+                context.globalAlpha = 0.08;
+                context.rect(10, 10, 680, 380);
+                context.fill();
+                context.closePath();
+
+                context.beginPath();
+                context.globalAlpha = 1;
+                context.arc(350, 130, 103, 0, Math.PI * 2, true)
+                context.fill('#ffffff');
+                context.closePath();
+
+                context.font = '28px sans-serif';
+                context.fillStyle = '#ffffff';
+                context.textAlign = 'center';
+                context.fillText('joined the server!', canvas.width / 2, 350);
+
+                context.beginPath();
+                context.arc(350, 130, 100, 0, Math.PI * 2, true);
+                context.closePath();
+                context.clip();
+                const avatar = await Canvas.loadImage(member.user.displayAvatarURL({format: 'jpg'}));
+                context.drawImage(avatar, 250, 30, 200, 200);
+
+                const attachment = new MessageAttachment(canvas.toBuffer(), 'card.png');
+
+                client.channels.cache.get(guildWelcomes.get(member.guild.id)).send({
+                    content: `Welcome 👋 ${member}, have a great stay!`,
+                    files: [attachment]
+                });
+            }
         }
     }
 }
