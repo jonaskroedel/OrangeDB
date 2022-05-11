@@ -63,7 +63,7 @@ You can find a detailed information sheet with all commands [here](https://githu
 <h4 align="center">
 Welcome Message:
 
-    <a href="https://github.com/jonaskroedel/OrangeDB"><img src="./images/ScreenShot-WelcomeMSG.png"></a>
+    <a href="#"><img src="./images/ScreenShot-WelcomeMSG.png"></a>
 </h4>
 
 ## Installation
