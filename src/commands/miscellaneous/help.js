@@ -96,7 +96,7 @@ module.exports = class help extends BaseCommand {
                                     **${prefix}clear [amount]** -- clears [amount] of messages in the current channel
                                     **${prefix}clearchannel** -- clears the whole channel
                                     **${prefix}subreddit [subreddit]** -- changes the default subreddit
-                                    **${prefix}welcome [channel]** -- changes the default welcome channel (there is no standart-set welcome channel)
+                                    **${prefix}welcome [channel] / remove** -- adds, changes or deletes the default welcome channel
                                     `);
 
                 await msg.edit({

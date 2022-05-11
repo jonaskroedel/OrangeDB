@@ -26,18 +26,27 @@ module.exports = class GuildMemberAddEvent extends BaseEvent {
     async run(client, member) {
         const applyText = (canvas, text) => {
             const context = canvas.getContext('2d');
-
             // Declare a base size of the font
             let fontSize = 70;
-
             do {
                 // Assign the font to the context and decrement it so it can be measured again
-                context.font = `${fontSize -= 10}px sans-serif`;
+                context.font = `${fontSize -= 5}px sans-serif`;
                 // Compare pixel width of the text to the canvas minus the approximate avatar size
             } while (context.measureText(text).width > canvas.width - 300);
-
             // Return the result to use in the actual canvas
             return context.font;
+        };
+        const applyStroke = (canvas, text) => {
+            const context = canvas.getContext('2d');
+            // Declare a base size of the font
+            let strokeSize = 1;
+            do {
+                // Assign the font to the context and decrement it so it can be measured again
+                context.lineWidth = strokeSize -= 0.1;
+                // Compare pixel width of the text to the canvas minus the approximate avatar size
+            } while (context.measureText(text).width > canvas.width - 300);
+            // Return the result to use in the actual canvas
+            return context.lineWidth;
         };
 
         if (guildWelcomes.get(member.guild.id)) {
@@ -49,7 +58,7 @@ module.exports = class GuildMemberAddEvent extends BaseEvent {
             context.font = applyText(canvas, member.user.username);
             context.fillStyle = '#ffffff';
             context.strokeStyle = '#000000';
-            context.lineWidth = 2;
+            context.lineWidth = applyStroke(canvas, member.user.username)
             context.fillText(member.user.username, canvas.width / 2.5, canvas.height / 1.8);
             context.strokeText(member.user.username, canvas.width / 2.5, canvas.height / 1.8);
 
