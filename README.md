@@ -60,11 +60,6 @@ You can find a detailed information sheet with all commands [here](https://githu
 - ``main`` commands like `meme`, `help` 
 - ``moderation`` commands like `clear`, `clearchannel`, `prefix`, `userinfo` and much more
 - ``music`` commands like `play`, `lyrics`, `24/7`, `autoplay`, `skip` and much more
-<h4 align="center">
-Welcome Message:
-
-    <a href="#"><img src="./images/ScreenShot-WelcomeMSG.png"></a>
-</h4>
 
 ## Installation
 
