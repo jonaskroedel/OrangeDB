@@ -68,7 +68,7 @@ Orange supports currently ``16`` commands in the Category Music
 - ``o!resume`` With this command you can resume the current paused song.
 - ``o!stop`` With this command you can stop the current song (Can't be resumed anymore).
 - ``o!24/7`` With this command you can enable the 24/7 mode.
-- ``o!autoplay`` With this command you can enable autoplay. (Currently in development. Only adds one song.)
+- ``o!autoplay`` With this command you can enable autoplay.
 - ``o!skip`` With this command you can skip the current song.
 - ``o!loop`` With this command you can either loop the track or queue. Example command: `o!loop track` _looping track_ / `o!loop queue` _looping queue_
 - ``o!queue`` With this command you get an embed with the current songs in the queue.

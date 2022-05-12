@@ -12,21 +12,21 @@ module.exports = class Reddit extends BaseCommand{
         this.connection = StateManager.connection;
     }
 
-    async run(client, message, prefix) {
+    async run(client, message, args) {
         if (message.author.bot) return;
         const guildReddit = guildSubReddits.get(message.guild.id);
 
 
         await message.react('📝')
-        const [cmdName, cmdArgs] = message.content.slice(prefix.length).split(/\s+/);
         let sub;
-        cmdArgs ? sub = cmdArgs : sub = guildReddit;
+        args[0] ? sub = args[0] : sub = guildReddit;
 
 
         const sEmbed = new MessageEmbed()
         let link = `https://www.reddit.com/r/${sub}/random.json`
         got(link)
             .then(response => {
+
                 const [list] = JSON.parse(response.body)
                 const [post] = list.data.children
                 sEmbed.setTitle(`r/${sub} • ${post.data.title} ${post.data.over_18 ? '• NSFW' : ''}`)
@@ -41,7 +41,7 @@ module.exports = class Reddit extends BaseCommand{
             })
             .catch(e => {
                 console.error(e);
-                message.reply(`<@${message.user.id}> r/${sub} does not exist. What the heck is this?`)
+                message.reply(`${message.member} r/${sub} does not exist. What the heck is this?`)
             })
     }
 }

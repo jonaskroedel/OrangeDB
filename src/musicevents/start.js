@@ -1,4 +1,5 @@
 const BaseEvent = require('../utils/structures/BaseEvent');
+const {Client, MessageEmbed, Intents} = require("discord.js");
 
 /*
     © Jonas Krödel 2022
@@ -11,8 +12,18 @@ module.exports = class TrackStartEvent extends BaseEvent {
         super('trackStart');
     }
 
-    async run (client, player, track) {
-        // player.textChannel.send(`Now playing: ${track.title}`);
+    async run (client, player) {
+        const guildId = player.guild
+        let track = parseInt(Math.random() * 3);
+
+        if (player.get('autoplay')) {
+            const identifier = player.queue.current.identifier;
+            player.set("requester", "autoplay");
+            player.set("identifier", identifier);
+            const search = `https://www.youtube.com/watch?v=${identifier}&list=RD${identifier}`;
+            let res = await player.search(search, 'autoplay');
+            player.queue.add(res.tracks[track]);
+        }
 
     }
 }

@@ -23,8 +23,7 @@ module.exports = class help extends BaseCommand {
             color = "WHITE";
         }
 
-        const diff = moment.duration(moment.utc().diff(user.createdTimestamp));
-        let age = `${diff.years()} years ${diff.months()} months and ${diff.days()} days`;
+        const flags = user.flags.toArray();
 
         const sEmbed = new MessageEmbed()
             .setColor(color)
@@ -37,10 +36,7 @@ module.exports = class help extends BaseCommand {
             .addField(`Admin:`, member.permissions.has("ADMINISTRATOR") ? '✅' : '❌', true)
             .addField(`Bot:`, user.bot ? '✅' : '❌', true)
             .addField(`Created at:`, moment.utc(user.createdAt).format('DD.MM.YY') , true)
-            .addField(`Account age:`,
-
-
-             age, true).setFooter({ text:`Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
+            .setFooter({ text:`Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
             .setTimestamp();
         message.channel.send({embeds: [sEmbed]});
         message.delete();

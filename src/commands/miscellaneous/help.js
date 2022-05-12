@@ -122,7 +122,7 @@ module.exports = class help extends BaseCommand {
                                     **${prefix}resume** -- resumes the current song
                                     **${prefix}stop** -- stops the song
                                     **${prefix}24/7** -- plays music 24/7 (music must be given)
-                                    **${prefix}autoplay** -- adds appropriate songs to the queue (still in development)
+                                    **${prefix}autoplay** -- adds appropriate songs to the queue
                                     **${prefix}skip** -- skips the queue to the next song
                                     **${prefix}queue** -- shows the current queue
                                     **${prefix}now** -- shows the current song

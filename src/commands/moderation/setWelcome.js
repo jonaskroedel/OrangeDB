@@ -9,20 +9,19 @@ module.exports = class Welcome extends BaseCommand {
         this.connection = StateManager.connection;
     }
 
-    async run(client, message, prefix) {
-        const [cmdName, cmdArgs] = message.content.slice(prefix.length).split(/\s+/);
+    async run(client, message, args) {
 
         let newWel = guildWelcomes.get(message.guild.id);
-        if (message.mentions.channels.first()) {
-            newWel = message.mentions.channels.first().id;
-        }
         if (!message.mentions.channels.first()) {
             if (!guildWelcomes.get(message.guild.id)) {
                 return message.channel.send('No Welcome channel defined.')
             }
-        }
-        if (message.member.permissions.has("MANAGE_GUILD")) {
-            if (cmdArgs === 'remove' || cmdArgs === 'delete' || cmdArgs === 'del') {
+        } else newWel = message.mentions.channels.first().id;
+
+        if (!message.member.permissions.has("MANAGE_GUILD")) {
+            return message.channel.send(`You do not have permission to use that command!`);
+        } else {
+            if (['remove', 'delete', 'clear'].includes(args)) {
                 try {
                     await StateManager.connection.query(
                         `UPDATE GuildConfigurable
@@ -38,7 +37,9 @@ module.exports = class Welcome extends BaseCommand {
                 }
             }
 
-            if (message.mentions.channels.first()) {
+            if (!message.mentions.channels.first()) {
+                return message.channel.send(`Current Welcome channel: <#${newWel}>`);
+            } else {
                 try {
                     await StateManager.connection.query(
                         `UPDATE GuildConfigurable
@@ -52,11 +53,7 @@ module.exports = class Welcome extends BaseCommand {
                     console.log(err);
                     return message.channel.send(`Failed to update default welcome channel to **${newWel}**!`);
                 }
-            } else {
-                return message.channel.send(`Current Welcome channel: <#${newWel}>`);
             }
-        } else {
-            return message.channel.send(`You do not have permission to use that command!`);
         }
     }
 }

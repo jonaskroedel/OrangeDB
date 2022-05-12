@@ -22,10 +22,11 @@ module.exports = class clearQueue extends BaseCommand {
             }
 
             player.queue.clear();
+            player.set("autoplay", false);
 
             const embed = new MessageEmbed()
                 .setColor("RED")
-                .setDescription(`Queue cleared.`);
+                .setDescription(`Queue cleared and autoplay disabled!`);
             return message.channel.send({embeds: [embed]});
         }
         message.channel.send('There is no active music bot.')

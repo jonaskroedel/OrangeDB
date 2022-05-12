@@ -16,8 +16,10 @@ module.exports = class clearChannel extends BaseCommand {
             await message.reply(`${channel} gets cleared in \`5 seconds\` -> new channel: ${nchannel}`);
             let msg1 = await nchannel.send(`<@${message.member.id}> new channel here`);
             setTimeout(() => {
-                channel.delete();
                 msg1.delete();
+            }, 4000);
+            setTimeout(() => {
+                channel.delete();
             }, 5000);
         } else {
             await message.channel.send("You don't have enough permissions to execute this command!");
