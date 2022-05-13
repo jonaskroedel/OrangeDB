@@ -55,7 +55,7 @@ You can find a detailed information sheet with all commands [here](https://githu
 
 ## Features
 
-``25`` commands across ``3`` different categories!
+``27`` commands across ``3`` different categories!
 
 - ``main`` commands like `meme`, `help` 
 - ``moderation`` commands like `clear`, `clearchannel`, `prefix`, `userinfo` and much more

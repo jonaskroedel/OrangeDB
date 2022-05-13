@@ -60,7 +60,7 @@ Orange supports currently ``7`` commands in the Category Moderation
 
 ## Music
 
-Orange supports currently ``16`` commands in the Category Music
+Orange supports currently ``18`` commands in the Category Music
 
 - ``o!join`` With this command Orange joins your current Voice-Channel.
 - ``o!play []`` With this command Orange plays the Song you provided via Link or Name. Example command:  `o!play Never gonna give you up` _Never gonna give you up - Rick Astley is now playing_
@@ -70,8 +70,10 @@ Orange supports currently ``16`` commands in the Category Music
 - ``o!24/7`` With this command you can enable the 24/7 mode.
 - ``o!autoplay`` With this command you can enable autoplay.
 - ``o!skip`` With this command you can skip the current song.
+- ``o!skipTo []`` With this command you can skip to a specific song.
 - ``o!loop`` With this command you can either loop the track or queue. Example command: `o!loop track` _looping track_ / `o!loop queue` _looping queue_
 - ``o!queue`` With this command you get an embed with the current songs in the queue.
+- ``o!shuffle`` With this command you can shuffle the queue.
 - ``o!now`` With this command you get the current song playing.
 - ``o!remove []`` With this command you can remove a song in your queue. Example command: `o!remove 3` _Removed third Song in the current queue_
 - ``o!lyrics`` With this command you get the lyrics to the current song.

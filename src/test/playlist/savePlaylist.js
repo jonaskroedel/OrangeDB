@@ -4,36 +4,20 @@
 //
 // module.exports = class twentyforseven extends BaseCommand {
 //     constructor() {
-//         super('saveplaylist', 'music', ['plsave', 'pl']);
+//         super('save', 'playlist', []);
 //         this.connection = StateManager.connection;
 //     }
-//     async run (client, message, prefix) {
+//     async run (client, message, prefix, args) {
 //
-//         const player = message.client.manager.players.get(message.guild.id);
-//         if (player && player.state === "CONNECTED") {
-//
-//             const [command, ...args] = message.content.slice(prefix.length).split(/\s+/);
-//             let playlistName = args.join(" ")
-//
-//
-//
-//
-//
-//             if (args.length === 0) {
-//                 const embed = new MessageEmbed()
-//                     .setColor(`RED`)
-//                     .setDescription(`You need to choose a name for your playlist`);
-//                 return message.channel.send({embeds: [embed]});
-//             }
-//             const playlist = [];
-//             if (0 < args <= 100) {
-//                 // await StateManager.connection.query(
-//                 //     `INSERT INTO guildplaylists VALUES ('${message.guild.id}', '${playlistName}', '${JSON.stringify(playlist)}')`
-//                 // );
-//                 console.log(player.queue.current)
-//             }
-//
+//         const Name = args[0].replace(/_/g, ' ');
+//         const player = message.client.manager.get(message.guild.id);
+//         if (!player.queue.current) {
+//             let thing = new MessageEmbed()
+//                 .setColor("RED")
+//                 .setDescription('❌ There is no active Music Bot');
+//             return message.channel.send({ embeds: [thing] });
 //         }
-//         else message.channel.send('There is no active music bot.')
+//
+//
 //     }
 // }

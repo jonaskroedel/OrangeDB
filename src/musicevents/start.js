@@ -14,7 +14,7 @@ module.exports = class TrackStartEvent extends BaseEvent {
 
     async run (client, player) {
         const guildId = player.guild
-        let track = parseInt(Math.random() * 3);
+        let track = parseInt((Math.random() * 15) + 5);
 
         if (player.get('autoplay')) {
             const identifier = player.queue.current.identifier;

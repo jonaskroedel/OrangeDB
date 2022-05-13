@@ -24,7 +24,8 @@ CREATE TABLE GuildConfigurable (
 );
 
 CREATE TABLE GuildPlaylists (
-    guildId VARCHAR(100) NOT NULL PRIMARY KEY,
-    playlistName VARCHAR(100),
-    playlist BLOB
+    username varchar(32),
+    userId varchar(100) NOT NULL PRIMARY KEY,
+    playlistName varchar(20) NOT NULL,
+    playlist 
 );

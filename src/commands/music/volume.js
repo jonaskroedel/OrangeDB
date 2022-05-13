@@ -47,13 +47,7 @@ module.exports = class LyrisCommand extends BaseCommand {
         if (volume) {
             let thing = new MessageEmbed()
                 .setColor("GREEN")
-                .setDescription(`🔊 Volume set to: **${volume}%**`)
-            if (volume === 69) {
-                const msg = await message.reply('👌 Nice!');
-                setTimeout(() => {
-                    msg.delete()
-                }, 69);
-            }
+                .setDescription(`🔊 Volume set to: **${volume}%**`);
             return message.channel.send({embeds: [thing]});
         }
     }

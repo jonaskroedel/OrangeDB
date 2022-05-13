@@ -45,7 +45,12 @@ module.exports = class help extends BaseCommand {
             .setLabel('main')
             .setStyle('PRIMARY');
 
-        const row1 = new MessageActionRow().addComponents([mainBut, modBut, musicBut])
+        const github = new MessageButton()
+            .setLabel('GitHub')
+            .setStyle("LINK")
+            .setURL('https://github.com/jonaskroedel/orangedb#readme')
+
+        const row1 = new MessageActionRow().addComponents([mainBut, modBut, musicBut, github])
 
         const msg = await message.channel.send({
             embeds: [mainEmbed],
@@ -124,7 +129,9 @@ module.exports = class help extends BaseCommand {
                                     **${prefix}24/7** -- plays music 24/7 (music must be given)
                                     **${prefix}autoplay** -- adds appropriate songs to the queue
                                     **${prefix}skip** -- skips the queue to the next song
+                                    **${prefix}skipTo [number]** -- skips the queue to the requested song 
                                     **${prefix}queue** -- shows the current queue
+                                    **${prefix}shuffle** -- shuffles the queue
                                     **${prefix}now** -- shows the current song
                                     **${prefix}loop [track/queue]** -- loops either track or queue
                                     **${prefix}remove [number]** -- clears the [number] song in the queue
