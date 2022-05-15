@@ -55,11 +55,12 @@ You can find a detailed information sheet with all commands [here](https://githu
 
 ## Features
 
-``27`` commands across ``3`` different categories!
+``33`` commands across ``4`` different categories!
 
 - ``main`` commands like `meme`, `help` 
 - ``moderation`` commands like `clear`, `clearchannel`, `prefix`, `userinfo` and much more
 - ``music`` commands like `play`, `lyrics`, `24/7`, `autoplay`, `skip` and much more
+- ``playlist`` commands like `create`, `load` and much more!
 
 ## Installation
 

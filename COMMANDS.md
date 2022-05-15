@@ -40,14 +40,14 @@
 
 ## Main
 
-Orange supports currently ``2`` commands in the Category Main
+Orange supports currently ``2`` commands in the category Main
 
 - ``o!help`` With this command you get the interactive help page.
 - ``o!reddit []`` With this command you can send either a meme from the default subreddit or a custom one. Example command: `o!reddit discordapp` _Sends a meme from r/discordapp_ 
 
 ## Moderation
 
-Orange supports currently ``7`` commands in the Category Moderation
+Orange supports currently ``7`` commands in the category Moderation
 
 - ``o!prefix`` With this command you can change the bots prefix from your current Server. Example command: `o!prefix --` _prefix changed to `--`_
 - ``o!ping`` With this command you can show the latency from this bot.
@@ -60,7 +60,7 @@ Orange supports currently ``7`` commands in the Category Moderation
 
 ## Music
 
-Orange supports currently ``18`` commands in the Category Music
+Orange supports currently ``18`` commands in the category Music
 
 - ``o!join`` With this command Orange joins your current Voice-Channel.
 - ``o!play []`` With this command Orange plays the Song you provided via Link or Name. Example command:  `o!play Never gonna give you up` _Never gonna give you up - Rick Astley is now playing_
@@ -80,3 +80,14 @@ Orange supports currently ``18`` commands in the Category Music
 - ``o!clearqueue`` With this command you can clear the whole channel. Note: the channel just gets cloned!
 - ``o!volume`` With this command you can set the Volume of Orange. Example command: `o!volume 50` _Volume set to: **50%**_
 - ``o!leave`` With this command Orange leaves the Voice-Channel.
+
+
+## Playlist
+
+Orange supports currently ``5`` command in the category Playlist
+
+- ``o!create []`` With this command you can create an empty playlist.
+- ``o!playlists`` With this command you can show all of your playlists.
+- ``o!save []`` With this command you can save your current queue to your playlist.
+- ``o!load []`` With this command you can load your saved playlist.
+- ``o!delete []`` With this command you can delete your playlist.

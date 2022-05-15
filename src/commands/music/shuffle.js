@@ -20,7 +20,7 @@ module.exports = class StopCommand extends BaseCommand {
         let thing = new MessageEmbed()
             .setDescription(`Shuffled the queue`)
             .setColor("GREEN")
-        return message.reply({embeds: [thing]});
+        return message.channel.send({embeds: [thing]});
 
     }
 }

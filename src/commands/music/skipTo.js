@@ -21,8 +21,8 @@ module.exports = class SkipCommand extends BaseCommand {
         if (!position || position < 0 || position > player.queue.size) {
             let thing = new MessageEmbed()
                 .setColor("RED")
-                .setDescription(`Usage: ${message.client.prefix}skipto <Number of song in queue>`)
-            return message.reply({embeds: [thing]});
+                .setDescription(`You need to give a number smaller or equal to your queue size!`)
+            return message.channel.send({embeds: [thing]});
         }
 
         player.queue.remove(0, position - 1);
@@ -31,7 +31,7 @@ module.exports = class SkipCommand extends BaseCommand {
         let thing = new MessageEmbed()
             .setDescription(`Forward **${position}** Songs`)
             .setColor("GREEN")
-        return message.reply({embeds: [thing]});
+        return message.channel.send({embeds: [thing]});
 
     }
 }

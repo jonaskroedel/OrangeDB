@@ -11,7 +11,7 @@ module.exports = class Subreddit extends BaseCommand {
 
     async run(client, message, args) {
         let newSub = args[0];
-        if (!args[0] && !args[0] <= 100) {
+        if (!args[0] && args[0] <= 100) {
             return message.channel.send(`Current Subreddit: **r/${guildSubReddits.get(message.guild.id)}**`);
         } else {
             try {

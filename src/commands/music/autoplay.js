@@ -32,7 +32,8 @@ module.exports = class JoinCommand extends BaseCommand {
                 player.set("identifier", identifier);
                 const search = `https://www.youtube.com/watch?v=${identifier}&list=RD${identifier}`;
                 let res = await player.search(search, message.author);
-                player.queue.add(res.tracks[1]);
+                let track = parseInt((Math.random() * 15) + 5);
+                player.queue.add(res.tracks[track]);
                 let thing = new MessageEmbed()
                     .setColor('GREEN')
                     .setDescription(`${emojiautoplay} Autoplay on`);

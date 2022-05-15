@@ -39,9 +39,9 @@ module.exports = class Reddit extends BaseCommand{
 
                 message.channel.send({embeds: [sEmbed]});
             })
-            .catch(e => {
-                console.error(e);
-                message.reply(`${message.member} r/${sub} does not exist. What the heck is this?`)
+            .catch(err => {
+                console.error(err);
+                message.channel.send(`${message.member} r/${sub} does not exist. What the heck is this?`)
             })
     }
 }
