@@ -23,10 +23,10 @@ CREATE TABLE GuildConfigurable (
     guildVolume INT(3) DEFAULT 100
 );
 
-CREATE TABLE Playlists (
-    guildId VARCHAR(100) NOT NULL,
+create table playlists (
+    guildId varchar(100) not null,
     username varchar(32),
-    userId varchar(100) NOT NULL PRIMARY KEY,
-    playlistName varchar(20) NOT NULL,
+    userId varchar(100) not null,
+    playlistName varchar(20) not null,
     playlist longtext
-)
+);
