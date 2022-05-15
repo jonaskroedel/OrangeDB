@@ -34,6 +34,8 @@
   <a href="#moderation">Moderation</a>
   •
   <a href="#music">Music</a>
+  •
+  <a href="#playlist">Playlist</a>
 </p>
 
 # Detailed page for all commands
