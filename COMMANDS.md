@@ -86,7 +86,7 @@ Orange supports currently ``18`` commands in the category Music
 
 ## Playlist
 
-Orange supports currently ``5`` command in the category Playlist
+Orange supports currently ``5`` commands in the category Playlist
 
 - ``o!create []`` With this command you can create an empty playlist.
 - ``o!playlists`` With this command you can show all of your playlists.
