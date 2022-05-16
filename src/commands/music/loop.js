@@ -25,7 +25,7 @@ module.exports = class LoopCommand extends BaseCommand {
                     .setDescription(
                         `${player.trackRepeat === true ? "🔂 track repeat on" : "🔂 track repeat off"}`
                     );
-                return message.reply({ embeds: [embed] });
+                return message.channel.send({ embeds: [embed] });
             } else if (loops === 'queue') {
                 player.setQueueRepeat(!player.queueRepeat);
                 let embed = new MessageEmbed()
@@ -33,7 +33,7 @@ module.exports = class LoopCommand extends BaseCommand {
                     .setDescription(
                         `${player.queueRepeat === true ? "🔁 queue repeat on" : "🔁 queue repeat off"}`
                     );
-                return message.reply({ embeds: [embed] });
+                return message.channel.send({ embeds: [embed] });
             } else if (!loops) {
                 let embed = new MessageEmbed()
                     .setColor("#F8AA2A")

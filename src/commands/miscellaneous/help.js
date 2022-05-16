@@ -16,7 +16,7 @@ module.exports = class help extends BaseCommand {
 
         const mainEmbed = new MessageEmbed()
             .setTitle(`Main help page for ${message.guild.name}`)
-            .setColor('#e45e81')
+            .setColor('#0050ff')
             .setThumbnail(client.user.displayAvatarURL())
             .setFooter({
                 text: `Requested by ${message.author.username}`,
@@ -45,7 +45,17 @@ module.exports = class help extends BaseCommand {
             .setLabel('main')
             .setStyle('PRIMARY');
 
-        const row1 = new MessageActionRow().addComponents([mainBut, modBut, musicBut])
+        const playlistBut = new MessageButton()
+            .setCustomId('playlist')
+            .setLabel('playlist')
+            .setStyle("PRIMARY");
+
+        const github = new MessageButton()
+            .setLabel('GitHub')
+            .setStyle("LINK")
+            .setURL('https://github.com/jonaskroedel/orangedb#readme')
+
+        const row1 = new MessageActionRow().addComponents([mainBut, modBut, musicBut, playlistBut, github])
 
         const msg = await message.channel.send({
             embeds: [mainEmbed],
@@ -64,7 +74,7 @@ module.exports = class help extends BaseCommand {
                     return false;
                 }
             },
-            time: 60000 * 5,
+            time: 12e4,
             idle: 30e3,
         });
 
@@ -83,7 +93,7 @@ module.exports = class help extends BaseCommand {
 
                 const embedMod = new MessageEmbed()
                     .setTitle(`Moderation help page for ${message.guild.name}`)
-                    .setColor('#e45e81')
+                    .setColor('#fa0442')
                     .setThumbnail(client.user.displayAvatarURL())
                     .setFooter({
                         text: `Requested by ${message.author.username}`,
@@ -109,7 +119,7 @@ module.exports = class help extends BaseCommand {
 
                 const embedMusic = new MessageEmbed()
                     .setTitle(`Music help page for ${message.guild.name}`)
-                    .setColor('#e45e81')
+                    .setColor('#a7ff04')
                     .setThumbnail(client.user.displayAvatarURL())
                     .setFooter({
                         text: `Requested by ${message.author.username}`,
@@ -124,7 +134,9 @@ module.exports = class help extends BaseCommand {
                                     **${prefix}24/7** -- plays music 24/7 (music must be given)
                                     **${prefix}autoplay** -- adds appropriate songs to the queue
                                     **${prefix}skip** -- skips the queue to the next song
+                                    **${prefix}skipTo [number]** -- skips the queue to the requested song 
                                     **${prefix}queue** -- shows the current queue
+                                    **${prefix}shuffle** -- shuffles the queue
                                     **${prefix}now** -- shows the current song
                                     **${prefix}loop [track/queue]** -- loops either track or queue
                                     **${prefix}remove [number]** -- clears the [number] song in the queue
@@ -137,13 +149,33 @@ module.exports = class help extends BaseCommand {
                     embeds: [embedMusic],
                     components: [row1],
                 });
-            } else return;
-        });
+            } else if (button.customId === 'playlist') {
+                await button.deferUpdate().catch(() => {
+                });
+                const embedPlaylist = new MessageEmbed()
+                    .setTitle(`Playlist help page for ${message.guild.name}`)
+                    .setColor('#0bd4ef')
+                    .setThumbnail(client.user.displayAvatarURL())
+                    .setFooter({
+                        text: `Requested by ${message.author.username}`,
+                        iconURL: message.author.displayAvatarURL({dynamic: true})
+                    })
+                    .setTimestamp()
+                    .setDescription(`**${prefix}create [name]** -- creates a playlist
+                                    **${prefix}save [name]** -- saves your current queue to a playlist
+                                    **${prefix}load [name]** -- loads a playlist
+                                    **${prefix}delete [name]** -- deletes a playlist
+                                    **${prefix}playlists** -- shows all your playlists`);
 
+                await msg.edit({
+                    embeds: [embedPlaylist],
+                    components: [row1],
+                });
+            }
+        });
         collector.on("end", async () => {
-            await msg.edit({
-                components: [],
-            });
+            await message.delete();
+            await msg.delete();
         });
     }
 }

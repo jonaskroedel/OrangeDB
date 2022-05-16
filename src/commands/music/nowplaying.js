@@ -15,7 +15,7 @@ module.exports = class now extends BaseCommand {
                 let thing = new MessageEmbed()
                     .setColor("RED")
                     .setDescription('❌ There is no active Music Bot');
-                return message.reply({ embeds: [thing] });
+                return message.channel.send({ embeds: [thing] });
             }
             const song = player.queue.current;
             const current = player.position;

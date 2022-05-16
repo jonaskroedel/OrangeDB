@@ -21,7 +21,7 @@ module.exports = class Welcome extends BaseCommand {
         if (!message.member.permissions.has("MANAGE_GUILD")) {
             return message.channel.send(`You do not have permission to use that command!`);
         } else {
-            if (['remove', 'delete', 'clear'].includes(args)) {
+            if (['remove', 'delete', 'clear'].includes(args[0])) {
                 try {
                     await StateManager.connection.query(
                         `UPDATE GuildConfigurable

@@ -139,9 +139,8 @@ module.exports = class LyrisCommand extends BaseCommand {
                 });
 
                 collector.on("end", async () => {
-                    await msg.edit({
-                        components: [],
-                    });
+                    await message.delete();
+                    await msg.delete();
                 });
             }
         } else message.channel.send('There is no active music bot.');

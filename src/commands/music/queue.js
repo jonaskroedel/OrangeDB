@@ -163,9 +163,8 @@ module.exports = class ResumeCommand extends BaseCommand {
                     });
 
                     collector.on("end", async () => {
-                        await msg.edit({
-                            components: [],
-                        });
+                        await message.delete();
+                        await msg.delete();
                     });
                 }
             }

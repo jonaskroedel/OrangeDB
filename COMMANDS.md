@@ -34,20 +34,22 @@
   <a href="#moderation">Moderation</a>
   •
   <a href="#music">Music</a>
+  •
+  <a href="#playlist">Playlist</a>
 </p>
 
 # Detailed page for all commands
 
 ## Main
 
-Orange supports currently ``2`` commands in the Category Main
+Orange supports currently ``2`` commands in the category Main
 
 - ``o!help`` With this command you get the interactive help page.
 - ``o!reddit []`` With this command you can send either a meme from the default subreddit or a custom one. Example command: `o!reddit discordapp` _Sends a meme from r/discordapp_ 
 
 ## Moderation
 
-Orange supports currently ``7`` commands in the Category Moderation
+Orange supports currently ``7`` commands in the category Moderation
 
 - ``o!prefix`` With this command you can change the bots prefix from your current Server. Example command: `o!prefix --` _prefix changed to `--`_
 - ``o!ping`` With this command you can show the latency from this bot.
@@ -60,7 +62,7 @@ Orange supports currently ``7`` commands in the Category Moderation
 
 ## Music
 
-Orange supports currently ``16`` commands in the Category Music
+Orange supports currently ``18`` commands in the category Music
 
 - ``o!join`` With this command Orange joins your current Voice-Channel.
 - ``o!play []`` With this command Orange plays the Song you provided via Link or Name. Example command:  `o!play Never gonna give you up` _Never gonna give you up - Rick Astley is now playing_
@@ -70,11 +72,24 @@ Orange supports currently ``16`` commands in the Category Music
 - ``o!24/7`` With this command you can enable the 24/7 mode.
 - ``o!autoplay`` With this command you can enable autoplay.
 - ``o!skip`` With this command you can skip the current song.
+- ``o!skipTo []`` With this command you can skip to a specific song.
 - ``o!loop`` With this command you can either loop the track or queue. Example command: `o!loop track` _looping track_ / `o!loop queue` _looping queue_
 - ``o!queue`` With this command you get an embed with the current songs in the queue.
+- ``o!shuffle`` With this command you can shuffle the queue.
 - ``o!now`` With this command you get the current song playing.
 - ``o!remove []`` With this command you can remove a song in your queue. Example command: `o!remove 3` _Removed third Song in the current queue_
 - ``o!lyrics`` With this command you get the lyrics to the current song.
 - ``o!clearqueue`` With this command you can clear the whole channel. Note: the channel just gets cloned!
 - ``o!volume`` With this command you can set the Volume of Orange. Example command: `o!volume 50` _Volume set to: **50%**_
 - ``o!leave`` With this command Orange leaves the Voice-Channel.
+
+
+## Playlist
+
+Orange supports currently ``5`` commands in the category Playlist
+
+- ``o!create []`` With this command you can create an empty playlist.
+- ``o!playlists`` With this command you can show all of your playlists.
+- ``o!save []`` With this command you can save your current queue to your playlist.
+- ``o!load []`` With this command you can load your saved playlist.
+- ``o!delete []`` With this command you can delete your playlist.

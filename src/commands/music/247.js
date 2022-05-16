@@ -28,7 +28,7 @@ module.exports = class twentyforseven extends BaseCommand {
                     .setColor("GREEN")
                     .setDescription('24/7 is on');
 
-                return message.reply({embeds: [embed]});
+                return message.channel.send({embeds: [embed]});
             } else {
                 message.channel.send('You can only use `on` or `off`');
             }
