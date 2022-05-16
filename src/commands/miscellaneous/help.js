@@ -136,14 +136,15 @@ module.exports = class help extends BaseCommand {
                                     **${prefix}skip** -- skips the queue to the next song
                                     **${prefix}skipTo [number]** -- skips the queue to the requested song 
                                     **${prefix}queue** -- shows the current queue
-                                    **${prefix}shuffle** -- shuffles the queue
                                     **${prefix}now** -- shows the current song
                                     **${prefix}loop [track/queue]** -- loops either track or queue
-                                    **${prefix}remove [number]** -- clears the [number] song in the queue
+                                    **${prefix}shuffle** -- shuffles the queue
                                     **${prefix}lyrics** -- shows the lyrics to the song
+                                    **${prefix}remove [number]** -- clears the [number] song in the queue
                                     **${prefix}clearqueue** -- clears the whole queue
                                     **${prefix}volume** -- sets the volume between 100 and 0 
-                                    **${prefix}leave** -- leaves the voicechannel`);
+                                    **${prefix}leave** -- leaves the voicechannel
+                                    `);
 
                 await msg.edit({
                     embeds: [embedMusic],
