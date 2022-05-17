@@ -12,6 +12,7 @@ module.exports = class JoinCommand extends BaseCommand {
                 guild: message.guild.id,
                 voiceChannel: message.member.voice.channel.id,
                 textChannel: message.channel.id,
+                selfDeafen: true,
             });
             player.connect();
             client.musicPlayers.set(message.guild.id, player);

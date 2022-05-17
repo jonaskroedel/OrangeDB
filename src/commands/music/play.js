@@ -39,6 +39,7 @@ module.exports = class play extends BaseCommand {
             guild: message.guild.id,
             voiceChannel: message.member.voice.channel.id,
             textChannel: message.channel.id,
+            selfDeafen: true,
         });
 
         // Connect to the voice channel
