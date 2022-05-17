@@ -24,7 +24,10 @@ module.exports = class play extends BaseCommand {
             res = await client.manager.search(search, message.author);
             // Check the load type as this command is not that advanced for basics
             if (res.loadType === "LOAD_FAILED") throw res.exception;
-            else if (res.loadType === "PLAYLIST_LOADED") throw {message: "Playlists are not supported with this command."};
+            // else if (res.loadType === "PLAYLIST_LOADED") {
+            //     console.log(res)
+            //     throw {message: "Playlists are not supported with this command."};
+            // }
         } catch (err) {
             return message.channel.send(`there was an error while searching: ${err.message}`);
         }
@@ -38,17 +41,20 @@ module.exports = class play extends BaseCommand {
             textChannel: message.channel.id,
         });
 
-        // console.log(res)
-
-        // Connect to the voice channel and add the track to the queue
+        // Connect to the voice channel
         if (player && player.state !== "CONNECTED") {
             player.connect();
             player.setVolume(guildVolumes.get(message.guild.id))
         }
         player.queue.add(res.tracks[0]);
+        if (!player.playing && !player.paused && !player.queue.size) await player.play()
+
+        for (let i = 1; i < res.tracks.length; i++) {
+             // adding the tracks to the queue
+            player.queue.add(res.tracks[i]);
+        }
 
         // Checks if the client should play the track if it's the first one added
-        if (!player.playing && !player.paused && !player.queue.size) await player.play()
 
         const embed = new MessageEmbed()
             .setColor("GREEN")
