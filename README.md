@@ -126,6 +126,5 @@ Released under the [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html) li
 <<<<<<< HEAD
 =======
 - **Mateo Pal** - *artwork, idea* - [reddit](https://www.reddit.com/user/Velocityakavelo)
->>>>>>> d57e81991ca1cc28c0a7ef6ed40b04342b6a89a1
 
 <h6 align="center">© Jonas Krödel 2022</h6>
