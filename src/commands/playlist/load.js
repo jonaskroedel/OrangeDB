@@ -12,6 +12,7 @@ module.exports = class Subreddit extends BaseCommand {
 
     async run(client, message, args) {
 
+        console.log(message.createdTimestamp)
         if (!message.member.voice.channel) return message.channel.send("you need to join a voice channel.");
         if (!args.length) return message.channel.send("you need to give me an URL or a search term.");
 
@@ -75,7 +76,7 @@ module.exports = class Subreddit extends BaseCommand {
                                 .setColor("YELLOW")
                                 .setDescription(`Adding track(s) from your songs **${name}** to the queue.`)
                         ]
-                    })
+                    });
 
 
                     const playlist = JSON.parse(songs)
@@ -96,23 +97,18 @@ module.exports = class Subreddit extends BaseCommand {
                             if (player && player.state === "CONNECTED" && !player.playing && !player.paused && !player.queue.size) await player.play();
                             player.setVolume(guildVolumes.get(message.guild.id))
                             ++count;
-                        // } else if (s.loadType === "SEARCH_RESULT") {
-                        //     if (player.state !== "CONNECTED") player.connect();
-                        //     if (player) player.queue.add(s.tracks[0]);
-                        //     if (player && player.state === "CONNECTED" && !player.playing && !player.paused && !player.queue.size) await player.play();
-                        //     player.setVolume(guildVolumes.get(message.guild.id))
-                        //     ++count;
                         }
                         if (player && !player.queue.current) player.destroy();
                         if (count <= 0 && m) return await m.edit({embeds: [new MessageEmbed().setColor("RED").setDescription(`Couldn't add any tracks from your playlist **${name}** to the queue.`)]})
-                        if (m) await m.edit({embeds: [
+                        if (m && (count%50 === 0)) await m.edit({embeds: [
                             new MessageEmbed()
                                 .setColor("YELLOW")
                                 .setDescription(`Adding ${count} track(s) from your playlist **${name}** to the queue, this may take a while!`)
                             ]});
                     }
                     if (m) {
-                        const loadTime = Date.now() - m.createdTimestamp
+                        const loadTime = Date.now() - message.createdTimestamp;
+
                         await m.edit({
                             embeds: [
                                 new MessageEmbed()
