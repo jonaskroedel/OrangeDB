@@ -123,8 +123,6 @@ Released under the [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html) li
 - **Jonas Krödel** - *initial work, artwork, idea, implementation and project management* - [github](https://github.com/jonaskroedel)
 - **Julian Hoffmann** - *minor helping* - [github](https://github.com/juhom205)
 - **Angelo Failoni** - *helping hand and database-design* - [github](https://github.com/BrainFuzz-hub)
-<<<<<<< HEAD
-=======
 - **Mateo Pal** - *artwork, idea* - [reddit](https://www.reddit.com/user/Velocityakavelo)
 
 <h6 align="center">© Jonas Krödel 2022</h6>
