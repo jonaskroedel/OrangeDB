@@ -55,7 +55,7 @@ You can find a detailed information sheet with all commands [here](https://githu
 
 ## Features
 
-``33`` commands across ``4`` different categories!
+``34`` commands across ``4`` different categories!
 
 - ``main`` commands like `meme`, `help` 
 - ``moderation`` commands like `clear`, `clearchannel`, `prefix`, `userinfo` and much more
@@ -123,5 +123,9 @@ Released under the [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html) li
 - **Jonas Krödel** - *initial work, artwork, idea, implementation and project management* - [github](https://github.com/jonaskroedel)
 - **Julian Hoffmann** - *minor helping* - [github](https://github.com/juhom205)
 - **Angelo Failoni** - *helping hand and database-design* - [github](https://github.com/BrainFuzz-hub)
+<<<<<<< HEAD
+=======
+- **Mateo Pal** - *artwork, idea* - [reddit](https://www.reddit.com/user/Velocityakavelo)
+>>>>>>> d57e81991ca1cc28c0a7ef6ed40b04342b6a89a1
 
 <h6 align="center">© Jonas Krödel 2022</h6>

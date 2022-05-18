@@ -2,6 +2,8 @@ const BaseCommand = require('../../utils/structures/BaseCommand');
 const StateManager = require('../../utils/StateManager');
 const {MessageEmbed} = require("discord.js");
 
+const guildVolumes = new Map();
+
 module.exports = class Subreddit extends BaseCommand {
     constructor() {
         super('load', 'songs', ['loadplaylist', 'loadpl', 'lp', 'lpl']);
@@ -17,6 +19,7 @@ module.exports = class Subreddit extends BaseCommand {
             guild: message.guild.id,
             voiceChannel: message.member.voice.channel.id,
             textChannel: message.channel.id,
+            selfDeafen: true
         });
 
 
@@ -91,26 +94,33 @@ module.exports = class Subreddit extends BaseCommand {
                             if (player.state !== "CONNECTED") player.connect();
                             if (player) player.queue.add(s.tracks[0]);
                             if (player && player.state === "CONNECTED" && !player.playing && !player.paused && !player.queue.size) await player.play();
+                            player.setVolume(guildVolumes.get(message.guild.id))
                             ++count;
-                        } else if (s.loadType === "SEARCH_RESULT") {
-                            if (player.state !== "CONNECTED") player.connect();
-                            if (player) player.queue.add(s.tracks[0]);
-                            if (player && player.state === "CONNECTED" && !player.playing && !player.paused && !player.queue.size) await player.play();
-                            ++count;
+                        // } else if (s.loadType === "SEARCH_RESULT") {
+                        //     if (player.state !== "CONNECTED") player.connect();
+                        //     if (player) player.queue.add(s.tracks[0]);
+                        //     if (player && player.state === "CONNECTED" && !player.playing && !player.paused && !player.queue.size) await player.play();
+                        //     player.setVolume(guildVolumes.get(message.guild.id))
+                        //     ++count;
                         }
                         if (player && !player.queue.current) player.destroy();
                         if (count <= 0 && m) return await m.edit({embeds: [new MessageEmbed().setColor("RED").setDescription(`Couldn't add any tracks from your playlist **${name}** to the queue.`)]})
                         if (m) await m.edit({embeds: [
                             new MessageEmbed()
                                 .setColor("YELLOW")
-                                .setDescription(`Adding ${count} track(s) from your playlist **${name}** to the queue.`)
+                                .setDescription(`Adding ${count} track(s) from your playlist **${name}** to the queue, this may take a while!`)
                             ]});
                     }
-                    if (m) await m.edit({embeds: [
-                        new MessageEmbed()
-                            .setColor("GREEN")
-                            .setDescription(`Added ${count} track(s) from your playlist **${name}** to the queue.`)
-                        ]});
+                    if (m) {
+                        const loadTime = Date.now() - m.createdTimestamp
+                        await m.edit({
+                            embeds: [
+                                new MessageEmbed()
+                                    .setColor("GREEN")
+                                    .setDescription(`Added ${count} track(s) from your playlist **${name}** to the queue in \`${loadTime}ms\``)
+                            ]
+                        });
+                    }
                 }
             });
         } catch (err) {
@@ -119,3 +129,10 @@ module.exports = class Subreddit extends BaseCommand {
 
     }
 }
+
+StateManager.on('volumeFetched', (guildId, subReddit) => {
+    guildVolumes.set(guildId, subReddit);
+});
+StateManager.on('volumeUpdate', (guildId, subReddit) => {
+    guildVolumes.set(guildId, subReddit);
+});

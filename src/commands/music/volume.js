@@ -26,7 +26,7 @@ module.exports = class LyrisCommand extends BaseCommand {
                 let thing = new MessageEmbed()
                     .setColor("GREEN")
                     .setDescription(`🔊 The current volume is: **${player.volume}%**`)
-                return message.channel.send({embeds: [thing]});
+                return await message.channel.send({embeds: [thing]});
             }
 
             const volume = parseInt(args[0]);
@@ -50,7 +50,7 @@ module.exports = class LyrisCommand extends BaseCommand {
                 let thing = new MessageEmbed()
                     .setColor("GREEN")
                     .setDescription(`🔊 Volume set to: **${volume}%**`);
-                return message.channel.send({embeds: [thing]});
+                return await message.channel.send({embeds: [thing]});
             }
         } else message.channel.send('There is no active music bot.');
     }

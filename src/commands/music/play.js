@@ -4,6 +4,7 @@ const {progressbar} = require("../../utils/progressbar");
 const StateManager = require("../../utils/StateManager");
 
 const guildVolumes = new Map();
+const guildCommandPrefixes = new Map();
 
 module.exports = class play extends BaseCommand {
     constructor() {
@@ -24,7 +25,7 @@ module.exports = class play extends BaseCommand {
             res = await client.manager.search(search, message.author);
             // Check the load type as this command is not that advanced for basics
             if (res.loadType === "LOAD_FAILED") throw res.exception;
-            else if (res.loadType === "PLAYLIST_LOADED") throw {message: "Playlists are not supported with this command."};
+            else if (res.loadType === "PLAYLIST_LOADED") throw {message: `Playlists are not supported with this command. Try ${guildCommandPrefixes.get(message.guild.id)}playpl`};
         } catch (err) {
             return message.channel.send(`there was an error while searching: ${err.message}`);
         }
@@ -36,6 +37,7 @@ module.exports = class play extends BaseCommand {
             guild: message.guild.id,
             voiceChannel: message.member.voice.channel.id,
             textChannel: message.channel.id,
+            selfDeafen: true,
         });
 
         // console.log(res)
@@ -64,4 +66,13 @@ StateManager.on('volumeFetched', (guildId, subReddit) => {
 });
 StateManager.on('volumeUpdate', (guildId, subReddit) => {
     guildVolumes.set(guildId, subReddit);
+});
+StateManager.on('prefixUpdate', (guildId, prefix) => {
+    guildCommandPrefixes.set(guildId, prefix);
+});
+StateManager.on('prefixFetched', (guildId, prefix) => {
+    guildCommandPrefixes.set(guildId, prefix);
+});
+StateManager.on('guildAdded', (guildId, prefix) => {
+    guildCommandPrefixes.set(guildId, prefix);
 });

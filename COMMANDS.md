@@ -62,10 +62,11 @@ Orange supports currently ``7`` commands in the category Moderation
 
 ## Music
 
-Orange supports currently ``18`` commands in the category Music
+Orange supports currently ``19`` commands in the category Music
 
 - ``o!join`` With this command Orange joins your current Voice-Channel.
 - ``o!play []`` With this command Orange plays the Song you provided via Link or Name. Example command:  `o!play Never gonna give you up` _Never gonna give you up - Rick Astley is now playing_
+- ``o!playpl []`` With this command you can queue a youtube playlist or search for one.
 - ``o!pause`` With this command you can pause the current song.
 - ``o!resume`` With this command you can resume the current paused song.
 - ``o!stop`` With this command you can stop the current song (Can't be resumed anymore).
