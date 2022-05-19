@@ -27,7 +27,8 @@ module.exports = class ResumeCommand extends BaseCommand {
                     .setDescription(`🎶 Currently playing ${song.title} requested from ${song.requester}
                                     ${convertTime(player.position)} / ${convertTime(song.duration)}
                                     ${progressbar(player)}`)
-                    .setThumbnail(player.queue.current.thumbnail);
+                    .setThumbnail(player.queue.current.thumbnail)
+                    .setTitle(`Current queue for ${message.guild.name} - ${convertTime(song.duration)}`);
                 await message.channel.send({embeds: [embed]});
             } else {
                 const queuedSongs = player.queue.map(
@@ -40,6 +41,10 @@ module.exports = class ResumeCommand extends BaseCommand {
                 const mapping = load.chunk(queuedSongs, 10);
                 const pages = mapping.map((s) => s.join("\n"));
                 let page = 0;
+                let time = player.queue.current.duration;
+                for (let i = 0; i < player.queue.size; i++) {
+                    time += player.queue[i].duration;
+                }
 
                 if (player.queue.size < 11) {
                     const embed = new MessageEmbed()
@@ -50,7 +55,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                                     ${pages[page]}
                                     `)
                         .setThumbnail(player.queue.current.thumbnail)
-                        .setTitle(`Current queue for ${message.guild.name}`);
+                        .setTitle(`Current queue for ${message.guild.name} - ${convertTime(time)}`);
 
                     await message.channel.send({
                         embeds: [embed],
@@ -64,7 +69,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                                     ${pages[page]}
                                     `)
                         .setThumbnail(player.queue.current.thumbnail)
-                        .setTitle(`Current queue for ${message.guild.name}`);
+                        .setTitle(`Current queue for ${message.guild.name} - ${convertTime(time)}`);
 
                     const but1 = new MessageButton()
                         .setCustomId("queue_cmd_but_1")
@@ -119,7 +124,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                                     ${pages[page]}
                                     `)
                                 .setThumbnail(player.queue.current.thumbnail)
-                                .setTitle(`Current queue for ${message.guild.name}`);
+                                .setTitle(`Current queue for ${message.guild.name} - ${convertTime(time)}`);
 
                             await msg.edit({
                                 embeds: [embed3],
@@ -144,7 +149,7 @@ module.exports = class ResumeCommand extends BaseCommand {
                                     ${pages[page]}
                                     `)
                                 .setThumbnail(player.queue.current.thumbnail)
-                                .setTitle(`Current queue for ${message.guild.name}`);
+                                .setTitle(`Current queue for ${message.guild.name} - ${convertTime(time)}`);
 
 
                             await msg.edit({

@@ -1,6 +1,7 @@
 const BaseCommand = require('../../utils/structures/BaseCommand');
 const StateManager = require('../../utils/StateManager');
 const {MessageEmbed} = require("discord.js");
+const {convertTime} = require("../../utils/convert.js");
 
 const guildVolumes = new Map();
 
@@ -11,8 +12,6 @@ module.exports = class Subreddit extends BaseCommand {
     }
 
     async run(client, message, args) {
-
-        console.log(message.createdTimestamp)
         if (!message.member.voice.channel) return message.channel.send("you need to join a voice channel.");
         if (!args.length) return message.channel.send("you need to give me an URL or a search term.");
 
@@ -113,7 +112,7 @@ module.exports = class Subreddit extends BaseCommand {
                             embeds: [
                                 new MessageEmbed()
                                     .setColor("GREEN")
-                                    .setDescription(`Added ${count} track(s) from your playlist **${name}** to the queue in \`${loadTime}ms\``)
+                                    .setDescription(`Added ${count} track(s) from your playlist **${name}** to the queue in \`${convertTime(loadTime)}\``)
                             ]
                         });
                     }
