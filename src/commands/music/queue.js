@@ -9,7 +9,7 @@ module.exports = class ResumeCommand extends BaseCommand {
         super('queue', 'music', []);
     }
 
-    async run(client, message, args) {
+    async run(client, message) {
         const player = message.client.manager.get(message.guild.id);
         if (player && player.state === "CONNECTED") {
             const song = player.queue.current;

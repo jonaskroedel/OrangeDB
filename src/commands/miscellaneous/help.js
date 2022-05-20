@@ -1,4 +1,4 @@
-const {Client, Intents, MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu} = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const BaseCommand = require("../../utils/structures/BaseCommand");
 const StateManager = require("../../utils/StateManager");
 
