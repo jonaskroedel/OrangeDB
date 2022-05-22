@@ -1,6 +1,5 @@
 const BaseCommand = require('../../utils/structures/BaseCommand');
 const {MessageEmbed} = require("discord.js");
-const {progressbar} = require("../../utils/progressbar");
 const StateManager = require("../../utils/StateManager");
 
 const guildVolumes = new Map();

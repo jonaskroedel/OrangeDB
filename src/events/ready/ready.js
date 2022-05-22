@@ -1,11 +1,23 @@
 const BaseEvent = require('../../utils/structures/BaseEvent');
 const StateManager = require('../../utils/StateManager');
+const path = require("path");
+const fs = require("node:fs");
+const {Collection} = require("discord.js");
 require('dotenv').config({path: '../.env'});
 
 const guildCommandPrefixes = new Map();
 const guildSubReddits = new Map();
 const guildVolumes = new Map();
 const guildWelcomes = new Map();
+
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
+
+const rest = new REST({
+    version: '9'
+}).setToken(process.env.BOT_TOKEN);
+
+
 
 /*
     © Jonas Krödel 2022
@@ -20,6 +32,32 @@ module.exports = class ReadyEvent extends BaseEvent {
     }
     async run(client) {
         console.log(client.user.tag + ' has logged in.');
+
+        // start of ( / ) cmds refreshing
+
+        const commands = [];
+        const slashCommands = path.join(__dirname, '../../commands/slashCommands');
+        const commandFiles = fs.readdirSync(slashCommands).filter(file => file.endsWith('.js'));
+
+        client.slashCommands = new Collection();
+
+        for (const file of commandFiles) {
+            const command = require(`${slashCommands}/${file}`);
+            commands.push(command.data.toJSON());
+            client.slashCommands.set(command.data.name, command);
+        }
+
+        try {
+            await rest.put(
+                Routes.applicationGuildCommands('961687947692867634', '841990439384907807'),
+                { body: commands },
+            );
+
+        } catch (err) {
+            console.log(err)
+        }
+
+        // End of section
 
         // Start of checking if all Guild-Ids are in the database
         const ids = client.guilds.cache.map(g => g.id);
@@ -105,6 +143,8 @@ module.exports = class ReadyEvent extends BaseEvent {
         });
         // End of section
 
+
+        // await client.guilds.cache.get('841990439384907807').commands.set([])
         client.user.setActivity(`${process.env.PREFIX}help`, {type: 'LISTENING'});
     }
 }
