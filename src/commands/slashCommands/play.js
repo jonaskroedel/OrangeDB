@@ -29,10 +29,10 @@ module.exports = {
 
         try {
             // Search for tracks using a query or url, using a query searches youtube automatically and the track requester object
-            res = await client.manager.search(search, interaction.author);
+            res = await client.manager.search(search, interaction.member.user);
             // Check the load type as this command is not that advanced for basics
             if (res.loadType === "LOAD_FAILED") throw res.exception;
-            else if (res.loadType === "PLAYLIST_LOADED") throw {message: `Playlists are not supported with this command. Try ${guildCommandPrefixes.get(message.guild.id)}playpl`};
+            else if (res.loadType === "PLAYLIST_LOADED") throw {message: `Playlists are not supported with this command. Try ${guildCommandPrefixes.get(interaction.guild.id)}playpl`};
         } catch (err) {
             return interaction.reply({
                 content: `there was an error while searching: ${err.message}`,

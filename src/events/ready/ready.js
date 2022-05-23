@@ -45,6 +45,7 @@ module.exports = class ReadyEvent extends BaseEvent {
             const command = require(`${slashCommands}/${file}`);
             commands.push(command.data.toJSON());
             client.slashCommands.set(command.data.name, command);
+
         }
 
         try {
@@ -144,7 +145,7 @@ module.exports = class ReadyEvent extends BaseEvent {
         // End of section
 
 
-        // await client.guilds.cache.get('841990439384907807').commands.set([])
+        // await client.application.commands.set([])
         client.user.setActivity(`${process.env.PREFIX}help`, {type: 'LISTENING'});
     }
 }
