@@ -24,10 +24,6 @@ module.exports = class play extends BaseCommand {
             res = await client.manager.search(search, message.author);
             // Check the load type as this command is not that advanced for basics
             if (res.loadType === "LOAD_FAILED") throw res.exception;
-            // else if (res.loadType === "PLAYLIST_LOADED") {
-            //     console.log(res)
-            //     throw {message: "Playlists are not supported with this command."};
-            // }
         } catch (err) {
             return message.channel.send(`there was an error while searching: ${err.message}`);
         }

@@ -11,14 +11,30 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('play')
         .setDescription('Plays requested Song')
-        .addStringOption(option =>
-        option.setName('song')
-            .setDescription('Link or Name from Song or Author')
-            .setRequired(true)),
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('song')
+                .setDescription('Plays provided song.')
+                .addStringOption(option =>
+                    option.setName('song')
+                        .setDescription('Link or Name from Song or Author')
+                        .setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('playlist')
+                .setDescription('Plays provided playlist.')
+                .addStringOption(option =>
+                    option.setName('playlist')
+                        .setDescription('Link or Name from Playlist, Song or Author')
+                        .setRequired(true))
+        ),
+
 
     async execute(client, interaction) {
 
-        const search = interaction.options.getString('song')
+        const vol = guildVolumes.get(interaction.guild.id) || 100;
+
+        const track = interaction.options.getString('song') || interaction.options.getString('playlist');
 
         if (!interaction.member.voice.channel) return interaction.reply({
             content: "you need to join a voice channel.",
@@ -28,13 +44,28 @@ module.exports = {
         let res;
 
         try {
-            // Search for tracks using a query or url, using a query searches youtube automatically and the track requester object
-            res = await client.manager.search(search, interaction.member.user);
-            // Check the load type as this command is not that advanced for basics
-            if (res.loadType === "LOAD_FAILED") throw res.exception;
-            else if (res.loadType === "PLAYLIST_LOADED") throw {message: `Playlists are not supported with this command. Try ${guildCommandPrefixes.get(interaction.guild.id)}playpl`};
+            if (interaction.options.getSubcommand() === 'song') {
+                interaction.reply({
+                    content: 'loading song...',
+                    ephemeral: true
+                });
+                // Search for tracks using a query or url, using a query searches youtube automatically and the track requester object
+                res = await client.manager.search(track, interaction.member.user);
+                // Check the load type as this command is not that advanced for basics
+                if (res.loadType === "LOAD_FAILED") throw res.exception;
+                else if (res.loadType === "PLAYLIST_LOADED") throw {message: `Playlists are not supported with this command. Try /play playlist`};
+            } else if (interaction.options.getSubcommand() === 'playlist') {
+                interaction.reply({
+                    content: 'loading playlist, this may take a while...',
+                    ephemeral: true
+                });
+                // Search for tracks using a query or url, using a query searches youtube automatically and the track requester object
+                res = await client.manager.search(track, interaction.member.user);
+                // Check the load type as this command is not that advanced for basics
+                if (res.loadType === "LOAD_FAILED") throw res.exception;
+            }
         } catch (err) {
-            return interaction.reply({
+            return interaction.editReply({
                 content: `there was an error while searching: ${err.message}`,
                 ephemeral: true
             });
@@ -53,24 +84,34 @@ module.exports = {
             selfDeafen: true,
         });
 
-        // console.log(res)
-
         // Connect to the voice channel and add the track to the queue
         if (player && player.state !== "CONNECTED") {
             player.connect();
-            player.setVolume(guildVolumes.get(interaction.guild.id))
+            player.setVolume(vol)
         }
-        player.queue.add(res.tracks[0]);
+
+        if (interaction.options.getSubcommand() === 'song') {
+            player.queue.add(res.tracks[0]);
+            if (!player.playing && !player.paused && !player.queue.size) await player.play()
+        } else if (interaction.options.getSubcommand() === 'playlist') {
+            player.queue.add(res.tracks[0]);
+            if (!player.playing && !player.paused && !player.queue.size) await player.play()
+            for (let i = 1; i < res.tracks.length; i++) {
+                // adding the tracks to the queue
+                player.queue.add(res.tracks[i]);
+            }
+        }
 
         // Checks if the client should play the track if it's the first one added
-        if (!player.playing && !player.paused && !player.queue.size) await player.play()
+
 
         const embed = new MessageEmbed()
             .setColor("GREEN")
             .setDescription(`🎶 Now playing ${res.tracks[0].title} \n requested from ${res.tracks[0].requester}
             ${res.tracks[0].uri}`)
             .setThumbnail(res.tracks[0].thumbnail);
-        return interaction.reply({
+        return interaction.editReply({
+            content: null,
             embeds: [embed],
             ephemeral: true
         });
