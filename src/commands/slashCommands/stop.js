@@ -1,12 +1,11 @@
-const { MessageEmbed } = require("discord.js");
-const { convertTime } = require("../../utils/convert.js");
-const { progressbar } = require("../../utils/progressbar.js");
+const {MessageEmbed} = require("discord.js");
+
 const {SlashCommandBuilder} = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('now')
-        .setDescription('Shows the current song playing'),
+        .setName('stop')
+        .setDescription('Stops the music bot and clears the queue'),
 
     async execute(client, interaction) {
         const player = interaction.client.manager.players.get(interaction.guild.id);
@@ -20,19 +19,23 @@ module.exports = {
                     ephemeral: true
                 });
             }
-            const song = player.queue.current;
-            const current = player.position;
 
-            const embed = new MessageEmbed()
-                .setColor("GREEN")
-                .setDescription(`🎶 Currently playing ${song.title} requested from ${song.requester}
-                                    ${convertTime(current)} / ${convertTime(song.duration)}
-                                    ${progressbar(player)}`)
-                .setThumbnail(player.queue.current.thumbnail);
+            const autoplay = player.get("autoplay");
+            if (autoplay === true) {
+                player.set("autoplay", false);
+            }
+
+            player.stop();
+            player.queue.clear();
+
+            let thing = new MessageEmbed()
+                .setColor("RED")
+                .setDescription('❌ Music stopped.');
             return interaction.reply({
-                embeds: [embed],
+                embeds: [thing],
                 ephemeral: true
             });
+
         } else return interaction.reply({
             content: 'There is no active music bot.',
             ephemeral: true

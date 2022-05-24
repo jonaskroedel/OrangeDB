@@ -3,7 +3,6 @@ const {MessageEmbed} = require("discord.js");
 const StateManager = require("../../utils/StateManager");
 
 const guildVolumes = new Map();
-const guildCommandPrefixes = new Map();
 
 const {SlashCommandBuilder} = require('@discordjs/builders');
 
@@ -123,13 +122,4 @@ StateManager.on('volumeFetched', (guildId, subReddit) => {
 });
 StateManager.on('volumeUpdate', (guildId, subReddit) => {
     guildVolumes.set(guildId, subReddit);
-});
-StateManager.on('prefixUpdate', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-});
-StateManager.on('prefixFetched', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-});
-StateManager.on('guildAdded', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
 });

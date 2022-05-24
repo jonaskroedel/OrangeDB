@@ -39,6 +39,7 @@ module.exports = class ReadyEvent extends BaseEvent {
         const slashCommands = path.join(__dirname, '../../commands/slashCommands');
         const commandFiles = fs.readdirSync(slashCommands).filter(file => file.endsWith('.js'));
 
+        console.log(slashCommands)
         client.slashCommands = new Collection();
 
         for (const file of commandFiles) {
