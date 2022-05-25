@@ -9,6 +9,7 @@ const guildCommandPrefixes = new Map();
 const guildSubReddits = new Map();
 const guildVolumes = new Map();
 const guildWelcomes = new Map();
+const guildLanguages = new Map();
 
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
@@ -39,8 +40,8 @@ module.exports = class ReadyEvent extends BaseEvent {
         const slashCommands = path.join(__dirname, '../../commands/slashCommands');
         const commandFiles = fs.readdirSync(slashCommands).filter(file => file.endsWith('.js'));
 
-        console.log(slashCommands)
         client.slashCommands = new Collection();
+        client.langs = new Collection();
 
         for (const file of commandFiles) {
             const command = require(`${slashCommands}/${file}`);
@@ -124,23 +125,26 @@ module.exports = class ReadyEvent extends BaseEvent {
 
         client.guilds.cache.forEach(guild => {
             StateManager.connection.query(
-                `SELECT cmdPrefix, subReddit, guildWelcome, guildVolume FROM GuildConfigurable WHERE guildId = '${guild.id}'`
+                `SELECT cmdPrefix, subReddit, guildWelcome, guildVolume, guildLanguage FROM GuildConfigurable WHERE guildId = '${guild.id}'`
             ).then(result => {
                 const guildId = guild.id;
                 const prefix = result[0][0].cmdPrefix;
                 const subReddit = result[0][0].subReddit;
                 const guildVolume = result[0][0].guildVolume;
                 const guildWelcome = result[0][0].guildWelcome;
+                const guildLanguage = result[0][0].guildLanguage;
 
                 guildCommandPrefixes.set(guildId, prefix);
                 guildSubReddits.set(guildId, subReddit);
                 guildVolumes.set(guildId, guildVolume);
                 guildWelcomes.set(guildId, guildWelcome);
+                client.langs.set(guildId, guildLanguage)
 
                 StateManager.emit('prefixFetched', guildId, prefix);
                 StateManager.emit('redditFetched', guildId, subReddit);
                 StateManager.emit('volumeFetched', guildId, guildVolume);
                 StateManager.emit('welcomeFetched', guildId, guildWelcome);
+                console.log('StateManger finished!')
             }).catch(err => console.log(err));
         });
         // End of section

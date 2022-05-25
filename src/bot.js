@@ -3,6 +3,9 @@ const {Client, Intents, Collection} = require('discord.js');
 const { Manager } = require('erela.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MEMBERS]});
 const { registerCommands, registerEvents, registerMusicEvents } = require('./utils/register');
+const {Routes} = require("discord-api-types/v9");
+const {REST} = require("@discordjs/rest");
+
 
 /*
     © Jonas Krödel 2022
@@ -39,7 +42,8 @@ const { registerCommands, registerEvents, registerMusicEvents } = require('./uti
 
     client.musicPlayers = new Map();
     client.commands = new Collection();
+    client.slashCommands = new Collection();
     await registerMusicEvents(client.manager, '../musicevents')
-    await registerCommands(client, '../commands');
+    await registerCommands(client, '../commands/chatCommands');
     await registerEvents(client, '../events');
 })();
