@@ -1,4 +1,15 @@
 {
-  "test": "Das ist ein deutscher String",
-  "ping": "Verzögerung"
+  "ping": {
+    "latency": "Latenzzeit"
+  },
+  "play": {
+    "error_1": "Du musst einem Sprach-Kanal betreten!",
+    "error_2": "Es ist ein Fehler bei der Suche aufgetreten:",
+    "error_3": "Es wurden keine Titel mit dieser Abfrage gefunden!",
+    "error_playlist": "Wiedergabelisten werden mit diesem Befehl nicht unterstützt. Versuche /play playlist!",
+    "loading_song": "Song laden...",
+    "loading_playlist": "Wiedergabeliste wird geladen, dies kann eine Weile dauern...",
+    "now_1": "Jetzt spielt:",
+    "now_2": "angefordert von"
+  }
 }

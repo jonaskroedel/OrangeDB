@@ -14,7 +14,7 @@ module.exports = class Reddit extends BaseCommand{
 
     async run(client, message, args) {
         if (message.author.bot) return;
-        const guildReddit = guildSubReddits.get(message.guild.id);
+        const guildReddit = client.guildSubReddits.get(message.guild.id);
 
 
         await message.react('📝')
@@ -45,12 +45,3 @@ module.exports = class Reddit extends BaseCommand{
             })
     }
 }
-
-StateManager.on('redditFetched', (guildId, subReddit) => {
-    guildSubReddits.set(guildId, subReddit);
-});
-
-StateManager.on('subUpdate', (guildId, subReddit) => {
-    guildSubReddits.set(guildId, subReddit);
-    console.log('Guilds default subreddit updated');
-});

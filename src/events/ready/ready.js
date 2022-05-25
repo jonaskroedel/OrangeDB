@@ -5,12 +5,6 @@ const fs = require("node:fs");
 const {Collection} = require("discord.js");
 require('dotenv').config({path: '../.env'});
 
-const guildCommandPrefixes = new Map();
-const guildSubReddits = new Map();
-const guildVolumes = new Map();
-const guildWelcomes = new Map();
-const guildLanguages = new Map();
-
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 
@@ -42,6 +36,10 @@ module.exports = class ReadyEvent extends BaseEvent {
 
         client.slashCommands = new Collection();
         client.langs = new Collection();
+        client.guildSubReddits = new Collection();
+        client.guildCommandPrefixes = new Collection();
+        client.guildVolumes = new Collection();
+        client.guildWelcomes = new Collection();
 
         for (const file of commandFiles) {
             const command = require(`${slashCommands}/${file}`);
@@ -134,17 +132,13 @@ module.exports = class ReadyEvent extends BaseEvent {
                 const guildWelcome = result[0][0].guildWelcome;
                 const guildLanguage = result[0][0].guildLanguage;
 
-                guildCommandPrefixes.set(guildId, prefix);
-                guildSubReddits.set(guildId, subReddit);
-                guildVolumes.set(guildId, guildVolume);
-                guildWelcomes.set(guildId, guildWelcome);
-                client.langs.set(guildId, guildLanguage)
+                client.guildSubReddits.set(guildId, subReddit);
+                client.langs.set(guildId, guildLanguage);
+                client.guildCommandPrefixes.set(guildId, prefix);
+                client.guildVolumes.set(guildId, guildVolume);
+                client.guildWelcomes.set(guildId, guildWelcome);
 
-                StateManager.emit('prefixFetched', guildId, prefix);
-                StateManager.emit('redditFetched', guildId, subReddit);
-                StateManager.emit('volumeFetched', guildId, guildVolume);
-                StateManager.emit('welcomeFetched', guildId, guildWelcome);
-                console.log('StateManger finished!')
+                console.log('Collection refreshed!')
             }).catch(err => console.log(err));
         });
         // End of section

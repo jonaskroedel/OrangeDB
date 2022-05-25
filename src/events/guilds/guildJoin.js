@@ -25,7 +25,7 @@ module.exports = class GuildMemberAddEvent extends BaseEvent {
 
     async run(client, member) {
         if (guildWelcomes.get(member.guild.id)) {
-            if (member.guild.channels.cache.get(guildWelcomes.get(member.guild.id)) !== undefined) {
+            if (member.guild.channels.cache.get(client.guildWelcomes.get(member.guild.id)) !== undefined) {
 
                 let text = member.user.username;
 
@@ -82,11 +82,3 @@ module.exports = class GuildMemberAddEvent extends BaseEvent {
         }
     }
 }
-
-StateManager.on('welcomeFetched', (guildId, guildWelcome) => {
-    guildWelcomes.set(guildId, guildWelcome);
-});
-
-StateManager.on('welcomeUpdate', (guildId, guildWelcome) => {
-    guildWelcomes.set(guildId, guildWelcome);
-});

@@ -12,7 +12,7 @@ module.exports = class help extends BaseCommand {
 
     async run(client, message) {
 
-        const prefix = guildCommandPrefixes.get(message.guild.id)
+        const prefix = client.guildCommandPrefixes.get(message.guild.id)
 
         const mainEmbed = new MessageEmbed()
             .setTitle(`Main help page for ${message.guild.name}`)
@@ -183,12 +183,3 @@ module.exports = class help extends BaseCommand {
         });
     }
 }
-StateManager.on('prefixUpdate', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-});
-StateManager.on('prefixFetched', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-});
-StateManager.on('guildAdded', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-});

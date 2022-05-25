@@ -26,8 +26,7 @@ module.exports = class GuildCreateEvent extends BaseEvent {
                 `SELECT cmdPrefix FROM GuildConfigurable WHERE guildId = '${guild.id}'`
             ).then(result => {
                 const prefix = result[0][0].cmdPrefix;
-                StateManager.emit('guildAdded', guild.id, prefix);
-                StateManager.emit('prefixUpdate', guild.id, prefix);
+                client.guildCommandPrefixes.set(guild.id, prefix)
             });
             console.log(`Added to db.`);
 

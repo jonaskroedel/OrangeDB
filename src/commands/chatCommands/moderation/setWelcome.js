@@ -11,7 +11,8 @@ module.exports = class Welcome extends BaseCommand {
 
     async run(client, message, args) {
 
-        let newWel = guildWelcomes.get(message.guild.id);
+        let newWel = client.guildWelcomes.get(message.guild.id);
+
         if (!message.mentions.channels.first()) {
             if (!guildWelcomes.get(message.guild.id)) {
                 return message.channel.send('No Welcome channel defined.')
@@ -57,14 +58,5 @@ module.exports = class Welcome extends BaseCommand {
         }
     }
 }
-
-StateManager.on('welcomeFetched', (guildId, guildWelcome) => {
-    guildWelcomes.set(guildId, guildWelcome);
-});
-
-StateManager.on('welcomeUpdate', (guildId, guildWelcome) => {
-    guildWelcomes.set(guildId, guildWelcome);
-});
-
 
 

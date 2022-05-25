@@ -1,4 +1,15 @@
 {
-  "test": "That is an english string!",
-  "ping": "Latency"
+  "ping": {
+    "latency": "latency"
+  },
+  "play": {
+    "error_1": "You need to join a voice channel!",
+    "error_2": "There was an error while searching:",
+    "error_3": "There were no tracks found with that query!",
+    "error_playlist": "Playlists are not supported with this command. Try /play playlist!",
+    "loading_song": "Loading song...",
+    "loading_playlist": "Loading playlist, this may take a while...",
+    "now_1": "Now playing:",
+    "now_2": "requested from"
+  }
 }

@@ -30,13 +30,15 @@ module.exports = {
 
 
     async execute(client, interaction) {
+        const lang = client.langs.get(interaction.guild.id);
+        const { play } = require(`../../utils/langs/${lang}.json`)
 
         const vol = guildVolumes.get(interaction.guild.id) || 100;
 
         const track = interaction.options.getString('song') || interaction.options.getString('playlist');
 
         if (!interaction.member.voice.channel) return interaction.reply({
-            content: "you need to join a voice channel.",
+            content: play.play_error_1,
             ephemeral: true
         });
 
@@ -45,17 +47,17 @@ module.exports = {
         try {
             if (interaction.options.getSubcommand() === 'song') {
                 interaction.reply({
-                    content: 'loading song...',
+                    content: play.loading_song,
                     ephemeral: true
                 });
                 // Search for tracks using a query or url, using a query searches youtube automatically and the track requester object
                 res = await client.manager.search(track, interaction.member.user);
                 // Check the load type as this command is not that advanced for basics
                 if (res.loadType === "LOAD_FAILED") throw res.exception;
-                else if (res.loadType === "PLAYLIST_LOADED") throw {message: `Playlists are not supported with this command. Try /play playlist`};
+                else if (res.loadType === "PLAYLIST_LOADED") throw {message: play.error_playlist};
             } else if (interaction.options.getSubcommand() === 'playlist') {
                 interaction.reply({
-                    content: 'loading playlist, this may take a while...',
+                    content: play.loading_playlist,
                     ephemeral: true
                 });
                 // Search for tracks using a query or url, using a query searches youtube automatically and the track requester object
@@ -65,13 +67,13 @@ module.exports = {
             }
         } catch (err) {
             return interaction.editReply({
-                content: `there was an error while searching: ${err.message}`,
+                content: `${play.error_2} ${err.message}`,
                 ephemeral: true
             });
         }
 
         if (res.loadType === "NO_MATCHES") return interaction.reply({
-            content: "there were no tracks found with that query.",
+            content: play.error_3,
             ephemeral: true
         });
 
@@ -106,7 +108,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setColor("GREEN")
-            .setDescription(`🎶 Now playing ${res.tracks[0].title} \n requested from ${res.tracks[0].requester}
+            .setDescription(`🎶 ${play.now_1} ${res.tracks[0].title} \n ${play.now_2} ${res.tracks[0].requester}
             ${res.tracks[0].uri}`)
             .setThumbnail(res.tracks[0].thumbnail);
         return interaction.editReply({

@@ -15,7 +15,7 @@ module.exports = class ping extends BaseCommand {
         const Botlatency = msg.createdTimestamp - message.createdTimestamp
         const Apilatency = client.ws.ping;
 
-        msg.edit(`🍊 Bot ${ping}: \`${Botlatency}ms\`, Api ${ping}: \`${Apilatency}ms\``)
+        msg.edit(`🍊 Bot ${ping.latency}: \`${Botlatency}ms\`, Api ${ping.latency}: \`${Apilatency}ms\``)
         await message.react('🏓')
     }
 }

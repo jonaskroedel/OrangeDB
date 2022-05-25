@@ -17,7 +17,7 @@ module.exports = class MessageEvent extends BaseEvent {
 
     async run (client, message) {
         if (message.author.bot) return;
-        const prefix = guildCommandPrefixes.get(message.guild.id);
+        const prefix = client.guildCommandPrefixes.get(message.guild.id);
 
         const usedPrefix = message.content.slice(0, prefix.length);
 
@@ -30,13 +30,3 @@ module.exports = class MessageEvent extends BaseEvent {
         }
     }
 }
-
-StateManager.on('prefixFetched', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-});
-
-StateManager.on('prefixUpdate', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-    console.log('Guild prefix updated');
-});
-
