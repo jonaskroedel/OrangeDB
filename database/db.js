@@ -1,5 +1,6 @@
 require('dotenv').config({path: '../.env'});
 const mysql = require('mysql2/promise');
+const {EventEmitter} = require("events");
 
 /*
     © Jonas Krödel 2022

@@ -21,7 +21,7 @@ CREATE TABLE GuildConfigurable (
     guildWelcome VARCHAR(100),
     guildWelcomeMsg VARCHAR(200),
     guildVolume INT(3) DEFAULT 100,
-    guildLanguage VARCHAR(10)
+    guildLanguage VARCHAR(10) DEFAULT 'en_EN'
 );
 
 create table playlists (

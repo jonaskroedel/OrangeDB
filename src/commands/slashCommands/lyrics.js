@@ -1,6 +1,5 @@
 const {MessageEmbed, MessageButton, MessageActionRow} = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
-
 const {SlashCommandBuilder} = require('@discordjs/builders');
 
 module.exports = {

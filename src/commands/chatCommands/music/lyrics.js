@@ -1,8 +1,6 @@
 const BaseCommand = require('../../../utils/structures/BaseCommand');
-const {MessageEmbed, MessageButton, MessageActionRow} = require("discord.js");
+const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
-const {convertTime} = require("../../../utils/convert");
-const {progressbar} = require("../../../utils/progressbar");
 
 module.exports = class LyrisCommand extends BaseCommand {
     constructor() {

@@ -1,9 +1,5 @@
 const BaseCommand = require('../../../utils/structures/BaseCommand');
 const {MessageEmbed} = require("discord.js");
-const {progressbar} = require("../../../utils/progressbar");
-const StateManager = require("../../../utils/StateManager");
-
-const guildVolumes = new Map();
 
 module.exports = class play extends BaseCommand {
     constructor() {
@@ -41,7 +37,7 @@ module.exports = class play extends BaseCommand {
         // Connect to the voice channel
         if (player && player.state !== "CONNECTED") {
             player.connect();
-            player.setVolume(guildVolumes.get(message.guild.id))
+            player.setVolume(client.guildVolumes.get(message.guild.id))
         }
         player.queue.add(res.tracks[0]);
         if (!player.playing && !player.paused && !player.queue.size) await player.play()
@@ -61,10 +57,3 @@ module.exports = class play extends BaseCommand {
         return message.channel.send({ embeds: [embed] });
     }
 }
-
-StateManager.on('volumeFetched', (guildId, subReddit) => {
-    guildVolumes.set(guildId, subReddit);
-});
-StateManager.on('volumeUpdate', (guildId, subReddit) => {
-    guildVolumes.set(guildId, subReddit);
-});

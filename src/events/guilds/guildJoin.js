@@ -1,15 +1,10 @@
 const StateManager = require('../../utils/StateManager');
 const BaseEvent = require("../../utils/structures/BaseEvent");
-const {MessageEmbed, MessageAttachment} = require("discord.js");
-const fs = require('fs'),
-    request = require('request');
+const { MessageAttachment } = require("discord.js");
 const Canvas = require('canvas');
 const path = require('path');
-const fetch = require('node-fetch');
 
 const img = path.join(__dirname, '../../../images/background.png');
-
-const guildWelcomes = new Map();
 
 /*
     © Jonas Krödel 2022
@@ -24,7 +19,7 @@ module.exports = class GuildMemberAddEvent extends BaseEvent {
     }
 
     async run(client, member) {
-        if (guildWelcomes.get(member.guild.id)) {
+        if (client.guildWelcomes.get(member.guild.id)) {
             if (member.guild.channels.cache.get(client.guildWelcomes.get(member.guild.id)) !== undefined) {
 
                 let text = member.user.username;
@@ -74,7 +69,7 @@ module.exports = class GuildMemberAddEvent extends BaseEvent {
 
                 const attachment = new MessageAttachment(canvas.toBuffer(), 'card.png');
 
-                client.channels.cache.get(guildWelcomes.get(member.guild.id)).send({
+                client.channels.cache.get(client.guildWelcomes.get(member.guild.id)).send({
                     content: `Welcome 👋 ${member}, have a great stay!`,
                     files: [attachment]
                 });

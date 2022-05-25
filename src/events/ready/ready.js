@@ -28,12 +28,6 @@ module.exports = class ReadyEvent extends BaseEvent {
     async run(client) {
         console.log(client.user.tag + ' has logged in.');
 
-        // start of ( / ) cmds refreshing
-
-        const commands = [];
-        const slashCommands = path.join(__dirname, '../../commands/slashCommands');
-        const commandFiles = fs.readdirSync(slashCommands).filter(file => file.endsWith('.js'));
-
         client.slashCommands = new Collection();
         client.langs = new Collection();
         client.guildSubReddits = new Collection();
@@ -41,22 +35,29 @@ module.exports = class ReadyEvent extends BaseEvent {
         client.guildVolumes = new Collection();
         client.guildWelcomes = new Collection();
 
-        for (const file of commandFiles) {
-            const command = require(`${slashCommands}/${file}`);
-            commands.push(command.data.toJSON());
-            client.slashCommands.set(command.data.name, command);
+        // start of ( / ) cmds refreshing
 
-        }
+        const commands = [];
+        const slashCommands = path.join(__dirname, '../../commands/slashCommands');
+        const commandFiles = fs.readdirSync(slashCommands).filter(file => file.endsWith('.js'));
 
-        try {
-            await rest.put(
-                Routes.applicationGuildCommands('961687947692867634', '841990439384907807'),
-                { body: commands },
-            );
 
-        } catch (err) {
-            console.log(err)
-        }
+                for (const file of commandFiles) {
+                    const command = require(`${slashCommands}/${file}`);
+                    commands.push(command.data.toJSON());
+                    client.slashCommands.set(command.data.name, command);
+
+                }
+
+                try {
+                    await rest.put(
+                        Routes.applicationGuildCommands('961687947692867634', '841990439384907807'),
+                        { body: commands },
+                    );
+
+                } catch (err) {
+                    console.log(err)
+                }
 
         // End of section
 

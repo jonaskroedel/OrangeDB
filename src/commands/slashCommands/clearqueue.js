@@ -1,8 +1,4 @@
 const { MessageEmbed } = require("discord.js");
-const StateManager = require("../../utils/StateManager");
-
-const guildCommandPrefixes = new Map();
-
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
@@ -17,7 +13,7 @@ module.exports = {
             if (!player.queue.current) {
                 const embed = new MessageEmbed()
                     .setColor("GREEN")
-                    .setDescription(`No active queue, start one with ${guildCommandPrefixes.get(interaction.guild.id)}play`);
+                    .setDescription(`No active queue, start one with ${client.guildCommandPrefixes.get(interaction.guild.id)}play`);
                 return interaction.reply({
                     embeds: [embed],
                     ephemeral: true
@@ -41,10 +37,3 @@ module.exports = {
         });
     }
 }
-
-StateManager.on('prefixUpdate', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-});
-StateManager.on('prefixFetched', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-});

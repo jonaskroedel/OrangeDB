@@ -1,7 +1,5 @@
 const BaseCommand = require('../../../utils/structures/BaseCommand');
 const { MessageEmbed } = require("discord.js");
-const {convertTime} = require("../../../utils/convert");
-const {progressbar} = require("../../../utils/progressbar");
 
 module.exports = class PauseCommand extends BaseCommand {
     constructor() {

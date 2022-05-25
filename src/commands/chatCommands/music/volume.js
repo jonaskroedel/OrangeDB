@@ -1,18 +1,14 @@
 const BaseCommand = require('../../../utils/structures/BaseCommand');
-const {MessageEmbed, MessageButton, MessageActionRow} = require("discord.js");
-const lyricsFinder = require("lyrics-finder");
-const {convertTime} = require("../../../utils/convert");
-const {progressbar} = require("../../../utils/progressbar");
+const {MessageEmbed} = require("discord.js");
 const StateManager = require("../../../utils/StateManager");
-
-const guildVolumes = new Map();
 
 module.exports = class LyrisCommand extends BaseCommand {
     constructor() {
         super('volume', 'music', ['v', '%']);
+        this.connection = StateManager.connection;
     }
 
-    async run(client, message, args, prefix) {
+    async run(client, message, args) {
         const player = client.manager.get(message.guild.id);
         if (player && player.state === "CONNECTED") {
             if (!player.queue.current) {
@@ -44,7 +40,7 @@ module.exports = class LyrisCommand extends BaseCommand {
                      SET guildVolume = '${volume}'
                      WHERE guildId = '${message.guild.id}'`
                 );
-                StateManager.emit('volumeUpdate', message.guild.id, volume);
+                client.guildVolumes.set(message.guild.id, volume);
 
 
                 let thing = new MessageEmbed()
@@ -55,7 +51,3 @@ module.exports = class LyrisCommand extends BaseCommand {
         } else message.channel.send('There is no active music bot.');
     }
 }
-
-StateManager.on('volumeUpdate', (guildId, subReddit) => {
-    guildVolumes.set(guildId, subReddit);
-});

@@ -1,4 +1,3 @@
-const BaseCommand = require('../../utils/structures/BaseCommand');
 const {MessageEmbed} = require("discord.js");
 const StateManager = require("../../utils/StateManager");
 
@@ -33,7 +32,7 @@ module.exports = {
         const lang = client.langs.get(interaction.guild.id);
         const { play } = require(`../../utils/langs/${lang}.json`)
 
-        const vol = guildVolumes.get(interaction.guild.id) || 100;
+        const vol = client.guildVolumes.get(interaction.guild.id);
 
         const track = interaction.options.getString('song') || interaction.options.getString('playlist');
 
@@ -108,8 +107,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setColor("GREEN")
-            .setDescription(`🎶 ${play.now_1} ${res.tracks[0].title} \n ${play.now_2} ${res.tracks[0].requester}
-            ${res.tracks[0].uri}`)
+            .setDescription(play.now.replaceAll('§title§', res.tracks[0].title).replaceAll('§user§', res.tracks[0].requester))
             .setThumbnail(res.tracks[0].thumbnail);
         return interaction.editReply({
             content: null,
@@ -118,10 +116,3 @@ module.exports = {
         });
     }
 }
-
-StateManager.on('volumeFetched', (guildId, subReddit) => {
-    guildVolumes.set(guildId, subReddit);
-});
-StateManager.on('volumeUpdate', (guildId, subReddit) => {
-    guildVolumes.set(guildId, subReddit);
-});

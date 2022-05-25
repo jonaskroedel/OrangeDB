@@ -6,6 +6,8 @@ module.exports = class twentyforseven extends BaseCommand {
         super('24/7', 'music', ['twentyfourseven']);
     }
     async run (client, message, prefix) {
+        const lang = client.langs.get(message.guild.id);
+        const { twentyfourseven, musicdefault } = require(`../../../utils/langs/${lang}.json`)
         const player = message.client.manager.players.get(message.guild.id);
         if (player && player.state === "CONNECTED") {
             const [command, args] = message.content.slice(prefix.length).split(/\s+/);
@@ -14,25 +16,25 @@ module.exports = class twentyforseven extends BaseCommand {
                 const embed = new MessageEmbed()
                     .setColor()
                     .setColor(`${player.twentyFourSeven === true ? "GREEN" : "RED"}`)
-                    .setDescription(`${player.twentyFourSeven === true ? '24/7 is on' : '24/7 is off'}`);
+                    .setDescription(`${player.twentyFourSeven === true ? twentyfourseven.on : twentyfourseven.off}`);
                 return message.channel.send({embeds: [embed]});
             } else if (args === 'off') {
                 player.twentyFourSeven = false;
                 const embed = new MessageEmbed()
                     .setColor("RED")
-                    .setDescription('24/7 is off');
+                    .setDescription(twentyfourseven.off);
                 return message.channel.send({embeds: [embed]});
             } else if (args === 'on') {
                 player.twentyFourSeven = true;
                 const embed = new MessageEmbed()
                     .setColor("GREEN")
-                    .setDescription('24/7 is on');
+                    .setDescription(twentyfourseven.on);
 
                 return message.channel.send({embeds: [embed]});
             } else {
-                message.channel.send('You can only use `on` or `off`');
+                message.channel.send(twentyfourseven.onoff);
             }
         }
-        else message.channel.send('There is no active music bot.')
+        else message.channel.send(musicdefault.no_bot)
     }
 }

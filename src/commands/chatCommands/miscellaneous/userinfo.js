@@ -1,18 +1,16 @@
 const {Client, Intents, MessageEmbed, Formatters} = require('discord.js');
-const client = new Client({intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES"]});
 const BaseCommand = require("../../../utils/structures/BaseCommand");
-const StateManager = require("../../../utils/StateManager");
 const moment = require('moment');
-const rtf1 = new Intl.RelativeTimeFormat('en', { style: 'narrow'});
 
 
 module.exports = class help extends BaseCommand {
     constructor() {
         super('userinfo', 'moderation', ['info', 'whois']);
-        this.connection = StateManager.connection;
     }
 
     async run(client, message) {
+        const lang = client.langs.get(message.guild.id);
+        const { userinfo } = require(`../../../utils/langs/${lang}.json`)
         let member = message.mentions.members.first() || message.member,
             user = member.user;
         let color;
@@ -27,16 +25,16 @@ module.exports = class help extends BaseCommand {
 
         const sEmbed = new MessageEmbed()
             .setColor(color)
-            .setTitle(`Userinfo for ${user.username}`)
+            .setTitle(`${userinfo.title} ${user.username}`)
             .setThumbnail(user.avatarURL())
-            .addField(`Username:`, user.username, true)
-            .addField(`Discriminator:`, `#${user.discriminator}`, true)
-            .addField(`Server joined:`, moment.utc(member.joinedAt).format('DD.MM.YY'), true)
-            .addField(`Highest-role:`, `${member.roles.highest}`, true)
-            .addField(`Admin:`, member.permissions.has("ADMINISTRATOR") ? '✅' : '❌', true)
-            .addField(`Bot:`, user.bot ? '✅' : '❌', true)
-            .addField(`Created at:`, moment.utc(user.createdAt).format('DD.MM.YY') , true)
-            .setFooter({ text:`Requested by ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
+            .addField(userinfo.username, user.username, true)
+            .addField(userinfo.discriminator, `#${user.discriminator}`, true)
+            .addField(userinfo.server, moment.utc(member.joinedAt).format('DD.MM.YY'), true)
+            .addField(userinfo.role, `${member.roles.highest}`, true)
+            .addField(userinfo.admin, member.permissions.has("ADMINISTRATOR") ? '✅' : '❌', true)
+            .addField(userinfo.bot, user.bot ? '✅' : '❌', true)
+            .addField(userinfo.created, moment.utc(user.createdAt).format('DD.MM.YY') , true)
+            .setFooter({ text:`${userinfo.requested} ${message.author.username}`, iconURL: message.author.displayAvatarURL({dynamic: true})})
             .setTimestamp();
         message.channel.send({embeds: [sEmbed]});
         message.delete();

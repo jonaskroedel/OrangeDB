@@ -1,8 +1,5 @@
 const BaseCommand = require('../../../utils/structures/BaseCommand');
 const { MessageEmbed } = require("discord.js");
-const StateManager = require("../../../utils/StateManager");
-
-const guildCommandPrefixes = new Map();
 
 module.exports = class clearQueue extends BaseCommand {
     constructor() {
@@ -17,7 +14,7 @@ module.exports = class clearQueue extends BaseCommand {
             if (!player.queue.current) {
                 const embed = new MessageEmbed()
                     .setColor("GREEN")
-                    .setDescription(`No active queue, start one with ${guildCommandPrefixes.get(message.guild.id)}play`);
+                    .setDescription(`No active queue, start one with ${client.guildCommandPrefixes(message.guild.id)}play`);
                 return message.channel.send({embeds: [embed]});
             }
 
@@ -32,10 +29,3 @@ module.exports = class clearQueue extends BaseCommand {
         message.channel.send('There is no active music bot.')
     }
 }
-
-StateManager.on('prefixUpdate', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-});
-StateManager.on('prefixFetched', (guildId, prefix) => {
-    guildCommandPrefixes.set(guildId, prefix);
-});

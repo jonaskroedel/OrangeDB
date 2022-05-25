@@ -1,7 +1,5 @@
-const {MessageEmbed, MessageButton, MessageActionRow} = require("discord.js");
+const {MessageEmbed} = require("discord.js");
 const StateManager = require("../../utils/StateManager");
-
-const guildVolumes = new Map();
 
 const {SlashCommandBuilder} = require('@discordjs/builders');
 
@@ -53,9 +51,9 @@ module.exports = {
                 await StateManager.connection.query(
                     `UPDATE GuildConfigurable
                      SET guildVolume = '${volume}'
-                     WHERE guildId = '${message.guild.id}'`
+                     WHERE guildId = '${interaction.guild.id}'`
                 );
-                StateManager.emit('volumeUpdate', message.guild.id, volume);
+                client.guildVolumes.set(interaction.guild.id, volume);
 
 
                 let thing = new MessageEmbed()
@@ -72,7 +70,3 @@ module.exports = {
         })
     }
 }
-
-StateManager.on('volumeUpdate', (guildId, subReddit) => {
-    guildVolumes.set(guildId, subReddit);
-});

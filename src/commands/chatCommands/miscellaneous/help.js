@@ -1,16 +1,14 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const BaseCommand = require("../../../utils/structures/BaseCommand");
-const StateManager = require("../../../utils/StateManager");
-
-const guildCommandPrefixes = new Map();
 
 module.exports = class help extends BaseCommand {
     constructor() {
         super('help', 'moderation', ['h', 'botinfo']);
-        this.connection = StateManager.connection;
     }
 
     async run(client, message) {
+        const lang = client.langs.get(message.guild.id);
+        const { help } = require(`../../../utils/langs/${lang}.json`)
 
         const prefix = client.guildCommandPrefixes.get(message.guild.id)
 
@@ -23,14 +21,12 @@ module.exports = class help extends BaseCommand {
                 iconURL: message.author.displayAvatarURL({dynamic: true})
             })
             .setTimestamp()
-            .setDescription(`**${prefix}help** -- shows this page
-                            **${prefix}reddit** -- sends a meme from the default reddit or custom one
+            .setDescription(`${help.main.replaceAll('§prefix§', prefix)}
+            
+                            ${help.urgent}
                             
-                            **TO USE ( / ) COMMANDS YOU NEED TO RE-INVITE THE BOT WITH [THIS](https://discord.com/api/oauth2/authorize?client_id=845681260567068712&permissions=8&scope=bot%20applications.commands) LINK!!!!**
-                            
-                            Interactive help page, click on the buttons below to access the help page for the respective category
-                            You can find a detailed information sheet with all commands [here](https://github.com/jonaskroedel/OrangeDB/blob/master/COMMANDS.md#detailed-page-for-all-commands).
-            `);
+                            ${help.interactive}
+                            `);
 
         const musicBut = new MessageButton()
             .setCustomId('music')
@@ -102,14 +98,7 @@ module.exports = class help extends BaseCommand {
                         iconURL: message.author.displayAvatarURL({dynamic: true})
                     })
                     .setTimestamp()
-                    .setDescription(`**${prefix}prefix [prefix]** -- changes the current prefix
-                                    **${prefix}ping** -- shows the bot latency in \`ms\`
-                                    **${prefix}userinfo** -- userinfo from you or the mentioned player
-                                    **${prefix}clear [amount]** -- clears [amount] of messages in the current channel
-                                    **${prefix}clearchannel** -- clears the whole channel
-                                    **${prefix}subreddit [subreddit]** -- changes the default subreddit
-                                    **${prefix}welcome [channel] / remove** -- adds, changes or deletes the default welcome channel
-                                    `);
+                    .setDescription(help.moderation.replaceAll('§prefix§', prefix));
 
                 await msg.edit({
                     embeds: [embedMod],
@@ -128,26 +117,7 @@ module.exports = class help extends BaseCommand {
                         iconURL: message.author.displayAvatarURL({dynamic: true})
                     })
                     .setTimestamp()
-                    .setDescription(`**${prefix}join** -- joins your current voice-channel
-                                    **${prefix}play** -- plays music depending on url/author/title (only youtube.com)
-                                    **${prefix}playpl** -- plays depending on url/author/title a playlist (only youtube.com)
-                                    **${prefix}pause** -- pauses the current song
-                                    **${prefix}resume** -- resumes the current song
-                                    **${prefix}stop** -- stops the song
-                                    **${prefix}24/7** -- plays music 24/7 (music must be given)
-                                    **${prefix}autoplay** -- adds appropriate songs to the queue
-                                    **${prefix}skip** -- skips the queue to the next song
-                                    **${prefix}skipTo [number]** -- skips the queue to the requested song 
-                                    **${prefix}queue** -- shows the current queue
-                                    **${prefix}now** -- shows the current song
-                                    **${prefix}loop [track/queue]** -- loops either track or queue
-                                    **${prefix}shuffle** -- shuffles the queue
-                                    **${prefix}lyrics** -- shows the lyrics to the song
-                                    **${prefix}remove [number]** -- clears the [number] song in the queue
-                                    **${prefix}clearqueue** -- clears the whole queue
-                                    **${prefix}volume** -- sets the volume between 100 and 0 
-                                    **${prefix}leave** -- leaves the voicechannel
-                                    `);
+                    .setDescription(help.music.replaceAll('§prefix§', prefix));
 
                 await msg.edit({
                     embeds: [embedMusic],
@@ -165,11 +135,7 @@ module.exports = class help extends BaseCommand {
                         iconURL: message.author.displayAvatarURL({dynamic: true})
                     })
                     .setTimestamp()
-                    .setDescription(`**${prefix}create [name]** -- creates a playlist
-                                    **${prefix}save [name]** -- saves your current queue to a playlist
-                                    **${prefix}load [name]** -- loads a playlist
-                                    **${prefix}delete [name]** -- deletes a playlist
-                                    **${prefix}playlists** -- shows all your playlists`);
+                    .setDescription(help.playlist.replaceAll('§prefix§', prefix));
 
                 await msg.edit({
                     embeds: [embedPlaylist],
