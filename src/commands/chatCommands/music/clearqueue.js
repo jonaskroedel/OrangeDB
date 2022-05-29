@@ -7,15 +7,17 @@ module.exports = class clearQueue extends BaseCommand {
     }
 
     async run(client, message) {
+        const lang = client.langs.get(message.guild.id);
+        const { clearqueue, musicdefault } = require(`../../../utils/langs/${lang}.json`)
         const player = message.client.manager.get(message.guild.id);
 
         if (player && player.state === "CONNECTED") {
 
             if (!player.queue.current) {
-                const embed = new MessageEmbed()
-                    .setColor("GREEN")
-                    .setDescription(`No active queue, start one with ${client.guildCommandPrefixes(message.guild.id)}play`);
-                return message.channel.send({embeds: [embed]});
+                let thing = new MessageEmbed()
+                    .setColor("RED")
+                    .setDescription(musicdefault.no_bot);
+                return message.reply({embeds: [thing]});
             }
 
             player.queue.clear();
@@ -23,9 +25,9 @@ module.exports = class clearQueue extends BaseCommand {
 
             const embed = new MessageEmbed()
                 .setColor("RED")
-                .setDescription(`Queue cleared and autoplay disabled!`);
+                .setDescription(clearqueue.done);
             return message.channel.send({embeds: [embed]});
         }
-        message.channel.send('There is no active music bot.')
+        message.channel.send(musicdefault.no_bot)
     }
 }

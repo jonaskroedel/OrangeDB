@@ -1,10 +1,12 @@
 {
   "permissions": {
     "no_perm": "You do not have permission to use that command!",
-    "no_args": "Incorrect amount of arguments"
+    "no_args": "Incorrect amount of arguments",
+    "no_allowed": "You're not allowed to use that command!"
   },
   "musicdefault": {
-    "no_bot": "There is no active music bot."
+    "no_bot": "❌ There is no active music bot.",
+    "onoff": "You can only use `on` or `off`"
   },
   "meme": {
     "error": "does not exist. Are you sure that is the right subreddit?"
@@ -64,8 +66,32 @@
   },
   "twentyfourseven": {
     "on": "24/7 is on",
-    "off": "24/7 is off",
-    "onoff": "You can only use `on` or `off`"
+    "off": "24/7 is off"
+  },
+  "autoplay": {
+    "on": "Autoplay is on!",
+    "off": "Autoplay is off!"
+  },
+  "clearqueue": {
+    "done": "Queue cleared and autoplay disabled!"
+  },
+  "join": {
+    "error": "You need to join a voicechannel first to play music."
+  },
+  "leave": {
+    "disconnected": "❌ music bot disconnected"
+  },
+  "loop": {
+    "track_loop_on": "\uD83D\uDD02 track repeat on",
+    "track_loop_off": "\uD83D\uDD02 track repeat off",
+    "queue_loop_on": "\uD83D\uDD01 queue repeat on",
+    "queue_loop_off": "\uD83D\uDD01 queue repeat off"
+  },
+  "lyr": {
+    "notfound": "lyrics not found"
+  },
+  "now": {
+    "now": "\uD83C\uDFB6 Currently playing: §title§ \n requested from §user§"
   },
   "play": {
     "error_1": "You need to join a voice channel!",

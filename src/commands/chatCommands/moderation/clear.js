@@ -8,6 +8,7 @@ module.exports = class clear extends BaseCommand {
     async run (client, message, args) {
         const lang = client.langs.get(message.guild.id);
         const { clear, permissions } = require(`../../../utils/langs/${lang}.json`)
+
         if (message.member.permissions.has("MANAGE_MESSAGES")) {
             let amount = parseInt(args[0])
 

@@ -4,7 +4,9 @@ module.exports = class JoinCommand extends BaseCommand {
     constructor() {
         super('join', 'music', []);
     }
-    async run (client, message, args) {
+    async run (client, message) {
+        const lang = client.langs.get(message.guild.id);
+        const { join } = require(`../../../utils/langs/${lang}.json`)
         const { channel } = message.member.voice;
 
         if (channel) {
@@ -17,7 +19,7 @@ module.exports = class JoinCommand extends BaseCommand {
             player.connect();
             client.musicPlayers.set(message.guild.id, player);
         } else {
-            message.channel.send('You need to join a voicechannel first to play music.');
+            message.channel.send(join.error);
         }
     }
 }

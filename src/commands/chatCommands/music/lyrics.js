@@ -8,17 +8,23 @@ module.exports = class LyrisCommand extends BaseCommand {
     }
 
     async run(client, message, args) {
+        const lang = client.langs.get(message.guild.id);
+        const { lyr, musicdefault, permissions } = require(`../../../utils/langs/${lang}.json`)
         const player = message.client.manager.players.get(message.guild.id);
         if (player && player.state === "CONNECTED") {
             const queue = player.queue.current;
-            if (!queue) return message.channel.send(("There is no active Music Bot")).catch(console.error);
-
+            if (!player.queue.current) {
+                let thing = new MessageEmbed()
+                    .setColor("RED")
+                    .setDescription(musicdefault.no_bot);
+                return message.reply({embeds: [thing]});
+            }
             let lyrics = null;
             try {
                 lyrics = await lyricsFinder(queue.title, "");
-                if (!lyrics) lyrics = "lyrics not found";
+                if (!lyrics) lyrics = lyr.notfound;
             } catch (error) {
-                lyrics = "lyrics not found";
+                lyrics = lyrics.notfound;
             }
 
             let pages = Math.ceil(lyrics.length / 2040);
@@ -29,12 +35,6 @@ module.exports = class LyrisCommand extends BaseCommand {
                 pagedLyrics.push(lyrics.toString().substring(i * 2040, (i + 1) * 2040))
             }
 
-            if (!player.queue.current) {
-                let thing = new MessageEmbed()
-                    .setColor("RED")
-                    .setDescription('❌ There is no active Music Bot');
-                return message.reply({embeds: [thing]});
-            }
             if (lyrics.length <= 2040) {
                 const embed = new MessageEmbed()
                     .setTitle(`${player.queue.current.title}`)
@@ -81,7 +81,7 @@ module.exports = class LyrisCommand extends BaseCommand {
                         else {
                             b.reply({
                                 ephemeral: true,
-                                content: "You're not allowed to use that command!"
+                                content: permissions.no_allowed
                             });
                             return false;
                         }
@@ -141,6 +141,6 @@ module.exports = class LyrisCommand extends BaseCommand {
                     await msg.delete();
                 });
             }
-        } else message.channel.send('There is no active music bot.');
+        } else return message.channel.send(musicdefault.no_bot)
     }
 }

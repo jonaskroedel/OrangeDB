@@ -6,6 +6,8 @@ module.exports = class LoopCommand extends BaseCommand {
         super('loop', 'music', []);
     }
     async run (client, message, prefix) {
+        const lang = client.langs.get(message.guild.id);
+        const { loop, musicdefault } = require(`../../../utils/langs/${lang}.json`)
         const [command, ...args] = message.content.slice(prefix.length).split(/\s+/);
         const player = message.client.manager.players.get(message.guild.id);
         const loops = args.join(" ");
@@ -13,17 +15,17 @@ module.exports = class LoopCommand extends BaseCommand {
         if (player && player.state === "CONNECTED") {
 
             if (!player.queue.current) {
-                let embed = new MessageEmbed()
+                let thing = new MessageEmbed()
                     .setColor("RED")
-                    .setDescription('❌ There is no active Music Bot');
-                return message.channel.send({ embeds: [embed] });
+                    .setDescription(musicdefault.no_bot);
+                return message.reply({embeds: [thing]});
             }
             if (loops === 'track') {
                 player.setTrackRepeat(!player.trackRepeat);
                 let embed = new MessageEmbed()
                     .setColor(`${player.trackRepeat === true ? "GREEN" : "RED"}`)
                     .setDescription(
-                        `${player.trackRepeat === true ? "🔂 track repeat on" : "🔂 track repeat off"}`
+                        `${player.trackRepeat === true ? loop.track_loop_on : loop.track_loop_off}`
                     );
                 return message.channel.send({ embeds: [embed] });
             } else if (loops === 'queue') {
@@ -31,20 +33,19 @@ module.exports = class LoopCommand extends BaseCommand {
                 let embed = new MessageEmbed()
                     .setColor(`${player.queueRepeat === true ? "GREEN" : "RED"}`)
                     .setDescription(
-                        `${player.queueRepeat === true ? "🔁 queue repeat on" : "🔁 queue repeat off"}`
+                        `${player.queueRepeat === true ? loop.queue.on : loop.queue.off}`
                     );
                 return message.channel.send({ embeds: [embed] });
             } else if (!loops) {
                 let embed = new MessageEmbed()
                     .setColor("#F8AA2A")
                     .setDescription(
-                        `${player.queueRepeat === true ? "🔁 queue repeat on" : "🔁 queue repeat off"}
-                        ${player.trackRepeat === true ? "🔂 track repeat on" : "🔂 track repeat off"}`
+                        `${player.queueRepeat === true ? loop.queue.on : loop.queue.off}
+                        ${player.trackRepeat === true ? loop.track_loop_on : loop.track_loop_off}`
                     );
                 return message.channel.send({ embeds: [embed] })
             }
 
-        }
-        else message.channel.send('There is no active music bot.')
+        } else return message.channel.send(musicdefault.no_bot)
     }
 }

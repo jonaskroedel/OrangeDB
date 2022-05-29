@@ -5,13 +5,15 @@ module.exports = class JoinCommand extends BaseCommand {
     constructor() {
         super('autoplay', 'music', []);
     }
-    async run (client, message, prefix, args) {
+    async run (client, message, prefix) {
+        const lang = client.langs.get(message.guild.id);
+        const { autoplay, musicdefault } = require(`../../../utils/langs/${lang}.json`)
         const player = message.client.manager.get(message.guild.id);
         if (player && player.state === "CONNECTED") {
             if (!player.queue.current) {
                 let thing = new MessageEmbed()
                     .setColor("RED")
-                    .setDescription('❌ There is no active Music Bot');
+                    .setDescription(musicdefault.no_bot);
                 return message.reply({embeds: [thing]});
             }
             const [command, args] = message.content.slice(prefix.length).split(/\s+/);
@@ -23,7 +25,7 @@ module.exports = class JoinCommand extends BaseCommand {
             if (!args) {
                 const embed = new MessageEmbed()
                     .setColor(`${autoplay === true ? "GREEN" : "RED"}`)
-                    .setDescription(`${emojiautoplay} ${autoplay === true ? 'Autoplay is on' : 'Autoplay is off'}`);
+                    .setDescription(`${emojiautoplay} ${autoplay === true ? autoplay.on : autoplay.off}`);
                 return message.channel.send({embeds: [embed]});
             } else if (args === 'on') {
                 const identifier = player.queue.current.identifier;
@@ -36,18 +38,18 @@ module.exports = class JoinCommand extends BaseCommand {
                 player.queue.add(res.tracks[track]);
                 let thing = new MessageEmbed()
                     .setColor('GREEN')
-                    .setDescription(`${emojiautoplay} Autoplay on`);
+                    .setDescription(`${emojiautoplay} ${autoplay.on}`);
                 return message.channel.send({embeds: [thing]});
             } else if (args === 'off') {
                 player.set("autoplay", false);
                 let thing = new MessageEmbed()
                     .setColor('RED')
-                    .setDescription(`${emojiautoplay} Autoplay off`);
+                    .setDescription(`${emojiautoplay} ${autoplay.off}`);
                 return message.channel.send({embeds: [thing]});
             } else {
-                message.channel.send('You can only use `on` or `off`');
+                message.channel.send(musicdefault.onoff);
             }
         }
-        else message.channel.send('There is no active music bot.')
+        else message.channel.send(musicdefault.no_bot)
     }
 }

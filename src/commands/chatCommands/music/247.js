@@ -12,6 +12,12 @@ module.exports = class twentyforseven extends BaseCommand {
         if (player && player.state === "CONNECTED") {
             const [command, args] = message.content.slice(prefix.length).split(/\s+/);
 
+            if (!player.queue.current) {
+                let thing = new MessageEmbed()
+                    .setColor("RED")
+                    .setDescription(musicdefault.no_bot);
+                return message.reply({embeds: [thing]});
+            }
             if (!args) {
                 const embed = new MessageEmbed()
                     .setColor()
@@ -32,7 +38,7 @@ module.exports = class twentyforseven extends BaseCommand {
 
                 return message.channel.send({embeds: [embed]});
             } else {
-                message.channel.send(twentyfourseven.onoff);
+                message.channel.send(musicdefault.onoff);
             }
         }
         else message.channel.send(musicdefault.no_bot)
