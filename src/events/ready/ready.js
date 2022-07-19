@@ -36,7 +36,7 @@ module.exports = class ReadyEvent extends BaseEvent {
         client.guildWelcomes = new Collection();
 
         // start of ( / ) cmds refreshing
-/*
+
         const commands = [];
         const slashCommands = path.join(__dirname, '../../commands/slashCommands');
         const commandFiles = fs.readdirSync(slashCommands).filter(file => file.endsWith('.js'));
@@ -51,14 +51,14 @@ module.exports = class ReadyEvent extends BaseEvent {
 
                 try {
                     await rest.put(
-                        Routes.applicationGuildCommands('961687947692867634', '841990439384907807'),
+                        Routes.applicationGuildCommands('961687947692867634', '771331659953602601'),
                         { body: commands },
                     );
 
                 } catch (err) {
                     console.log(err)
                 }
-*/
+
         // End of section
 
         // Start of checking if all Guild-Ids are in the database
@@ -145,8 +145,8 @@ module.exports = class ReadyEvent extends BaseEvent {
         // End of section
 
 
-        await client.application.commands.set([])
-        await client.guilds.cache.get('841990439384907807').commands.set([])
+        // await client.application.commands.set([])
+        // await client.guilds.cache.get('771331659953602601').commands.set([])
         client.user.setActivity(`${process.env.PREFIX}help`, {type: 'LISTENING'});
     }
 }
