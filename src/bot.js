@@ -1,11 +1,11 @@
 require('dotenv').config({path: '../.env'});
 const {Client, Intents, Collection} = require('discord.js');
-const { Manager } = require('erela.js');
+const {Manager} = require('erela.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MEMBERS]});
-const { registerCommands, registerEvents, registerMusicEvents } = require('./utils/register');
+const {registerCommands, registerEvents, registerMusicEvents} = require('./utils/register');
 const {Routes} = require("discord-api-types/v9");
 const {REST} = require("@discordjs/rest");
-
+const Spotify = require("erela.js-spotify");
 
 /*
     © Jonas Krödel 2022
@@ -14,10 +14,14 @@ const {REST} = require("@discordjs/rest");
 */
 
 (async () => {
-    const nodes= [
+
+    const clientSecret = process.env.CSECRET
+    const clientID = process.env.CID
+
+    const nodes = [
         {
             host: process.env.HOST,
-            password : process.env.PASSWORD,
+            password: process.env.PASSWORD,
             port: Number(process.env.PORT),
             secure: false
         }
@@ -35,7 +39,6 @@ const {REST} = require("@discordjs/rest");
         client.manager.init(client.user.id);
     });
     client.on("raw", d => client.manager.updateVoiceState(d));
-
 
 
     client.login(process.env.BOT_TOKEN);

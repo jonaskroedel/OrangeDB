@@ -12,8 +12,6 @@ const rest = new REST({
     version: '9'
 }).setToken(process.env.BOT_TOKEN);
 
-
-
 /*
     © Jonas Krödel 2022
     You may use and modify this code. You must mention me, the owner,
@@ -36,7 +34,7 @@ module.exports = class ReadyEvent extends BaseEvent {
         client.guildWelcomes = new Collection();
 
         // start of ( / ) cmds refreshing
-/*
+
         const commands = [];
         const slashCommands = path.join(__dirname, '../../commands/slashCommands');
         const commandFiles = fs.readdirSync(slashCommands).filter(file => file.endsWith('.js'));
@@ -58,7 +56,7 @@ module.exports = class ReadyEvent extends BaseEvent {
                 } catch (err) {
                     console.log(err)
                 }
-*/
+
         // End of section
 
         // Start of checking if all Guild-Ids are in the database
@@ -138,15 +136,14 @@ module.exports = class ReadyEvent extends BaseEvent {
                 client.guildCommandPrefixes.set(guildId, prefix);
                 client.guildVolumes.set(guildId, guildVolume);
                 client.guildWelcomes.set(guildId, guildWelcome);
-
-                console.log('Collection refreshed!')
             }).catch(err => console.log(err));
         });
         // End of section
 
 
-        await client.application.commands.set([])
-        await client.guilds.cache.get('841990439384907807').commands.set([])
-        client.user.setActivity(`${process.env.PREFIX}help`, {type: 'LISTENING'});
+        // await client.application.commands.set([])
+        // await client.guilds.cache.get('841990439384907807').commands.set([])
+        client.user.setActivity(`help`, {type: 'LISTENING'});
+        console.log('Collection refreshed, no errors occurred while starting the program! SUCCESS!')
     }
 }

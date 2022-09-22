@@ -35,7 +35,7 @@ module.exports = {
                 });
             }
 
-            const volume = parseInt(args[0]);
+            const volume = parseInt(args);
 
             if (!volume || volume < 0 || volume > 100) {
                 let thing = new MessageEmbed()

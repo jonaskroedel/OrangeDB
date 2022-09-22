@@ -94,7 +94,7 @@ module.exports = class Subreddit extends BaseCommand {
                             if (player.state !== "CONNECTED") player.connect();
                             if (player) player.queue.add(s.tracks[0]);
                             if (player && player.state === "CONNECTED" && !player.playing && !player.paused && !player.queue.size) await player.play();
-                            player.setVolume(guildVolumes.get(message.guild.id))
+                            player.setVolume(client.guildVolumes.get(message.guild.id))
                             ++count;
                         }
                         if (player && !player.queue.current) player.destroy();
