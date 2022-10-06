@@ -30,7 +30,7 @@ module.exports = class Reddit extends BaseCommand{
                 sEmbed.setDescription(post.data.selftext)
                 sEmbed.setURL(`${'https://reddit.com' + post.data.permalink}`)
                 sEmbed.setColor('RANDOM')
-                sEmbed.setImage(post.data.over_18 ? '' : post.data.url)
+                sEmbed.setImage(post.data.url)
                 sEmbed.setFooter({text: `⬆️${post.data.ups}                🗨️${post.data.num_comments}`})
                 sEmbed.setTimestamp()
 

@@ -17,7 +17,7 @@ module.exports = class f1 extends BaseCommand {
         let msgContent;
         let pyshell = new PythonShell(myPythonScript);
 
-        pyshell.send(JSON.stringify(['NOR',2022,'Miami','R']));
+        pyshell.send(JSON.stringify([2022,'Austria','R']));
 
         pyshell.on('message', function (message) {
             // received a message sent from the Python script (a simple "print" statement)

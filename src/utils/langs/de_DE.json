@@ -12,9 +12,9 @@
     "error": "exisitert nicht. Sind Sie sicher, dass dieser Subreddit existiert?"
   },
   "subreddit": {
-    "current": "Aktueller Subreddit",
+    "current": "Aktueller Subreddit:",
     "updated": "Standard-Subreddit wurde aktualisiert auf:",
-    "failure": "Standard-Subreddit konnte nicht aktualisiert werden"
+    "failure": "Standard-Subreddit konnte nicht aktualisiert werden."
   },
   "help": {
     "urgent": "UM ( / ) COMMANDS BENUTZEN ZU KÖNNEN, MÜSSEN SIE DEN BOT MIT [DIESEM](https://discord.com/api/oauth2/authorize?client_id=845681260567068712&permissions=8&scope=bot%20applications.commands) LINK EINLADEN!!!",

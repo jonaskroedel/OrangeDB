@@ -9,11 +9,11 @@ module.exports = class Subreddit extends BaseCommand {
 
     async run(client, message, args) {
         const lang = client.langs.get(message.guild.id);
-        const { meme, permissions } = require(`../../../../utils/langs/${lang}.json`)
+        const { subreddit, permissions } = require(`../../../../utils/langs/${lang}.json`)
         let newSub = args[0];
 
         if (!args[0] || args[0].length === 0) {
-            return message.channel.send(`${meme.current} **r/${client.guildSubReddits.get(message.guild.id)}**`);
+            return message.channel.send(`${subreddit.current} **r/${client.guildSubReddits.get(message.guild.id)}**`);
         } else {
             try {
                 if (!message.member.permissions.has("MANAGE_GUILD")) {
@@ -22,12 +22,12 @@ module.exports = class Subreddit extends BaseCommand {
                     await StateManager.connection.query(
                         `UPDATE GuildConfigurable SET subReddit = '${newSub}' WHERE guildId = '${message.guild.id}'`
                     );
-                    message.channel.send(`${meme.updated} **${newSub}**`);
+                    message.channel.send(`${subreddit.updated} **${newSub}**`);
                     client.guildSubReddits.set(message.guild.id, newSub);
                 }
             } catch (err) {
                 console.log(err);
-                message.channel.send(`${meme.failure} **${newSub}**!`);
+                message.channel.send(`${subreddit.failure} **${newSub}**!`);
             }
         }
     }
