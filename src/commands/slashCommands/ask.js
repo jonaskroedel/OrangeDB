@@ -12,7 +12,7 @@ module.exports = {
 
     async execute(interaction) {
         // Get the prompt from the user
-        const prompt = interaction.options.getString('prompt');
+        const prompt = interaction.options.get('prompt').value;
 
         // Configure the OpenAI API
         const configuration = new Configuration({
