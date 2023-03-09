@@ -29,6 +29,7 @@
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.7",
     "nodemon": "^2.0.16",
+    "openai": "^3.2.1",
     "python-shell": "^1.0.4",
     "request": "^2.88.2",
     "sharp": "^0.30.4"
